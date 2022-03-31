@@ -1,5 +1,7 @@
-package ss1_Introduction_to_java.bai_tap;
+package _01_Introduction_to_java.exercise;
+
 import java.util.Scanner;
+
 public class ung_dung_doc_so_thanh_chu {
     public static class Main {
 
@@ -57,7 +59,7 @@ public class ung_dung_doc_so_thanh_chu {
                         output2 = "eleven";
                         break;
                     case 2:
-                        output2 = "trelews";
+                        output2 = "twelve";
                         break;
                     case 3:
                         output2 = "thirteen";
@@ -143,14 +145,21 @@ public class ung_dung_doc_so_thanh_chu {
                 }
             }
 
-            if (tens == 1) {
+            if (tens == 1 && one != 0 ) {
                 System.out.print("Your number is: " + input + " = " + output3 + " " + output2);
-            } else if (tens != 1 && one == 0) {
+            } else if (tens != 1 && one == 0 && input != 0) {
                 System.out.print("Your number is: " + input + " = " + output3 + " " + output2);
-            } else if (tens != 1 && one != 0) {
-                System.out.print("Your number is: " + input + " = " + output3 + " " + output2 +" "+output1);
+            } else if (hundred!= 0 && tens != 1 && one != 0) {
+                System.out.print("Your number is: " + input + " = " + output3 + " and " + output2 + " " + output1);
+            } else if (hundred ==0 && tens != 1 && one != 0) {
+                System.out.print("Your number is: " + input + " = " + output2 + " " + output1);
+            } else if (tens == 1 && one == 0 && hundred != 0) {
+                System.out.print("Your number is: " + input + " = " + output3 + " and ten");
+            } else if (tens == 1 && one == 0 && hundred == 0) {
+                System.out.print("Your number is: " + input + " = " + output3 + " ten");
+            } else if (input ==0) {
+                System.out.print("Your number is: " + input + " = zero ");
             }
-
         }
     }
 }

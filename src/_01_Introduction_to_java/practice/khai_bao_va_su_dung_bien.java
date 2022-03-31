@@ -1,4 +1,4 @@
-package ss1_Introduction_to_java.thuc_hanh;
+package _01_Introduction_to_java.practice;
 
 public class khai_bao_va_su_dung_bien {
     public static void main(String[] args) {
