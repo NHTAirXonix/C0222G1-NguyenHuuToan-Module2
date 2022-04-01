@@ -3,7 +3,7 @@ package _02_loop.exercise;
 
 import java.util.Scanner;
 
-public class hien_thi_20_so_nguyen_to {
+public class HienThi20SoNguyenTo {
     public static void main(String[] args) {
         double count = 0;
         int numbercheck = 2;

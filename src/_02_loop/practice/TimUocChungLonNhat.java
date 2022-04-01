@@ -2,7 +2,7 @@ package _02_loop.practice;
 
 import java.util.Scanner;
 
-public class tim_uoc_chung_lon_nhat {
+public class TimUocChungLonNhat {
 
     public static void main(String[] args) {
         int a;

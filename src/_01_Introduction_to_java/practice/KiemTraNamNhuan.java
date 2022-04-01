@@ -2,7 +2,7 @@ package _01_Introduction_to_java.practice;
 
 import java.util.Scanner;
 
-public class kiem_tra_nam_nhuan {
+public class KiemTraNamNhuan {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int year;

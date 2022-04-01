@@ -2,7 +2,7 @@ package _01_Introduction_to_java.exercise;
 
 import java.util.Scanner;
 
-public class ung_dung_doc_so_thanh_chu {
+public class UngDungDocSoThanhChu {
     public static class Main {
 
         public static void main(String[] args) {

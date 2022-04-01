@@ -2,7 +2,7 @@ package _02_loop.exercise;
 
 import java.util.Scanner;
 
-public class hien_thi_so_nguyen_to_nho_hon_100 {
+public class HienThiSoNguyenToNhoHon100 {
     public static void main(String[] args) {
         int count = 0;
         int numbercheck = 2;
