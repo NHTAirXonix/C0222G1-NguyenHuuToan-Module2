@@ -87,9 +87,9 @@ public class hien_thi_cac_loai_hinh {
                     break;
                 case 3:
                     System.out.println("Enter the height");
-                    double height5 = scanner.nextDouble();
+                    int height5 = scanner.nextInt();
                     for (int i = 1, n= 0; i <= (height5*2)-1; i+=2, n++) {
-                        for (int j = 5; j - n >= 1; j--) {
+                        for (int j = height5; j - n >= 1; j--) {
                             System.out.print(" ");
                         }
                         for (int j = 1; j <= i ; j++) {
