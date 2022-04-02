@@ -2,7 +2,7 @@ package _02_loop.exercise;
 
 import java.util.Scanner;
 
-public class hien_thi_cac_loai_hinh {
+public class HienThiCacLoaiHinh {
     public static void main(String[] args) {
         int choice = -1;
         Scanner input = new Scanner(System.in);
@@ -18,9 +18,9 @@ public class hien_thi_cac_loai_hinh {
             switch (choice) {
                 case 1:
                     System.out.println("Enter the height");
-                    double height = scanner.nextDouble();
+                    int height = scanner.nextInt();
                     System.out.println("Enter the width");
-                    double width = scanner.nextDouble();
+                    int width = scanner.nextInt();
                     System.out.println("Draw the rectangle");
                     for (int i = 0; i < height; i++) {
                         for (int j = 0; j < width; j++) {
@@ -39,7 +39,7 @@ public class hien_thi_cac_loai_hinh {
                     switch (choose) {
                         case 1:
                             System.out.println("Enter the height");
-                            double height1 = scanner.nextDouble();
+                            int height1 = scanner.nextInt();
                             for (int i = 1; i <= height1; i++) {
                                 for (int j = 5; j - i + 1 >= 1; j--) {
                                     System.out.print("*");
@@ -49,7 +49,7 @@ public class hien_thi_cac_loai_hinh {
                             break;
                         case 2:
                             System.out.println("Enter the height");
-                            double height2 = scanner.nextDouble();
+                            int height2 = scanner.nextInt();
                             for (int i = 1; i <= height2; i++) {
                                 for (int j = 1; j < i; j++) {
                                     System.out.print(" ");
@@ -62,7 +62,7 @@ public class hien_thi_cac_loai_hinh {
                             break;
                         case 3:
                             System.out.println("Enter the height");
-                            double height3 = scanner.nextDouble();
+                            int height3 = scanner.nextInt();
                             for (int i = 1; i <= height3; i++) {
                                 for (int j = 1; j <= i; j++) {
                                     System.out.print("*");
@@ -72,7 +72,7 @@ public class hien_thi_cac_loai_hinh {
                             break;
                         case 4:
                             System.out.println("Enter the height");
-                            double height4 = scanner.nextDouble();
+                            int height4 = scanner.nextInt();
                             for (int i = 1; i <= height4; i++) {
                                 for (int j = 5; j - i + 1 >= 1; j--) {
                                     System.out.print(" ");
