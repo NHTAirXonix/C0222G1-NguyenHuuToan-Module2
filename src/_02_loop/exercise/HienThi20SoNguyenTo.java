@@ -1,6 +1,5 @@
 package _02_loop.exercise;
 
-
 import java.util.Scanner;
 
 public class HienThi20SoNguyenTo {
@@ -9,10 +8,10 @@ public class HienThi20SoNguyenTo {
         int numbercheck = 2;
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter number of prime number your want to prints");
-        double input = scanner.nextDouble();
+        int input = scanner.nextInt();
         while (count < input) {
             int check = 0;
-            for (int i = 2; i < numbercheck; i++) {
+            for (int i = 3; i < numbercheck; i += 2) {
                 if (numbercheck % i == 0) {
                     check++;
                 }
