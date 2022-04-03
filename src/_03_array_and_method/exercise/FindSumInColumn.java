@@ -2,13 +2,15 @@ package _03_array_and_method.exercise;
 
 import java.util.Scanner;
 
-public class TimPhanTuLonNhatTrongMangHaiChieu {
+public class FindSumInColumn {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.println("Enter the length array1");
         int length1 = input.nextInt();
         System.out.println("Enter the length array2");
         int length2 = input.nextInt();
+        System.out.println("Enter the column");
+        int column = input.nextInt();
         double[][] array = new double[length1][length2];
         for (int i = 0; i < length1; i++) {
             for (int j = 0; j < length2; j++) {
@@ -17,17 +19,19 @@ public class TimPhanTuLonNhatTrongMangHaiChieu {
                 array[i][j] = value;
             }
         }
-        showMax( array, length1, length2);
+
+        showSum(array, length1, length2, column);
     }
-    public static void showMax (double [][]array, int length1, int length2){
-        double max =array[0][0];
+
+    public static void showSum(double[][] array, int length1, int length2, int column) {
+        double sum = 0;
         for (int i = 0; i < length1; i++) {
             for (int j = 0; j < length2; j++) {
-                if (max < array[i][j]){
-                    max = array[i][j];
+                if (j == column) {
+                    sum += array[i][j];
                 }
             }
         }
-        System.out.println("Max value in the matrix is: " + max);
+        System.out.println("The sum of column " + column + " is: " + sum);
     }
 }

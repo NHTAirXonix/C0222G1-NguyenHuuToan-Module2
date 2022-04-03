@@ -1,8 +1,8 @@
-package _01_Introduction_to_java.practice;
+package _01_introduction_to_java.practice;
 
 import java.util.Scanner;
 
-public class TinhSoNgayTrongThang {
+public class DayOfMonth {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 

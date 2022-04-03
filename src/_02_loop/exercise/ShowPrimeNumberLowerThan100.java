@@ -1,6 +1,6 @@
 package _02_loop.exercise;
 
-public class HienThiSoNguyenToNhoHon100 {
+public class ShowPrimeNumberLowerThan100 {
     public static void main(String[] args) {
         int numbercheck = 2;
         while (true) {

@@ -2,7 +2,7 @@ package _03_array_and_method.practice;
 
 import java.util.Scanner;
 
-public class TimGiaTriTrongMang {
+public class FindElementInArray {
     public static void main(String[] args) {
         String[] students = {"Christian", "Michael", "Camila", "Sienna", "Tanya", "Connor", "Zachariah", "Mallory", "Zoe", "Emily"};
         Scanner scanner = new Scanner(System.in);

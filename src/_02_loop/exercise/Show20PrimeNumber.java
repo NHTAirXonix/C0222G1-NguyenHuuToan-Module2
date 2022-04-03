@@ -2,7 +2,7 @@ package _02_loop.exercise;
 
 import java.util.Scanner;
 
-public class HienThi20SoNguyenTo {
+public class Show20PrimeNumber {
     public static void main(String[] args) {
         double count = 0;
         int numbercheck = 2;

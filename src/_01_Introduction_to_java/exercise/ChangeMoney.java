@@ -1,8 +1,8 @@
-package _01_Introduction_to_java.exercise;
+package _01_introduction_to_java.exercise;
 
 import java.util.Scanner;
 
-public class ChuyenDoiTienTe {
+public class ChangeMoney {
     public static void main(String[] args) {
         double vnd = 23000;
         double usd;

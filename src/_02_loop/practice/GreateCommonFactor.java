@@ -2,7 +2,7 @@ package _02_loop.practice;
 
 import java.util.Scanner;
 
-public class TimUocChungLonNhat {
+public class GreateCommonFactor {
 
     public static void main(String[] args) {
         int a;

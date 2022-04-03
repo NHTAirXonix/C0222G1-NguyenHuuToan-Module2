@@ -2,7 +2,7 @@ package _03_array_and_method.exercise;
 
 import java.util.Scanner;
 
-public class TinhTongCacSoDuongCheo {
+public class FindSumInDiagonalLine {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.println("Enter the length array1");

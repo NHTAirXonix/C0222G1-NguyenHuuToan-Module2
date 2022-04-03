@@ -2,7 +2,7 @@ package _02_loop.practice;
 
 import java.util.Scanner;
 
-public class UngDungTinhTienLaiChoVay {
+public class InterestCalculator {
     public static void main(String[] args) {
         double money = 1.0;
         int month = 1;

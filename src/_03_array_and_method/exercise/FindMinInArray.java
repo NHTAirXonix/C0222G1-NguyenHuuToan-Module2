@@ -2,7 +2,7 @@ package _03_array_and_method.exercise;
 
 import java.util.Scanner;
 
-public class TimGiaTriNhoNhatTrongMang {
+public class FindMinInArray {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.println("Enter the length array");

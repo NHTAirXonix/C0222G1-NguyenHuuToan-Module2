@@ -2,7 +2,7 @@ package _03_array_and_method.practice;
 
 import java.util.Scanner;
 
-public class DemSoLuongSinhVienThiDo {
+public class CountStudentPassExam {
     public static void main(String[] args) {
         int size;
         int[] array;

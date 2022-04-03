@@ -1,8 +1,8 @@
-package _01_Introduction_to_java.exercise;
+package _01_introduction_to_java.exercise;
 
 import java.util.Scanner;
 
-public class UngDungDocSoThanhChu {
+public class ChangeNumberToString {
     public static class Main {
 
         public static void main(String[] args) {

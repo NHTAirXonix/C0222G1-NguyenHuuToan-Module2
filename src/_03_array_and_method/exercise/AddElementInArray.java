@@ -2,7 +2,7 @@ package _03_array_and_method.exercise;
 
 import java.util.Scanner;
 
-public class ThemPhanTuVaoMang {
+public class AddElementInArray {
     public static void main(String[] args) {
         int[] arr = {4, 12, 7, 8, 1, 0, 0};
         Scanner input = new Scanner(System.in);
