@@ -6,16 +6,16 @@ public class DemSoLanXuatHienKiTuTrongChuoi {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.println("Enter the String");
-        String string = input.next();
+        String string = input.nextLine();
         int length = string.length();
         System.out.println("Enter the character");
-        String symbol = input.next();
+        char symbol = input.next().charAt(0);
         check(string, length, symbol);
     }
-    public static void check(String string, int length, String symbol){
+    public static void check(String string, int length, char symbol){
         int count =0;
         for (int i=0; i < length; i++){
-            if (string.charAt(i) == symbol.charAt(0)){
+            if (string.charAt(i) == symbol){
                 count++;
             }
         }
