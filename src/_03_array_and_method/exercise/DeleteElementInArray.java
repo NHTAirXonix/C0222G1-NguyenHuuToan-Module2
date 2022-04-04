@@ -20,7 +20,6 @@ public class DeleteElementInArray {
                         continue;
                     }
                     arr[j] = arr[j + 1];
-
                 }
                 break;
             }
