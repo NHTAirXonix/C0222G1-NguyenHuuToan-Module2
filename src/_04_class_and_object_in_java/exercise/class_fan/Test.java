@@ -1,12 +1,13 @@
-package _04_class_and_object_in_java.exercise;
+package _04_class_and_object_in_java.exercise.class_fan;
 
 import java.util.Scanner;
 
-public class ClassFan {
+public class Test {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        Fan fan1 = new Fan();
-        Fan fan2 = new Fan();
+        ClassFan fan1 = new ClassFan();
+        ClassFan fan2 = new ClassFan();
+
         int speed1 = 0;
         while (speed1 < 1 || speed1 > 3) {
             System.out.println("Enter the speed Fan1 (from 1 to 3):");
@@ -61,75 +62,9 @@ public class ClassFan {
             }
         }
 
-        String result1 = fan1.getAllPropertive();
+        String result1 = fan1.toString();
         System.out.println("------FAN1------\n" + result1);
-        String result2 = fan2.getAllPropertive();
+        String result2 = fan2.toString();
         System.out.println("------FAN2------\n" + result2);
-
-
-    }
-
-    public static class Fan {
-        static final int SLOW = 1, MEDIUM = 2, FAST = 3;
-        private int speed = SLOW;
-        private boolean on = true;
-        private double radius = 5;
-        private String color = "blue";
-
-        public int getSpeed() {
-            return speed;
-        }
-
-        public void setSpeed(int input) {
-            if (input == 1) {
-                speed = SLOW;
-            } else if (input == 2) {
-                speed = MEDIUM;
-            } else {
-                speed = FAST;
-            }
-        }
-
-        public String getStatus() {
-            if (!on) {
-                return "Off";
-            } else {
-                return "On";
-            }
-        }
-
-        public void setStatus(String input) {
-            if (input.equals("on")) {
-                on = true;
-            }
-            if (input.equals("off")) {
-                on = false;
-            }
-        }
-
-        public double getRadius() {
-            return radius;
-        }
-
-        public void setRadius(double input) {
-            radius = input;
-        }
-
-        public String getColor() {
-            return color;
-        }
-
-        public void setColor(String input) {
-            color = input;
-        }
-
-        public String getAllPropertive() {
-            if (on) {
-                return "Status: on\nSpeed: " + speed + "\nColor: " + color + "\nRadius: " + radius + "\n";
-            } else {
-                return "Status: off\nColor: " + color + "\nRadius: " + radius + "\n";
-            }
-
-        }
     }
 }

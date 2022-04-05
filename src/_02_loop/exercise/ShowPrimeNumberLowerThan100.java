@@ -4,6 +4,9 @@ public class ShowPrimeNumberLowerThan100 {
     public static void main(String[] args) {
         int numbercheck = 2;
         while (true) {
+            if (numbercheck > 100) {
+                break;
+            }
             int check = 0;
             for (int i = 3; i < numbercheck; i += 2) {
                 if (numbercheck % i == 0) {
@@ -11,11 +14,7 @@ public class ShowPrimeNumberLowerThan100 {
                 }
             }
             if (check == 0) {
-                if (numbercheck < 100) {
-                    System.out.println(numbercheck);
-                } else {
-                    break;
-                }
+                System.out.println(numbercheck);
             }
             numbercheck++;
         }

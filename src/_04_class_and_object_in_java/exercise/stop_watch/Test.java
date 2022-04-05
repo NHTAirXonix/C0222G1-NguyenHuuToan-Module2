@@ -1,11 +1,11 @@
-package _04_class_and_object_in_java.exercise;
+package _04_class_and_object_in_java.exercise.stop_watch;
 
 import java.util.Scanner;
 
-public class StopWatch {
+public class Test {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        StopWatchs watch1 = new StopWatchs();
+        StopWatch.StopWatchs watch1 = new StopWatch.StopWatchs();
         String input1 = " ";
         long put1;
         while (!input1.equals("start")) {
@@ -27,26 +27,28 @@ public class StopWatch {
             }
         }
         System.out.println("Time elapsed is: "+watch1.timeElapsed() +" ms");
-    }
-
-    public static class StopWatchs {
-        private long input1, input2;
-
-        public StopWatchs() {
-            this.input1 = 0;
-            this.input2 = 0;
+        int[] arr = new int[100000];
+        for (int i =0; i <arr.length;i++){
+            arr[i] = (int) Math.floor(((Math.random() * 99999) + 1));
         }
+        int size = arr.length;
+        put1 = System.currentTimeMillis();
+        watch1.setInput1(put1);
+        for (int i = 0; i < size - 1; i++) {
+            int minPosition = i;
 
-        public void setInput1(long put1) {
-            this.input1 = put1;
-        }
+            for (int j = i + 1; j < size; j++) {
 
-        public void setInput2(long put2) {
-            this.input2 = put2;
+                if (arr[j] > arr[minPosition]) {
+                    minPosition = j;
+                }
+            }
+            int temp = arr[i];
+            arr[i] = arr[minPosition];
+            arr[minPosition] = temp;
         }
-
-        public long timeElapsed() {
-            return this.input2 - this.input1;
-        }
+        put2 = System.currentTimeMillis();
+        watch1.setInput2(put2);
+        System.out.println("Time to do the selection sort is: "+watch1.timeElapsed() +" ms");
     }
 }
