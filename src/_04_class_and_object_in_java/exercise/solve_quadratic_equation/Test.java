@@ -12,7 +12,7 @@ public class Test {
         double numberb = input.nextDouble();
         System.out.println("Enter number c: ");
         double numberc = input.nextDouble();
-        SolveQuadraticEquation.QuadraticEquation quadraticEquation = new SolveQuadraticEquation.QuadraticEquation(numbera, numberb, numberc);
+        QuadraticEquation quadraticEquation = new QuadraticEquation(numbera, numberb, numberc);
         System.out.println("The Delta is: " + quadraticEquation.getDiscriminant());
         if (quadraticEquation.getDiscriminant() > 0) {
             System.out.println("The root1 is: " + quadraticEquation.getRoo1());

@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Test {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        StopWatch.StopWatchs watch1 = new StopWatch.StopWatchs();
+        StopWatch watch1 = new StopWatch();
         String input1 = " ";
         long put1;
         while (!input1.equals("start")) {

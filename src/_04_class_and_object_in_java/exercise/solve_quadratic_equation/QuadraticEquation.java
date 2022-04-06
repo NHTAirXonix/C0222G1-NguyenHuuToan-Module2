@@ -1,8 +1,6 @@
 package _04_class_and_object_in_java.exercise.solve_quadratic_equation;
 
-class SolveQuadraticEquation {
-
-    public static class QuadraticEquation {
+    public class QuadraticEquation {
         private double a, b, c;
 
         public QuadraticEquation() {
@@ -47,4 +45,3 @@ class SolveQuadraticEquation {
             }
         }
     }
-}
