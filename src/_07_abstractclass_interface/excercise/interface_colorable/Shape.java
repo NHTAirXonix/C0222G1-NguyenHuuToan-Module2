@@ -37,5 +37,7 @@ public class Shape implements Colorable {
     }
 
     @Override
-    public void howToColor() {}
+    public void howToColor() {
+
+    }
 }

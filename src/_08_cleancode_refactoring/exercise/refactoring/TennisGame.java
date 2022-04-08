@@ -45,10 +45,10 @@ public class TennisGame {
 
     public static String check2(int player1Scores, int player2Scores) {
         String score = "";
-        int minusResult = player1Scores - player2Scores;
-        if (minusResult == ADVANTAGEP1) score = "Advantage player1";
-        else if (minusResult == ADVANTAGEP2) score = "Advantage player2";
-        else if (minusResult >= WINCONDITION) score = "Win for player1";
+        int scoreDifference = player1Scores - player2Scores;
+        if (scoreDifference == ADVANTAGEP1) score = "Advantage player1";
+        else if (scoreDifference == ADVANTAGEP2) score = "Advantage player2";
+        else if (scoreDifference >= WINCONDITION) score = "Win for player1";
         else score = "Win for player2";
         return score;
     }
