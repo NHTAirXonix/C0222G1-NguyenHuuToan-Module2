@@ -48,28 +48,6 @@ public class Student {
         this.point = point;
     }
 
-    /*public String[] toString(int count, String[] arrayinput) {
-        if (count == 0) {
-            String[] array1 = {"name='" + name + '\'' +
-                    ", age=" + age +
-                    ", address='" + address + '\'' +
-                    ", point=" + point};
-            return array1;
-        } else {
-            String[] array1 = new String[count + 1];
-            for (int i = 0; i < count + 1; i++) {
-                if (i == count) {
-                    array1[i] = "name='" + name + '\'' +
-                            ", age=" + age +
-                            ", address='" + address + '\'' +
-                            ", point=" + point;
-                }
-                array1[i] = arrayinput[i];
-            }
-            return array1;
-        }
-    }*/
-
     @Override
     public String toString() {
         return "Student{" +
