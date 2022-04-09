@@ -1,59 +1,31 @@
 package free.practice;
 
-public class Student {
-    private String name = "";
-    private int age = 0;
-    private String address = "";
-    private double point = 0.0;
+public class Student extends Person {
+    private int point = 0;
 
-    public Student() {
-    }
-
-    public Student(String name, int age, String address, double point) {
-        this.name = name;
-        this.age = age;
-        this.address = address;
+    public Student(int point) {
         this.point = point;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
+    public Student(String name, int age, boolean gender, int point) {
+        super(name, age, gender);
+        this.point = point;
     }
 
     public double getPoint() {
         return point;
     }
 
-    public void setPoint(double point) {
+    public void setPoint(int point) {
         this.point = point;
     }
 
     @Override
     public String toString() {
         return "Student{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                ", address='" + address + '\'' +
+                "name='" + getName() + '\'' +
+                ", age=" + getAge() +
+                ", gender=" + isGender() +
                 ", point=" + point +
                 '}';
     }

@@ -4,66 +4,86 @@ import java.util.Scanner;
 
 public class Demo {
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        String[] array = new String[100];
-
-        int push = 0;
+        Person[] array = new Person[100];
         int count = 0;
-        while (true) {
-            System.out.println("------------------------------\n1. Add new student\n2. Show list of students\n3. Delete\n4. Exit");
-            push = input.nextInt();
-
-            if (push == 1) {
-                System.out.println("Enter student " + (count + 1) + " name: ");
-                String name = input.next();
-                System.out.println("Enter student " + (count + 1) + " age: ");
-                int age = input.nextInt();
-                input.nextLine();
-                System.out.println("Enter student " + (count + 1) + " address: ");
-                String address = input.nextLine();
-                System.out.println("Enter student " + (count + 1) + " point: ");
-                double point = input.nextDouble();
-                Student newstudent = new Student(name, age, address, point);
-                array[count] = newstudent.toString();
-                count++;
+        Scanner input = new Scanner(System.in);
+        boolean check = true;
+        while (check) {
+            System.out.println("------------------------------\n1. Add\n2. Show list\n3. Delete\n4. Exit");
+            int push = input.nextInt();
+            switch (push) {
+                case 1:
+                    add(count, array);
+                    count++;
+                    break;
+                case 2:
+                    showList(array);
+                    break;
+                case 3:
+                    delete(array);
+                    break;
+                case 4:
+                    check = false;
+                    break;
             }
+        }
+    }
 
-            if (push == 2) {
-                System.out.println("------------------------------\nThe list of student is: ");
-                for (int i = 0; i < 100; i++) {
-                    if (array[i] == null) {
-                        break;
-                    }
-                    System.out.println((i + 1) + ". " + array[i]);
-                }
+    public static void add(int count, Person[] array) {
+
+        Scanner input = new Scanner(System.in);
+        String choice = "student";
+        System.out.println("1. Add new teacher\n2. Add new student");
+        int getIn = Integer.parseInt(input.nextLine());
+        if (getIn == 1) {
+            choice = "teacher";
+        }
+        System.out.println("Enter " + choice + " name: ");
+        String name = input.nextLine();
+        System.out.println("Enter " + choice + " age: ");
+        int age = Integer.parseInt(input.nextLine());
+        System.out.println("Enter " + choice + " gender (1 male 2 female): ");
+        boolean gender = false;
+        int genders = Integer.parseInt(input.nextLine());
+        if (genders == 1) {
+            gender = true;
+        }
+        if (choice.equals("teacher")) {
+            System.out.println("Enter " + choice + " salary: ");
+            int salary = Integer.parseInt(input.nextLine());
+            Person newteacher = new Teacher(name, age, gender, salary);
+            array[count] = newteacher;
+        } else {
+            System.out.println("Enter " + choice + " point: ");
+            int point = Integer.parseInt(input.nextLine());
+            Person newstudent = new Student(name, age, gender, point);
+            array[count] = newstudent;
+        }
+    }
+
+    public static void showList(Person[] array) {
+        System.out.println("------------------------------\nThe list is: ");
+        for (int i = 0; i < 100; i++) {
+            if (array[i] == null) {
+                break;
             }
+            System.out.println(array[i].toString());
+        }
+    }
 
-            if (push == 3) {
-                System.out.println("------------------------------\nEnter the number of student you want to delete");
-                int delete = input.nextInt();
-                for (int i = 0; i < 100; i++) {
-                    if (i == delete - 1) {
-                        for (int j = i; j < 100; j++, i++) {
-                            if (j == 100 - 1) {
-                                array[i] = "deleted";
-                                continue;
-                            }
-                            array[i] = array[i + 1];
-                        }
-                        break;
+    public static void delete(Person[] array) {
+        Scanner input = new Scanner(System.in);
+        System.out.println("------------------------------\nEnter the number you want to delete");
+        int delete = input.nextInt();
+        for (int i = 0; i < 100; i++) {
+            if (i == delete - 1) {
+                for (int j = i; j < 100; j++, i++) {
+                    if (j == 100 - 1) {
+                        array[i] = null;
+                        continue;
                     }
+                    array[i] = array[i + 1];
                 }
-                System.out.println("Delete complete");
-                System.out.println("------------------------------\nThe list of student is: ");
-                for (int i = 0; i < 100; i++) {
-                    if (array[i] == null) {
-                        break;
-                    }
-                    System.out.println((i + 1) + ". " + array[i]);
-                }
-            }
-
-            if (push ==4){
                 break;
             }
         }
