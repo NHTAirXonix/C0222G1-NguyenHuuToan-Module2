@@ -1,6 +1,6 @@
 package _07_abstractclass_interface.excercise.interface_colorable;
 
-public class Rectangle extends Shape implements Colorable{
+public class Rectangle extends Shape{
     private double width = 1.0;
     private double length = 1.0;
 
@@ -50,9 +50,5 @@ public class Rectangle extends Shape implements Colorable{
                 + getLength()
                 + ", which is a subclass of "
                 + super.toString();
-    }
-
-    public void howToColor() {
-        System.out.println("Didn't Color all four sides");
     }
 }

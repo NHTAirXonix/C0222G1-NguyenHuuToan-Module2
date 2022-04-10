@@ -73,17 +73,33 @@ public class Demo {
 
     public static void delete(Person[] array) {
         Scanner input = new Scanner(System.in);
-        System.out.println("------------------------------\nEnter the number you want to delete");
-        int delete = input.nextInt();
-        for (int i = 0; i < 100; i++) {
-            if (i == delete - 1) {
-                for (int j = i; j < 100; j++, i++) {
-                    if (j == 100 - 1) {
+        String nameInput = "student";
+        boolean check = false;
+        showList(array);
+        System.out.println("1. Delete student\n2. Delete teacher");
+        int choice = Integer.parseInt(input.nextLine());
+        if (choice == 2) {
+            nameInput = "teacher";
+        }
+        System.out.println("Enter the name of " + nameInput + " you want to delete: ");
+        String name = input.nextLine();
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == null) {
+                if (check == false) {
+                    System.out.println("That name doesn't appear in list of " + nameInput);
+                }
+                break;
+            } else if (choice==1 && name.equals(array[i].getName()) && array[i] instanceof Student ||
+                       choice==2 && name.equals(array[i].getName()) && array[i] instanceof Teacher) {
+                check = true;
+                for (int j = i; j < array.length; j++, i++) {
+                    if (j == array.length - 1) {
                         array[i] = null;
                         continue;
                     }
                     array[i] = array[i + 1];
                 }
+                showList(array);
                 break;
             }
         }

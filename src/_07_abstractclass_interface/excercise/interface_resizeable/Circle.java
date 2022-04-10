@@ -39,6 +39,7 @@ public class Circle extends Shape {
                 + super.toString();
     }
 
+    @Override
     public void resize(double input) {
         this.radius = this.radius + (this.radius * input / 100);
     }

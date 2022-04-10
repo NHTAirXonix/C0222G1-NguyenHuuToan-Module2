@@ -1,6 +1,6 @@
 package _07_abstractclass_interface.excercise.interface_resizeable;
 
-public abstract class Shape {
+public class Shape implements Resizeable {
     private String color = "green";
     private boolean filled = true;
 
@@ -36,5 +36,9 @@ public abstract class Shape {
                 + (isFilled() ? "filled" : "not filled");
     }
 
-    public abstract void resize(double input);
+
+    @Override
+    public void resize(double input) {
+
+    }
 }

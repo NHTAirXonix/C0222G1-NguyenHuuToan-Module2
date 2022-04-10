@@ -5,9 +5,10 @@ import java.util.Scanner;
 public class TestResize {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        Shape[] array = new Shape[2];
+        Shape[] array = new Shape[3];
         array[0] = new Circle();
         array[1] = new Rectangle();
+        array[2] = new Square();
 
         for (Shape arr : array) {
             System.out.println(arr.toString());

@@ -51,10 +51,9 @@ public class Rectangle extends Shape {
                 + ", which is a subclass of "
                 + super.toString();
     }
-
+    @Override
     public void resize(double input){
         this.length = this.length + (this.length*input/100);
         this.width = this.width + (this.width*input/100);
-
     }
 }
