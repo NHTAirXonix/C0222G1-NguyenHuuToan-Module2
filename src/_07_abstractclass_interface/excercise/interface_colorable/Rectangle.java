@@ -1,6 +1,6 @@
 package _07_abstractclass_interface.excercise.interface_colorable;
 
-public class Rectangle extends Shape{
+public class Rectangle extends Shape {
     private double width = 1.0;
     private double length = 1.0;
 
@@ -35,6 +35,7 @@ public class Rectangle extends Shape{
     }
 
     public double getArea() {
+        System.out.println("The area of rectangle is: "+width * this.length);
         return width * this.length;
     }
 

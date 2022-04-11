@@ -17,6 +17,8 @@ public class Test {
             System.out.println(arr.toString());
             if (arr instanceof Square) {
                 ((Square) arr).howToColor();
+            } else {
+                ((Rectangle) arr).getArea();
             }
         }
     }
