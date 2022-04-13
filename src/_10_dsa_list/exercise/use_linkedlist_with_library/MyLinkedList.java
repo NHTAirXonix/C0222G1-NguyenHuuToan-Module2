@@ -227,13 +227,13 @@ public class MyLinkedList<E> {
         return numNodes;
     }
 
-    public boolean contains(E e) {
-        return indexOf(e) != -1;
+    public boolean contains(E o) {
+        return indexOf(o) != -1;
     }
 
-    public int indexOf(E e) {
+    public int indexOf(E o) {
         int index = 0;
-        if (e == null) {
+        if (o == null) {
             for (Node x = head; x != null; x = x.next) {
                 if (x.e == null)
                     return index;
@@ -241,7 +241,7 @@ public class MyLinkedList<E> {
             }
         } else {
             for (Node x = head; x != null; x = x.next) {
-                if (e.equals(x.e))
+                if (o.equals(x.e))
                     return index;
                 index++;
             }
