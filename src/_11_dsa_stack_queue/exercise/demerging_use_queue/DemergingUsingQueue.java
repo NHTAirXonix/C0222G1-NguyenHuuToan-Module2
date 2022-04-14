@@ -14,22 +14,21 @@ public class DemergingUsingQueue {
         Date date3 = sdf.parse("1999-02-23");
         Date date4 = sdf.parse("2002-10-31");
         Date date5 = sdf.parse("1998-02-30");
-        Personnel [] arrayPer = new Personnel[5];
+        Personnel[] arrayPer = new Personnel[5];
         arrayPer[0] = new Personnel("Chien", true, date1);
         arrayPer[1] = new Personnel("Ha", false, date2);
-        arrayPer[2] = new Personnel("Toan", true,date3);
-        arrayPer[3] = new Personnel("Thuy", false,date4);
-        arrayPer[4] = new Personnel("Ngoc", false,date5);
+        arrayPer[2] = new Personnel("Toan", true, date3);
+        arrayPer[3] = new Personnel("Thuy", false, date4);
+        arrayPer[4] = new Personnel("Ngoc", false, date5);
 
 
         System.out.println("\n---------------------------LIST BEFORE SORT----------------------------");
-        for (Personnel item: arrayPer) {
+        for (Personnel item : arrayPer) {
             System.out.println(item.toString());
         }
-        Arrays.sort(arrayPer);
 
         for (Personnel item : arrayPer) {
-            if (item.isGender()){
+            if (item.isGender()) {
                 NAM.add(item);
             } else {
                 NU.add(item);
@@ -37,15 +36,15 @@ public class DemergingUsingQueue {
         }
 
         List<Personnel> orderedList = new ArrayList<>();
-        while (NU.size() > 0){
+        while (NU.size() > 0) {
             orderedList.add(NU.remove());
         }
-        while (NAM.size() > 0){
+        while (NAM.size() > 0) {
             orderedList.add(NAM.remove());
         }
         System.out.println("\n----------------------------LIST AFTER SORT----------------------------");
 
-        for (Personnel item: orderedList) {
+        for (Personnel item : orderedList) {
             System.out.println(item.toString());
         }
     }
