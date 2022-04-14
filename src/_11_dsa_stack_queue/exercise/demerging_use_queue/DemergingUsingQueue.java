@@ -26,7 +26,7 @@ public class DemergingUsingQueue {
         for (Personnel item : arrayPer) {
             System.out.println(item.toString());
         }
-
+        Arrays.sort(arrayPer);
         for (Personnel item : arrayPer) {
             if (item.isGender()) {
                 NAM.add(item);
