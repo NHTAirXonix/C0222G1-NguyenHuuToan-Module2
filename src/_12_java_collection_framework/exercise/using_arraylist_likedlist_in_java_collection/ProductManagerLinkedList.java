@@ -3,16 +3,15 @@ package _12_java_collection_framework.exercise.using_arraylist_likedlist_in_java
 import java.util.*;
 
 public class ProductManagerLinkedList {
-    public static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         LinkedList<Product> linkedList = new LinkedList<>();
         Scanner scanner = new Scanner(System.in);
         linkedList.add(new Product("Product1", 5, 12000));
-        linkedList.add(new Product("Product2", 4, 13000));
+        linkedList.add(new Product("Product5", 4, 13000));
         linkedList.add(new Product("Product3", 3, 14000));
         linkedList.add(new Product("Product4", 2, 15000));
-        linkedList.add(new Product("Product5", 1, 16000));
+        linkedList.add(new Product("Product2", 1, 16000));
         boolean check = true;
         while (check) {
             System.out.println("--------------Enter your choice--------------");
@@ -59,6 +58,7 @@ public class ProductManagerLinkedList {
     }
 
     public static void addProduct(LinkedList<Product> linkedList) {
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the name of product");
         String name = scanner.nextLine();
         System.out.println("Enter the id of product");
@@ -70,6 +70,7 @@ public class ProductManagerLinkedList {
     }
 
     public static void editProduct(LinkedList<Product> linkedList) {
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the id of product you want to edit");
         int id = Integer.parseInt(scanner.nextLine());
         boolean checka = false;
@@ -92,6 +93,7 @@ public class ProductManagerLinkedList {
     }
 
     public static void removeProduct(LinkedList<Product> linkedList) {
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the id of product you want to remove");
         int id = Integer.parseInt(scanner.nextLine());
         boolean checka = false;
@@ -111,6 +113,7 @@ public class ProductManagerLinkedList {
     }
 
     public static void searchProduct(LinkedList<Product> linkedList) {
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the name of product");
         String name = scanner.nextLine();
         for (int i = 0; i < linkedList.size(); i++) {
@@ -125,8 +128,22 @@ public class ProductManagerLinkedList {
     }
 
     public static void sortProductList(LinkedList<Product> linkedList) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter your choice");
+        System.out.println("1. Price from Lowest to Biggest");
+        System.out.println("2. Price from Biggest to Lowest");
+        System.out.println("3. Name from Biggest to Lowest");
+        int input = scanner.nextInt();
+        Comparator obj = new Comparetor();
+        if (input == 1) {
 
-        Collections.sort(linkedList);
+            Collections.sort(linkedList);
+            Collections.reverse(linkedList);
+        } else if (input == 2) {
+            Collections.sort(linkedList);
+        } else {
+            Collections.sort(linkedList, obj);
+        }
 
     }
 }

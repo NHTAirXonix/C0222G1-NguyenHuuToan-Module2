@@ -52,13 +52,13 @@ public class ProductManagerArrayList {
 
     }
 
-    public static void showList(ArrayList<Product> arrayList ) {
+    public static void showList(ArrayList<Product> arrayList) {
         for (Product elements : arrayList) {
             System.out.println(elements.toString());
         }
     }
 
-    public static void addProduct(ArrayList<Product> arrayList ) {
+    public static void addProduct(ArrayList<Product> arrayList) {
         System.out.println("Enter the name of product");
         String name = scanner.nextLine();
         System.out.println("Enter the id of product");
@@ -69,7 +69,7 @@ public class ProductManagerArrayList {
         System.out.println("Add complete");
     }
 
-    public static void editProduct(ArrayList<Product> arrayList ) {
+    public static void editProduct(ArrayList<Product> arrayList) {
         System.out.println("Enter the id of product you want to edit");
         int id = Integer.parseInt(scanner.nextLine());
         boolean checka = false;
@@ -91,11 +91,11 @@ public class ProductManagerArrayList {
         }
     }
 
-    public static void removeProduct(ArrayList<Product> arrayList ) {
+    public static void removeProduct(ArrayList<Product> arrayList) {
         System.out.println("Enter the id of product you want to remove");
         int id = Integer.parseInt(scanner.nextLine());
         boolean checka = false;
-        int hold =0;
+        int hold = 0;
         for (int i = 0; i < arrayList.size(); i++) {
             if (arrayList.get(i).getId() == id) {
                 hold = i;
@@ -110,23 +110,35 @@ public class ProductManagerArrayList {
         }
     }
 
-    public static void searchProduct(ArrayList<Product> arrayList ){
+    public static void searchProduct(ArrayList<Product> arrayList) {
         System.out.println("Enter the name of product");
         String name = scanner.nextLine();
-        for (int i = 0; i <arrayList.size() ; i++) {
-            if (arrayList.get(i).getName().equals(name)){
+        for (int i = 0; i < arrayList.size(); i++) {
+            if (arrayList.get(i).getName().equals(name)) {
                 System.out.println("This list have product name:" + name);
                 break;
             }
-            if (i == arrayList.size()-1){
+            if (i == arrayList.size() - 1) {
                 System.out.println("This list don't have product name: " + name);
             }
         }
     }
 
-    public static void sortProductList(ArrayList<Product> arrayList){
-
+    public static void sortProductList(ArrayList<Product> arrayList) {
+        System.out.println("Enter your choice");
+        System.out.println("1. Price from Lowest to Biggest");
+        System.out.println("2. Price from Biggest to Lowest");
+        System.out.println("3. Name from Biggest to Lowest");
+        Comparator obj = new Comparetor();
+        int input = scanner.nextInt();
+        if (input==1){
             Collections.sort(arrayList);
+            Collections.reverse(arrayList);
 
+        } else if (input == 2){
+            Collections.sort(arrayList);
+        } else {
+            Collections.sort(arrayList, obj);
+        }
     }
 }

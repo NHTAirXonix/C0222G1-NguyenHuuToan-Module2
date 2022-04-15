@@ -3,7 +3,7 @@ package casestudy.models;
 public class Employee extends Person{
     private int employeeId;
     private String dayOfBirth;
-    private boolean gender;
+    private String gender;
     private long identityNumber;
     private long phoneNumber;
     private String email;
@@ -14,7 +14,19 @@ public class Employee extends Person{
     public Employee() {
     }
 
-    public Employee(int id, String name, int age, String address, int employeeId, String dayOfBirth, boolean gender, long identityNumber, long phoneNumber, String email, String level, String position, int salary) {
+    public Employee(int id,
+                    String name,
+                    int age,
+                    String address,
+                    int employeeId,
+                    String dayOfBirth,
+                    String gender,
+                    long identityNumber,
+                    long phoneNumber,
+                    String email,
+                    String level,
+                    String position,
+                    int salary) {
         super(id, name, age, address);
         this.employeeId = employeeId;
         this.dayOfBirth = dayOfBirth;
@@ -43,11 +55,11 @@ public class Employee extends Person{
         this.dayOfBirth = dayOfBirth;
     }
 
-    public boolean isGender() {
+    public String isGender() {
         return gender;
     }
 
-    public void setGender(boolean gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
@@ -97,5 +109,20 @@ public class Employee extends Person{
 
     public void setSalary(int salary) {
         this.salary = salary;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "employeeId=" + employeeId +
+                ", dayOfBirth='" + dayOfBirth + '\'' +
+                ", gender='" + gender + '\'' +
+                ", identityNumber=" + identityNumber +
+                ", phoneNumber=" + phoneNumber +
+                ", email='" + email + '\'' +
+                ", level='" + level + '\'' +
+                ", position='" + position + '\'' +
+                ", salary=" + salary +
+                '}';
     }
 }
