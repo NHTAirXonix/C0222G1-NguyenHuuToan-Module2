@@ -43,10 +43,10 @@ public class Personnel implements Comparable<Personnel> {
 
     @Override
     public String toString() {
-        return "Personnel{" +
-                "name='" + name + '\'' +
-                ", gender=" + gender +
-                ", date=" + date +
+        return "Personnel {" +
+                "name = '" + name + '\'' +
+                ", gender = " + gender +
+                ", date = " + date +
                 '}';
     }
 
