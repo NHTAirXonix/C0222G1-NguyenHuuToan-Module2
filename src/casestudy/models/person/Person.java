@@ -1,4 +1,4 @@
-package casestudy.models;
+package casestudy.models.person;
 
 public abstract class Person {
     private int id;

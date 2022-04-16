@@ -61,8 +61,23 @@ public class ProductManagerLinkedList {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the name of product");
         String name = scanner.nextLine();
-        System.out.println("Enter the id of product");
-        int id = Integer.parseInt(scanner.nextLine());
+        int id = 0;
+        boolean check = true;
+        while (check) {
+            System.out.println("Enter the id of product");
+            id = Integer.parseInt(scanner.nextLine());
+            for (int i =0; i< linkedList.size(); i++){
+                if (linkedList.get(i).getId()==id){
+                    check =true;
+                    System.out.println("Wrong id");
+                    break;
+                } 
+                if (i == linkedList.size()-1){
+                    check = false;
+                    break;
+                }
+            }
+        }
         System.out.println("Enter the price of product");
         double price = Double.parseDouble(scanner.nextLine());
         linkedList.add(new Product(name, id, price));
@@ -83,6 +98,7 @@ public class ProductManagerLinkedList {
                 elements.setNamePro(name);
                 elements.setPrice(price);
                 checka = true;
+                break;
             }
         }
         if (checka) {
@@ -102,6 +118,7 @@ public class ProductManagerLinkedList {
             if (linkedList.get(i).getId() == id) {
                 hold = i;
                 checka = true;
+                break;
             }
         }
         linkedList.remove(hold);
@@ -117,7 +134,7 @@ public class ProductManagerLinkedList {
         System.out.println("Enter the name of product");
         String name = scanner.nextLine();
         for (int i = 0; i < linkedList.size(); i++) {
-            if (linkedList.get(i).getName().equals(name)) {
+            if (linkedList.get(i).getName().contains(name)) {
                 System.out.println("This list have product name:" + name);
                 break;
             }
@@ -136,7 +153,6 @@ public class ProductManagerLinkedList {
         int input = scanner.nextInt();
         Comparator obj = new Comparetor();
         if (input == 1) {
-
             Collections.sort(linkedList);
             Collections.reverse(linkedList);
         } else if (input == 2) {

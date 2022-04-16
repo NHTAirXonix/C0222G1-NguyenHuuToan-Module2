@@ -61,8 +61,23 @@ public class ProductManagerArrayList {
     public static void addProduct(ArrayList<Product> arrayList) {
         System.out.println("Enter the name of product");
         String name = scanner.nextLine();
-        System.out.println("Enter the id of product");
-        int id = Integer.parseInt(scanner.nextLine());
+        int id = 0;
+        boolean check = true;
+        while (check) {
+            System.out.println("Enter the id of product");
+            id = Integer.parseInt(scanner.nextLine());
+            for (int i =0; i< arrayList.size(); i++){
+                if (arrayList.get(i).getId()==id){
+                    check =true;
+                    System.out.println("Wrong id");
+                    break;
+                }
+                if (i == arrayList.size()-1){
+                    check = false;
+                    break;
+                }
+            }
+        }
         System.out.println("Enter the price of product");
         double price = Double.parseDouble(scanner.nextLine());
         arrayList.add(new Product(name, id, price));

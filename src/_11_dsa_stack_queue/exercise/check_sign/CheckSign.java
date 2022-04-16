@@ -10,7 +10,7 @@ public class CheckSign {
         String getIn = input.nextLine();
         String[] arrayStr = getIn.split("");
         Stack<String> bstack = new Stack<>();
-        String result = "";
+        boolean result = true;
         String left = "";
         for (int i = 0; i < arrayStr.length; i++) {
 
@@ -19,19 +19,24 @@ public class CheckSign {
             }
             if (arrayStr[i].equals(")")) {
                 if (bstack.isEmpty()) {
-                    result = "false";
+                    result = false;
+                    break;
                 }
                 left = bstack.pop();
-                if (left.equals(arrayStr[i])) {
-                    result = "false";
-                }
+
+            }
+            if (left.equals(arrayStr[i])) {
+                result = false;
+                break;
             }
         }
-        if (bstack.isEmpty()){
-            System.out.println("True");
+        if (bstack.isEmpty()) {
+            result = true;
+            System.out.println(result);
         } else {
-            System.out.println("false");
+            result = false;
+            System.out.println(result);
         }
-        
+
     }
 }

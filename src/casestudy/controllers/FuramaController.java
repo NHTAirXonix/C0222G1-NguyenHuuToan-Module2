@@ -1,5 +1,6 @@
 package casestudy.controllers;
 
+import casestudy.models.person.Employee;
 import casestudy.services.impl.EmployeeServiceImpl;
 
 import java.util.Scanner;
@@ -62,6 +63,7 @@ public class FuramaController {
                 employeeService.addNew();
                 break;
             case 3:
+                employeeService.edit();
                 break;
             case 4:
                 displayMainMenu();
@@ -81,7 +83,6 @@ public class FuramaController {
         int choice = Integer.parseInt(input.nextLine());
         switch (choice) {
             case 1:
-                displayEmployeeMenu();
                 break;
             case 2:
                 break;
@@ -105,7 +106,6 @@ public class FuramaController {
         int choice = Integer.parseInt(input.nextLine());
         switch (choice) {
             case 1:
-                displayEmployeeMenu();
                 break;
             case 2:
                 break;
@@ -131,7 +131,6 @@ public class FuramaController {
         int choice = Integer.parseInt(input.nextLine());
         switch (choice) {
             case 1:
-                displayEmployeeMenu();
                 break;
             case 2:
                 break;
@@ -159,7 +158,6 @@ public class FuramaController {
         int choice = Integer.parseInt(input.nextLine());
         switch (choice) {
             case 1:
-                displayEmployeeMenu();
                 break;
             case 2:
                 break;

@@ -1,4 +1,4 @@
-package casestudy.models;
+package casestudy.models.person;
 
 public class Employee extends Person{
     private int employeeId;
@@ -125,4 +125,5 @@ public class Employee extends Person{
                 ", salary=" + salary +
                 '}';
     }
+    
 }

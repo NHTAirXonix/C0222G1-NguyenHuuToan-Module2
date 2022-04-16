@@ -1,4 +1,4 @@
-package casestudy.models;
+package casestudy.models.person;
 
 public class Customer extends Person{
     private int bookingNumber;

@@ -1,4 +1,4 @@
-package casestudy.models;
+package casestudy.models.facility;
 
 public class Room extends Facility {
     //dich vu mien phi di kem

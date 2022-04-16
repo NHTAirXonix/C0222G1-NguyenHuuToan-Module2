@@ -7,8 +7,8 @@ import java.util.*;
 public class DemergingUsingQueue {
     public static void main(String[] args) throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Queue<Personnel> NAM = new LinkedList<>();
-        Queue<Personnel> NU = new LinkedList<>();
+        Queue<Personnel> nam = new LinkedList<>();
+        Queue<Personnel> nu = new LinkedList<>();
         Date date1 = sdf.parse("1995-02-23");
         Date date2 = sdf.parse("2001-10-31");
         Date date3 = sdf.parse("1999-02-23");
@@ -29,18 +29,18 @@ public class DemergingUsingQueue {
         Arrays.sort(arrayPer);
         for (Personnel item : arrayPer) {
             if (item.isGender()) {
-                NAM.add(item);
+                nam.add(item);
             } else {
-                NU.add(item);
+                nu.add(item);
             }
         }
 
         List<Personnel> orderedList = new ArrayList<>();
-        while (NU.size() > 0) {
-            orderedList.add(NU.remove());
+        while (nu.size() > 0) {
+            orderedList.add(nu.remove());
         }
-        while (NAM.size() > 0) {
-            orderedList.add(NAM.remove());
+        while (nam.size() > 0) {
+            orderedList.add(nam.remove());
         }
         System.out.println("\n----------------------------LIST AFTER SORT----------------------------");
 

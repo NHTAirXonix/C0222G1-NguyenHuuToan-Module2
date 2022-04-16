@@ -1,4 +1,4 @@
-package casestudy.models;
+package casestudy.models.facility;
 
 public class Villa extends Facility {
     private String roomStandard;
