@@ -16,22 +16,19 @@ public class CheckSign {
 
             if (arrayStr[i].equals("(")) {
                 bstack.push(arrayStr[i]);
-            }
-            if (arrayStr[i].equals(")")) {
+            } else if (arrayStr[i].equals(")")) {
                 if (bstack.isEmpty()) {
                     result = false;
                     break;
                 }
                 left = bstack.pop();
-
-            }
-            if (left.equals(arrayStr[i])) {
-                result = false;
-                break;
+                if (left.equals(arrayStr[i])) {
+                    result = false;
+                    break;
+                }
             }
         }
-        if (bstack.isEmpty()) {
-            result = true;
+        if (bstack.isEmpty() && result) {
             System.out.println(result);
         } else {
             result = false;
