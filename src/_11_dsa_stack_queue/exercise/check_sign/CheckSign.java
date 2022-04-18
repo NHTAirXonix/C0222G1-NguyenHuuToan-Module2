@@ -13,7 +13,6 @@ public class CheckSign {
         boolean result = true;
         String left = "";
         for (int i = 0; i < arrayStr.length; i++) {
-
             if (arrayStr[i].equals("(")) {
                 bstack.push(arrayStr[i]);
             } else if (arrayStr[i].equals(")")) {

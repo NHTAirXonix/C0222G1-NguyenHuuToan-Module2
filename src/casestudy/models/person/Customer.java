@@ -8,7 +8,7 @@ public class Customer extends Person{
     private String serviceName;
     private String serviceType;
     private String dayOfBirth;
-    private boolean gender;
+    private String gender;
     private long identityNumber;
     private long phoneNumber;
     private String email;
@@ -18,7 +18,22 @@ public class Customer extends Person{
 
     }
 
-    public Customer(int id, String name, int age, String address, int bookingNumber, String dayStart, String dayEnd, int customerNumber, String serviceName, String serviceType, String dayOfBirth, boolean gender, long identityNumber, long phoneNumber, String email, String customerType) {
+    public Customer(int id,
+                    String name,
+                    int age,
+                    String address,
+                    int bookingNumber,
+                    String dayStart,
+                    String dayEnd,
+                    int customerNumber,
+                    String serviceName,
+                    String serviceType,
+                    String dayOfBirth,
+                    String gender,
+                    long identityNumber,
+                    long phoneNumber,
+                    String email,
+                    String customerType) {
         super(id, name, age, address);
         this.bookingNumber = bookingNumber;
         this.dayStart = dayStart;
@@ -90,11 +105,11 @@ public class Customer extends Person{
         this.dayOfBirth = dayOfBirth;
     }
 
-    public boolean isGender() {
+    public String isGender() {
         return gender;
     }
 
-    public void setGender(boolean gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
@@ -128,5 +143,27 @@ public class Customer extends Person{
 
     public void setCustomerType(String customerType) {
         this.customerType = customerType;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + super.getId() +
+                ", name='" + super.getName() + '\'' +
+                ", age=" + super.getAge() +
+                ", address='" + super.getAddress() + '\'' +
+                ", bookingNumber=" + bookingNumber +
+                ", dayStart='" + dayStart + '\'' +
+                ", dayEnd='" + dayEnd + '\'' +
+                ", customerNumber=" + customerNumber +
+                ", serviceName='" + serviceName + '\'' +
+                ", serviceType='" + serviceType + '\'' +
+                ", dayOfBirth='" + dayOfBirth + '\'' +
+                ", gender='" + gender + '\'' +
+                ", identityNumber=" + identityNumber +
+                ", phoneNumber=" + phoneNumber +
+                ", email='" + email + '\'' +
+                ", customerType='" + customerType + '\'' +
+                '}';
     }
 }

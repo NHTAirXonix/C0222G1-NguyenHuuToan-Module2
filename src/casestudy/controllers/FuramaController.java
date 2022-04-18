@@ -1,6 +1,7 @@
 package casestudy.controllers;
 
 import casestudy.models.person.Employee;
+import casestudy.services.impl.CustomerServiceImpl;
 import casestudy.services.impl.EmployeeServiceImpl;
 
 import java.util.Scanner;
@@ -9,6 +10,7 @@ public class FuramaController {
     public static void main(String[] args) {
         displayMainMenu();
     }
+
     public static void displayMainMenu() {
         Scanner input = new Scanner(System.in);
         boolean check = true;
@@ -44,54 +46,77 @@ public class FuramaController {
         }
     }
 
-    //menu con 1
+    //menu 1
     public static void displayEmployeeMenu() {
         EmployeeServiceImpl employeeService = new EmployeeServiceImpl();
         Scanner input = new Scanner(System.in);
-        System.out.println("------Employee--Menu------");
-        System.out.println("1. Display list employees");
-        System.out.println("2. Add new employee");
-        System.out.println("3. Edit employee");
-        System.out.println("4. Return main menu");
-        System.out.println("Enter your choice: ");
-        int choice = Integer.parseInt(input.nextLine());
-        switch (choice) {
-            case 1:
-                employeeService.display();
-                break;
-            case 2:
-                employeeService.addNew();
-                break;
-            case 3:
-                employeeService.edit();
-                break;
-            case 4:
-                displayMainMenu();
-                break;
+        boolean check = true;
+        while (check) {
+            System.out.println("------Employee--Menu------");
+            System.out.println("1. Display list employees");
+            System.out.println("2. Add new employee");
+            System.out.println("3. Edit employee");
+            System.out.println("4. Delete employee");
+            System.out.println("5. Return main menu");
+            System.out.println("Enter your choice: ");
+            int choice = Integer.parseInt(input.nextLine());
+            switch (choice) {
+                case 1:
+                    employeeService.display();
+                    break;
+                case 2:
+                    employeeService.addNew();
+                    break;
+                case 3:
+                    employeeService.edit();
+                    break;
+                case 4:
+                    employeeService.delete();
+                    break;
+                case 5:
+                    check = false;
+                    displayMainMenu();
+                    break;
+            }
         }
+
     }
 
-    // menu con 2
+    // menu 2
     public static void displayCustomerManagement() {
+        CustomerServiceImpl customerService = new CustomerServiceImpl();
         Scanner input = new Scanner(System.in);
-        System.out.println("------Customer--Menu------");
-        System.out.println("1. Display list customers");
-        System.out.println("2. Add new customer");
-        System.out.println("3. Edit customer");
-        System.out.println("4. Return main menu");
-        System.out.println("Enter your choice: ");
-        int choice = Integer.parseInt(input.nextLine());
-        switch (choice) {
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            case 4:
-                displayMainMenu();
-                break;
+        boolean check = true;
+        while (check) {
+            System.out.println("------Customer--Menu------");
+            System.out.println("1. Display list customers");
+            System.out.println("2. Add new customer");
+            System.out.println("3. Edit customer");
+            System.out.println("4. Delete customer");
+            System.out.println("5. Return mainMenu");
+            System.out.println("Enter your choice: ");
+            int choice = Integer.parseInt(input.nextLine());
+            switch (choice) {
+                case 1:
+                    customerService.display();
+                    break;
+                case 2:
+                    customerService.addNew();
+                    break;
+                case 3:
+                    customerService.edit();
+
+                    break;
+                case 4:
+                    customerService.delete();
+                    break;
+                case 5:
+                    check = false;
+                    displayMainMenu();
+                    break;
+            }
         }
+
     }
 
     // menu con 3
@@ -101,8 +126,8 @@ public class FuramaController {
         System.out.println("1. Display list facility");
         System.out.println("2. Add new facility");
         System.out.println("3. Display list facility maintenance");
-        System.out.println("4. Return main menu");
-        System.out.println("Enter your choice: ");
+        System.out.println("4. Return main Menu");
+        System.out.println("Enter your choice:");
         int choice = Integer.parseInt(input.nextLine());
         switch (choice) {
             case 1:

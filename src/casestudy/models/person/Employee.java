@@ -1,6 +1,6 @@
 package casestudy.models.person;
 
-public class Employee extends Person{
+public class Employee extends Person {
     private int employeeId;
     private String dayOfBirth;
     private String gender;
@@ -9,7 +9,7 @@ public class Employee extends Person{
     private String email;
     private String level;// chua xong
     private String position;//chua xong
-    private int salary;
+    private long salary;
 
     public Employee() {
     }
@@ -26,7 +26,7 @@ public class Employee extends Person{
                     String email,
                     String level,
                     String position,
-                    int salary) {
+                    long salary) {
         super(id, name, age, address);
         this.employeeId = employeeId;
         this.dayOfBirth = dayOfBirth;
@@ -103,19 +103,23 @@ public class Employee extends Person{
         this.position = position;
     }
 
-    public int getSalary() {
+    public long getSalary() {
         return salary;
     }
 
-    public void setSalary(int salary) {
+    public void setSalary(long salary) {
         this.salary = salary;
     }
 
     @Override
     public String toString() {
         return "Employee{" +
-                "employeeId=" + employeeId +
-                ", dayOfBirth='" + dayOfBirth + '\'' +
+                "id=" + super.getId() +
+                ", name='" + super.getName() + '\'' +
+                ", age=" + super.getAge() + '\'' +
+                ", address='" + super.getAddress() + '\'' +
+                ", employeeId= " + employeeId + '\'' +
+                "  \", dayOfBirth='" + dayOfBirth + '\'' +
                 ", gender='" + gender + '\'' +
                 ", identityNumber=" + identityNumber +
                 ", phoneNumber=" + phoneNumber +
@@ -125,5 +129,4 @@ public class Employee extends Person{
                 ", salary=" + salary +
                 '}';
     }
-    
 }
