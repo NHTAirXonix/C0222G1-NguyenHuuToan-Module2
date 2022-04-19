@@ -1,13 +1,19 @@
 package casestudy.models.facility;
 
-public class House extends Facility {
+public class  House extends Facility {
     private String roomStandard;
     private int floor;
 
     public House() {
     }
 
-    public House(String serviceName, int useArea, double rentPrice, int maximumPeople, String rentType, String roomStandard, int floor) {
+    public House(String serviceName,
+                 int useArea,
+                 double rentPrice,
+                 int maximumPeople,
+                 String rentType,
+                 String roomStandard,
+                 int floor) {
         super(serviceName, useArea, rentPrice, maximumPeople, rentType);
         this.roomStandard = roomStandard;
         this.floor = floor;

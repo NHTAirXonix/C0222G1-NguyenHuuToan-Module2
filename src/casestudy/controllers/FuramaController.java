@@ -1,8 +1,8 @@
 package casestudy.controllers;
 
-import casestudy.models.person.Employee;
 import casestudy.services.impl.CustomerServiceImpl;
 import casestudy.services.impl.EmployeeServiceImpl;
+import casestudy.services.impl.FacilityServiceImpl;
 
 import java.util.Scanner;
 
@@ -119,27 +119,72 @@ public class FuramaController {
 
     }
 
-    // menu con 3
+    // menu 3
     public static void displayFacilityManagement() {
+        FacilityServiceImpl facilityService = new FacilityServiceImpl();
         Scanner input = new Scanner(System.in);
-        System.out.println("------Facility--Menu------");
-        System.out.println("1. Display list facility");
-        System.out.println("2. Add new facility");
-        System.out.println("3. Display list facility maintenance");
-        System.out.println("4. Return main Menu");
-        System.out.println("Enter your choice:");
-        int choice = Integer.parseInt(input.nextLine());
-        switch (choice) {
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            case 4:
-                displayMainMenu();
-                break;
+        boolean check = true;
+        while (check) {
+            System.out.println("------Facility--Menu------");
+            System.out.println("1. Display list facility");
+            System.out.println("2. Add new facility");
+            System.out.println("3. Display list facility maintenance");
+            System.out.println("4. Return main Menu");
+            System.out.println("Enter your choice:");
+            int choice = Integer.parseInt(input.nextLine());
+            switch (choice) {
+                case 1:
+                    facilityService.display();
+                    check = false;
+                    break;
+                case 2:
+                    displayAddNewFacilityMenu(facilityService);
+                    check = false;
+                    break;
+                case 3:
+
+                    check = false;
+                    break;
+                case 4:
+                    displayMainMenu();
+                    check = false;
+                    break;
+            }
         }
+    }
+    // super menu 3
+    public static void displayAddNewFacilityMenu(FacilityServiceImpl facilityService) {
+        Scanner input = new Scanner(System.in);
+        boolean check = true;
+        while (check) {
+            System.out.println("------ADD-NEW-----");
+            System.out.println("1. Add new Villa");
+            System.out.println("2. Add new House");
+            System.out.println("3. Add new Room");
+            System.out.println("Enter your choice:");
+            int choice = Integer.parseInt(input.nextLine());
+            switch (choice) {
+                case 1:
+                    facilityService.addNewVilla();
+                    displayFacilityManagement();
+                    check = false;
+                    break;
+                case 2:
+                    facilityService.addNewHouse();
+                    displayFacilityManagement();
+                    check = false;
+                    break;
+                case 3:
+                    facilityService.addNewRoom();
+                    displayFacilityManagement();
+                    check = false;
+                    break;
+                default:
+                    check = true;
+                    break;
+            }
+        }
+
     }
 
     // menu con 4
@@ -156,17 +201,23 @@ public class FuramaController {
         int choice = Integer.parseInt(input.nextLine());
         switch (choice) {
             case 1:
+
                 break;
             case 2:
+
                 break;
             case 3:
+
                 break;
             case 4:
+
                 break;
             case 5:
+
                 break;
             case 6:
                 displayMainMenu();
+                
                 break;
         }
     }
@@ -193,4 +244,5 @@ public class FuramaController {
                 break;
         }
     }
+
 }
