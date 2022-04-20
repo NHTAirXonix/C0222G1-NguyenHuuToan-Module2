@@ -97,6 +97,7 @@ public class ProductManagerArrayList {
                 elements.setNamePro(name);
                 elements.setPrice(price);
                 checka = true;
+                break;
             }
         }
         if (checka) {
@@ -129,7 +130,7 @@ public class ProductManagerArrayList {
         System.out.println("Enter the name of product");
         String name = scanner.nextLine();
         for (int i = 0; i < arrayList.size(); i++) {
-            if (arrayList.get(i).getName().equals(name)) {
+            if (arrayList.get(i).getName().contains(name)) {
                 System.out.println("This list have product name:" + name);
                 break;
             }

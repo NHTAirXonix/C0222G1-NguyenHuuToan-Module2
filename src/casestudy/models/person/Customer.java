@@ -1,12 +1,7 @@
 package casestudy.models.person;
 
 public class Customer extends Person{
-    private int bookingNumber;
-    private String dayStart;
-    private String dayEnd;
-    private int customerNumber;
-    private String serviceName;
-    private String serviceType;
+    private int customerId;
     private String dayOfBirth;
     private String gender;
     private long identityNumber;
@@ -22,12 +17,7 @@ public class Customer extends Person{
                     String name,
                     int age,
                     String address,
-                    int bookingNumber,
-                    String dayStart,
-                    String dayEnd,
-                    int customerNumber,
-                    String serviceName,
-                    String serviceType,
+                    int customerId,
                     String dayOfBirth,
                     String gender,
                     long identityNumber,
@@ -35,12 +25,7 @@ public class Customer extends Person{
                     String email,
                     String customerType) {
         super(id, name, age, address);
-        this.bookingNumber = bookingNumber;
-        this.dayStart = dayStart;
-        this.dayEnd = dayEnd;
-        this.customerNumber = customerNumber;
-        this.serviceName = serviceName;
-        this.serviceType = serviceType;
+        this.customerId = customerId;
         this.dayOfBirth = dayOfBirth;
         this.gender = gender;
         this.identityNumber = identityNumber;
@@ -49,53 +34,19 @@ public class Customer extends Person{
         this.customerType = customerType;
     }
 
-    public int getBookingNumber() {
-        return bookingNumber;
+    public int getCustomerId() {
+        return customerId;
     }
 
-    public void setBookingNumber(int bookingNumber) {
-        this.bookingNumber = bookingNumber;
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
     }
 
-    public String getDayStart() {
-        return dayStart;
+    public String getGender() {
+        return gender;
     }
 
-    public void setDayStart(String dayStart) {
-        this.dayStart = dayStart;
-    }
 
-    public String getDayEnd() {
-        return dayEnd;
-    }
-
-    public void setDayEnd(String dayEnd) {
-        this.dayEnd = dayEnd;
-    }
-
-    public int getCustomerNumber() {
-        return customerNumber;
-    }
-
-    public void setCustomerNumber(int customerNumber) {
-        this.customerNumber = customerNumber;
-    }
-
-    public String getServiceName() {
-        return serviceName;
-    }
-
-    public void setServiceName(String serviceName) {
-        this.serviceName = serviceName;
-    }
-
-    public String getServiceType() {
-        return serviceType;
-    }
-
-    public void setServiceType(String serviceType) {
-        this.serviceType = serviceType;
-    }
 
     public String getDayOfBirth() {
         return dayOfBirth;
@@ -152,12 +103,6 @@ public class Customer extends Person{
                 ", name='" + super.getName() + '\'' +
                 ", age=" + super.getAge() +
                 ", address='" + super.getAddress() + '\'' +
-                ", bookingNumber=" + bookingNumber +
-                ", dayStart='" + dayStart + '\'' +
-                ", dayEnd='" + dayEnd + '\'' +
-                ", customerNumber=" + customerNumber +
-                ", serviceName='" + serviceName + '\'' +
-                ", serviceType='" + serviceType + '\'' +
                 ", dayOfBirth='" + dayOfBirth + '\'' +
                 ", gender='" + gender + '\'' +
                 ", identityNumber=" + identityNumber +
