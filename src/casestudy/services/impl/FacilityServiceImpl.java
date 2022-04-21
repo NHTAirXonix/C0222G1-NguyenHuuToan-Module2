@@ -42,6 +42,8 @@ public class FacilityServiceImpl implements FacilityService {
 
     @Override
     public void addNewVilla() {
+        System.out.println("Enter the facility id");
+        String facilityId = scanner.nextLine();
         System.out.println("Enter the name of service");
         String serviceName = scanner.nextLine();
         System.out.println("Enter the use area");
@@ -58,12 +60,14 @@ public class FacilityServiceImpl implements FacilityService {
         double poolArea = Double.parseDouble(scanner.nextLine());
         System.out.println("Enter the floor");
         int floor = Integer.parseInt(scanner.nextLine());
-        Villa villa = new Villa(serviceName, useArea, rentPrice, maximumPeople, rentType, roomStandard, poolArea, floor);
+        Villa villa = new Villa(facilityId, serviceName, useArea, rentPrice, maximumPeople, rentType, roomStandard, poolArea, floor);
         facilityIntegerMap.put(villa, 0);
     }
 
     @Override
     public void addNewHouse() {
+        System.out.println("Enter the facility id");
+        String facilityId = scanner.nextLine();
         System.out.println("Enter the name of service");
         String serviceName = scanner.nextLine();
         System.out.println("Enter the use area");
@@ -78,12 +82,14 @@ public class FacilityServiceImpl implements FacilityService {
         String roomStandard = scanner.nextLine();
         System.out.println("Enter the floor");
         int floor = Integer.parseInt(scanner.nextLine());
-        House house = new House(serviceName, useArea, rentPrice, maximumPeople, rentType, roomStandard, floor);
+        House house = new House(facilityId, serviceName, useArea, rentPrice, maximumPeople, rentType, roomStandard, floor);
         facilityIntegerMap.put(house, 0);
     }
 
     @Override
     public void addNewRoom() {
+        System.out.println("Enter the facility id");
+        String facilityId = scanner.nextLine();
         System.out.println("Enter the name of service");
         String serviceName = scanner.nextLine();
         System.out.println("Enter the use area");
@@ -94,7 +100,7 @@ public class FacilityServiceImpl implements FacilityService {
         int maximumPeople = Integer.parseInt(scanner.nextLine());
         System.out.println("Enter the rent type");
         String rentType = scanner.nextLine();
-        Room room = new Room(serviceName, useArea, rentPrice, maximumPeople, rentType);
+        Room room = new Room(facilityId, serviceName, useArea, rentPrice, maximumPeople, rentType);
         facilityIntegerMap.put(room, 0);
     }
 }

@@ -119,7 +119,7 @@ public class Employee extends Person {
                 ", age=" + super.getAge() + '\'' +
                 ", address='" + super.getAddress() + '\'' +
                 ", employeeId= " + employeeId + '\'' +
-                "  \", dayOfBirth='" + dayOfBirth + '\'' +
+                ", dayOfBirth='" + dayOfBirth + '\'' +
                 ", gender='" + gender + '\'' +
                 ", identityNumber=" + identityNumber +
                 ", phoneNumber=" + phoneNumber +

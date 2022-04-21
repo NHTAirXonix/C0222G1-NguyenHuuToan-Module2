@@ -1,21 +1,25 @@
 package casestudy.models.booking_contract;
 
+import casestudy.models.facility.Facility;
+import casestudy.models.person.Customer;
+
 public class Booking {
     private int bookingNumber;
     private String dayStart;
     private String dayEnd;
+    private Customer customer;
+    private Facility facility;
     private int customerNumber;
     private String serviceName;
     private String serviceType;
 
 
-    public Booking(int bookingNumber, String dayStart, String dayEnd, int customerNumber, String serviceName, String serviceType) {
+    public Booking(int bookingNumber, String dayStart, String dayEnd, Customer customer, Facility facility) {
         this.bookingNumber = bookingNumber;
         this.dayStart = dayStart;
         this.dayEnd = dayEnd;
-        this.customerNumber = customerNumber;
-        this.serviceName = serviceName;
-        this.serviceType = serviceType;
+        this.customer = customer;
+        this.facility = facility;
     }
 
     public int getBookingNumber() {
@@ -72,9 +76,8 @@ public class Booking {
                 "bookingNumber=" + bookingNumber +
                 ", dayStart='" + dayStart + '\'' +
                 ", dayEnd='" + dayEnd + '\'' +
-                ", customerNumber=" + customerNumber +
-                ", serviceName='" + serviceName + '\'' +
-                ", serviceType='" + serviceType + '\'' +
+                ", customer name=" + customer.getName() +
+                ", facility name=" + facility.getServiceName() +
                 '}';
     }
 }

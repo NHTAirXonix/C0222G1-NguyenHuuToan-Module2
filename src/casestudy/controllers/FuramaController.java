@@ -1,5 +1,6 @@
 package casestudy.controllers;
 
+import casestudy.services.impl.BookingServiceImpl;
 import casestudy.services.impl.CustomerServiceImpl;
 import casestudy.services.impl.EmployeeServiceImpl;
 import casestudy.services.impl.FacilityServiceImpl;
@@ -29,13 +30,13 @@ public class FuramaController {
                     displayEmployeeMenu();
                     break;
                 case 2:
-                    displayCustomerManagement();
+                    displayCustomerMenu();
                     break;
                 case 3:
-                    displayFacilityManagement();
+                    displayFacilityMenu();
                     break;
                 case 4:
-                    displayBookingManagerment();
+                    displayBookingMenu();
                     break;
                 case 5:
                     displayPromotionManager();
@@ -83,7 +84,7 @@ public class FuramaController {
     }
 
     // menu 2
-    public static void displayCustomerManagement() {
+    public static void displayCustomerMenu() {
         CustomerServiceImpl customerService = new CustomerServiceImpl();
         Scanner input = new Scanner(System.in);
         boolean check = true;
@@ -120,7 +121,7 @@ public class FuramaController {
     }
 
     // menu 3
-    public static void displayFacilityManagement() {
+    public static void displayFacilityMenu() {
         FacilityServiceImpl facilityService = new FacilityServiceImpl();
         Scanner input = new Scanner(System.in);
         boolean check = true;
@@ -166,17 +167,17 @@ public class FuramaController {
             switch (choice) {
                 case 1:
                     facilityService.addNewVilla();
-                    displayFacilityManagement();
+                    displayFacilityMenu();
                     check = false;
                     break;
                 case 2:
                     facilityService.addNewHouse();
-                    displayFacilityManagement();
+                    displayFacilityMenu();
                     check = false;
                     break;
                 case 3:
                     facilityService.addNewRoom();
-                    displayFacilityManagement();
+                    displayFacilityMenu();
                     check = false;
                     break;
                 default:
@@ -188,38 +189,45 @@ public class FuramaController {
     }
 
     // menu con 4
-    public static void displayBookingManagerment() {
+    public static void displayBookingMenu() {
+        BookingServiceImpl bookingService = new BookingServiceImpl();
         Scanner input = new Scanner(System.in);
-        System.out.println("------Booking--Menu------");
-        System.out.println("1. Add new booking");
-        System.out.println("2. Display list booking");
-        System.out.println("3. Create new contracts");
-        System.out.println("4. Display list contracts");
-        System.out.println("5. Edit contracts");
-        System.out.println("6. Return main menu");
-        System.out.println("Enter your choice: ");
-        int choice = Integer.parseInt(input.nextLine());
-        switch (choice) {
-            case 1:
+        boolean check = true;
+        while (check) {
+            System.out.println("------Booking--Menu------");
+            System.out.println("1. Add new booking");
+            System.out.println("2. Display list booking");
+            System.out.println("3. Create new contracts");
+            System.out.println("4. Display list contracts");
+            System.out.println("5. Edit contracts");
+            System.out.println("6. Return main menu");
+            System.out.println("Enter your choice: ");
+            int choice = Integer.parseInt(input.nextLine());
+            switch (choice) {
+                case 1:
+                    bookingService.addBooking();
+                    displayBookingMenu();
+                    break;
+                case 2:
+                    bookingService.displayListBooking();
+                    displayBookingMenu();
+                    break;
+                case 3:
 
-                break;
-            case 2:
+                    break;
+                case 4:
 
-                break;
-            case 3:
+                    break;
+                case 5:
 
-                break;
-            case 4:
-
-                break;
-            case 5:
-
-                break;
-            case 6:
-                displayMainMenu();
-                
-                break;
+                    break;
+                case 6:
+                    displayMainMenu();
+                    break;
+            }
         }
+
+
     }
 
     //menu con 5

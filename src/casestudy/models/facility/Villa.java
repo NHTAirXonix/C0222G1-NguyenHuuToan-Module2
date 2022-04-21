@@ -1,14 +1,15 @@
 package casestudy.models.facility;
 
 public class Villa extends Facility {
-    private String roomStandard;
+    private String roomStandardVilla;
     private double poolArea;
     private int floor;
 
     public Villa() {
     }
 
-    public Villa(String serviceName,
+    public Villa(String facilityId,
+                 String serviceName,
                  int useArea,
                  double rentPrice,
                  int maximumPeople,
@@ -16,18 +17,19 @@ public class Villa extends Facility {
                  String roomStandard,
                  double poolArea,
                  int floor) {
-        super(serviceName, useArea, rentPrice, maximumPeople, rentType);
-        this.roomStandard = roomStandard;
+        super(facilityId, serviceName, useArea, rentPrice, maximumPeople, rentType);
+        this.roomStandardVilla = roomStandard;
         this.poolArea = poolArea;
         this.floor = floor;
     }
 
+
     public String getRoomStandard() {
-        return roomStandard;
+        return roomStandardVilla;
     }
 
-    public void setRoomStandard(String roomStandard) {
-        this.roomStandard = roomStandard;
+    public void setRoomStandard(String roomStandardVilla) {
+        this.roomStandardVilla = roomStandardVilla;
     }
 
     public double getPoolArea() {
@@ -44,5 +46,20 @@ public class Villa extends Facility {
 
     public void setFloor(int floor) {
         this.floor = floor;
+    }
+
+    @Override
+    public String toString() {
+        return "Villa{" +
+                "facilityId=" + super.getFacilityId() +
+                ", serviceName='" + super.getServiceName() + '\'' +
+                ", useArea=" + super.getUseArea() +
+                ", rentPrice=" + super.getRentPrice() +
+                ", maximumPeople=" + super.getMaximumPeople() +
+                ", rentType='" + super.getRentType() + '\'' +
+                ", roomStandardVilla='" + roomStandardVilla + '\'' +
+                ", poolArea=" + poolArea +
+                ", floor=" + floor +
+                '}';
     }
 }

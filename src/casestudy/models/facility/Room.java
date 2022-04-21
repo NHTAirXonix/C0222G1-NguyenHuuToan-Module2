@@ -6,13 +6,12 @@ public class Room extends Facility {
     public Room() {
     }
 
-    public Room(String serviceName,
+    public Room(String facilityId,
+                String serviceName,
                 int useArea,
                 double rentPrice,
                 int maximumPeople,
                 String rentType) {
-        super(serviceName, useArea, rentPrice, maximumPeople, rentType);
+        super(facilityId, serviceName, useArea, rentPrice, maximumPeople, rentType);
     }
-
-
 }
