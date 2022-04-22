@@ -6,17 +6,15 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        List<Contry> contriesList = new ArrayList<>();
-
+        List<Country> contriesList = new ArrayList<>();
+        Country country;
         List<String[]> listStr = ReadAndWriter.readFile("D:\\CODEGYM\\C0222G1_Nguyen_Huu_Toan_Module2\\src\\_16_io_test_file\\excercise\\read_file_csv\\world.csv");
-        for (String[] item :
-                listStr) {
-            Contry contry = new Contry(Integer.parseInt(item[0]), item[1], item[2]);
-            contriesList.add(contry);
+        for (String[] item : listStr) {
+            country = new Country(Integer.parseInt(item[0]), item[1], item[2]);
+            contriesList.add(country);
         }
-        for (Contry contry :
-                contriesList) {
-            System.out.println(contry.toString());
+        for (Country elements : contriesList) {
+            System.out.println(elements.toString());
         }
     }
 }

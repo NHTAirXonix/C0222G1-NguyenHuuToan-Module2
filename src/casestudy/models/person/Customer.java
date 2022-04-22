@@ -2,9 +2,7 @@ package casestudy.models.person;
 
 public class Customer extends Person{
     private int customerId;
-    private String dayOfBirth;
     private String gender;
-    private long identityNumber;
     private long phoneNumber;
     private String email;
     private String customerType;// Diamond, Platinum, Gold, Silver, Member
@@ -13,22 +11,18 @@ public class Customer extends Person{
 
     }
 
-    public Customer(int id,
+    public Customer(int identityNumber,
                     String name,
                     int age,
                     String address,
                     int customerId,
-                    String dayOfBirth,
                     String gender,
-                    long identityNumber,
                     long phoneNumber,
                     String email,
                     String customerType) {
-        super(id, name, age, address);
+        super(identityNumber, name, age, address);
         this.customerId = customerId;
-        this.dayOfBirth = dayOfBirth;
         this.gender = gender;
-        this.identityNumber = identityNumber;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.customerType = customerType;
@@ -46,16 +40,6 @@ public class Customer extends Person{
         return gender;
     }
 
-
-
-    public String getDayOfBirth() {
-        return dayOfBirth;
-    }
-
-    public void setDayOfBirth(String dayOfBirth) {
-        this.dayOfBirth = dayOfBirth;
-    }
-
     public String isGender() {
         return gender;
     }
@@ -64,13 +48,6 @@ public class Customer extends Person{
         this.gender = gender;
     }
 
-    public long getIdentityNumber() {
-        return identityNumber;
-    }
-
-    public void setIdentityNumber(long identityNumber) {
-        this.identityNumber = identityNumber;
-    }
 
     public long getPhoneNumber() {
         return phoneNumber;
@@ -99,13 +76,12 @@ public class Customer extends Person{
     @Override
     public String toString() {
         return "Customer{" +
-                "id=" + super.getId() +
+                "identityNumber=" + super.getId() +
+                ", customer id=" + customerId +
                 ", name='" + super.getName() + '\'' +
                 ", age=" + super.getAge() +
                 ", address='" + super.getAddress() + '\'' +
-                ", dayOfBirth='" + dayOfBirth + '\'' +
                 ", gender='" + gender + '\'' +
-                ", identityNumber=" + identityNumber +
                 ", phoneNumber=" + phoneNumber +
                 ", email='" + email + '\'' +
                 ", customerType='" + customerType + '\'' +

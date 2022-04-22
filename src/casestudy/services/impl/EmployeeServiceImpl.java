@@ -30,12 +30,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         int age = Integer.parseInt(scanner.nextLine());
         System.out.println("Enter the address");
         String address = scanner.nextLine();
-        System.out.println("Enter the day of birth: ");
-        String dayOfBirth = scanner.nextLine();
         System.out.println("Enter the gender: ");
         String gender = scanner.nextLine();
-        System.out.println("Enter the  identity number: ");
-        int idNumber = Integer.parseInt(scanner.nextLine());
         System.out.println("Enter the phone number: ");
         long phoneNumber = Integer.parseInt(scanner.nextLine());
         System.out.println("Enter the employee id: ");
@@ -77,9 +73,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         String position = scanner.nextLine();
         System.out.println("Enter the  salary: ");
         long salary = Integer.parseInt(scanner.nextLine());
-        Employee employee = new Employee(id, name, age, address, employeeId,
-                dayOfBirth, gender, idNumber, phoneNumber,
-                email, level, position, salary);
+        Employee employee = new Employee(id, name, age, address, employeeId, gender, phoneNumber, email, level, position, salary);
         employeeList.add(employee);
         System.out.println("Add complete");
     }
@@ -149,9 +143,7 @@ public class EmployeeServiceImpl implements EmployeeService {
                 employeeList.get(i).setName(name);
                 employeeList.get(i).setAge(age);
                 employeeList.get(i).setAddress(address);
-                employeeList.get(i).setDayOfBirth(dayOfBirth);
                 employeeList.get(i).setGender(gender);
-                employeeList.get(i).setIdentityNumber(idNumber);
                 employeeList.get(i).setPhoneNumber(phoneNumber);
                 employeeList.get(i).setEmail(email);
                 employeeList.get(i).setLevel(level);

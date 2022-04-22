@@ -1,11 +1,11 @@
 package _16_io_test_file.excercise.read_file_csv;
 
-public class Contry {
+public class Country {
     private int id;
     private String name;
     private String abbreviation;
 
-    public Contry(int id, String name, String abbreviation) {
+    public Country(int id, String name, String abbreviation) {
         this.id = id;
         this.name = name;
         this.abbreviation = abbreviation;

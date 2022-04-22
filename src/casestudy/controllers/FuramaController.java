@@ -1,9 +1,6 @@
 package casestudy.controllers;
 
-import casestudy.services.impl.BookingServiceImpl;
-import casestudy.services.impl.CustomerServiceImpl;
-import casestudy.services.impl.EmployeeServiceImpl;
-import casestudy.services.impl.FacilityServiceImpl;
+import casestudy.services.impl.*;
 
 import java.util.Scanner;
 
@@ -191,6 +188,7 @@ public class FuramaController {
     // menu con 4
     public static void displayBookingMenu() {
         BookingServiceImpl bookingService = new BookingServiceImpl();
+        ContactServiceImpl contactService = new ContactServiceImpl();
         Scanner input = new Scanner(System.in);
         boolean check = true;
         while (check) {
@@ -213,10 +211,12 @@ public class FuramaController {
                     displayBookingMenu();
                     break;
                 case 3:
-
+                    contactService.createNewContract();
+                    displayBookingMenu();
                     break;
                 case 4:
-
+                    contactService.displayListContract();
+                    displayBookingMenu();
                     break;
                 case 5:
 

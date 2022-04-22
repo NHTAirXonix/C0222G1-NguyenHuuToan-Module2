@@ -13,13 +13,24 @@ public class Booking {
     private String serviceName;
     private String serviceType;
 
-
-    public Booking(int bookingNumber, String dayStart, String dayEnd, Customer customer, Facility facility) {
+    public Booking(int bookingNumber,
+                   String dayStart,
+                   String dayEnd,
+                   Customer customer,
+                   Facility facility) {
         this.bookingNumber = bookingNumber;
         this.dayStart = dayStart;
         this.dayEnd = dayEnd;
         this.customer = customer;
         this.facility = facility;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public int getBookingNumber() {

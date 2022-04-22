@@ -16,9 +16,9 @@ public class BookingComparator implements Comparator<Booking> {
         LocalDate endDate1 = LocalDate.parse(o1.getDayEnd(), formatter);
         LocalDate endDate2 = LocalDate.parse(o2.getDayEnd(), formatter);
         if (starDate1.compareTo(starDate2)<0){
-            return 1;
-        } else if (starDate1.compareTo(starDate2)>0){
             return -1;
+        } else if (starDate1.compareTo(starDate2)>0){
+            return 1;
         } else {
             if (endDate1.compareTo(endDate2) >0){
                 return 1;

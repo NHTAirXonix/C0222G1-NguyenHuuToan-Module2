@@ -2,9 +2,7 @@ package casestudy.models.person;
 
 public class Employee extends Person {
     private int employeeId;
-    private String dayOfBirth;
     private String gender;
-    private long identityNumber;
     private long phoneNumber;
     private String email;
     private String level;// chua xong
@@ -14,24 +12,20 @@ public class Employee extends Person {
     public Employee() {
     }
 
-    public Employee(int id,
+    public Employee(int identityNumber,
                     String name,
                     int age,
                     String address,
                     int employeeId,
-                    String dayOfBirth,
                     String gender,
-                    long identityNumber,
                     long phoneNumber,
                     String email,
                     String level,
                     String position,
                     long salary) {
-        super(id, name, age, address);
+        super(identityNumber, name, age, address);
         this.employeeId = employeeId;
-        this.dayOfBirth = dayOfBirth;
         this.gender = gender;
-        this.identityNumber = identityNumber;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.level = level;
@@ -47,28 +41,12 @@ public class Employee extends Person {
         this.employeeId = employeeId;
     }
 
-    public String getDayOfBirth() {
-        return dayOfBirth;
-    }
-
-    public void setDayOfBirth(String dayOfBirth) {
-        this.dayOfBirth = dayOfBirth;
-    }
-
     public String isGender() {
         return gender;
     }
 
     public void setGender(String gender) {
         this.gender = gender;
-    }
-
-    public long getIdentityNumber() {
-        return identityNumber;
-    }
-
-    public void setIdentityNumber(long identityNumber) {
-        this.identityNumber = identityNumber;
     }
 
     public long getPhoneNumber() {
@@ -114,14 +92,12 @@ public class Employee extends Person {
     @Override
     public String toString() {
         return "Employee{" +
-                "id=" + super.getId() +
+                "identityNumber=" + super.getId() +
                 ", name='" + super.getName() + '\'' +
                 ", age=" + super.getAge() + '\'' +
                 ", address='" + super.getAddress() + '\'' +
                 ", employeeId= " + employeeId + '\'' +
-                ", dayOfBirth='" + dayOfBirth + '\'' +
                 ", gender='" + gender + '\'' +
-                ", identityNumber=" + identityNumber +
                 ", phoneNumber=" + phoneNumber +
                 ", email='" + email + '\'' +
                 ", level='" + level + '\'' +

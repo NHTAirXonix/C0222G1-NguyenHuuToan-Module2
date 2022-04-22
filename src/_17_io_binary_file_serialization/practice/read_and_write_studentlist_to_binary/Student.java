@@ -1,27 +1,30 @@
-package casestudy.models.person;
+package _17_io_binary_file_serialization.practice.read_and_write_studentlist_to_binary;
 
-public abstract class Person {
-    private int identityNumber;
+
+import java.io.Serializable;
+
+public class Student implements Serializable {
+    private int id;
+
     private String name;
-    private int age;
+
     private String address;
 
-    public Person() {
+    public Student() {
     }
 
-    public Person(int identityNumber, String name, int age, String address) {
-        this.identityNumber = identityNumber;
+    public Student(int id, String name, String address) {
+        this.id = id;
         this.name = name;
-        this.age = age;
         this.address = address;
     }
 
     public int getId() {
-        return identityNumber;
+        return id;
     }
 
     public void setId(int id) {
-        this.identityNumber = id;
+        this.id = id;
     }
 
     public String getName() {
@@ -30,14 +33,6 @@ public abstract class Person {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
     }
 
     public String getAddress() {
@@ -50,10 +45,9 @@ public abstract class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
-                "identityNumber=" + identityNumber +
+        return "Student{" +
+                "id=" + id +
                 ", name='" + name + '\'' +
-                ", age=" + age +
                 ", address='" + address + '\'' +
                 '}';
     }

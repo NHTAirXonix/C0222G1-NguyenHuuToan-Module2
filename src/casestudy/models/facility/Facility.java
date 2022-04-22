@@ -9,6 +9,7 @@ public abstract class Facility {
     private String rentType;
 
     public Facility() {
+
     }
 
 

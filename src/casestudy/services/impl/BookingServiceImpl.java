@@ -7,7 +7,6 @@ import casestudy.models.person.Customer;
 import casestudy.services.BookingService;
 import casestudy.utils.BookingComparator;
 
-import java.awt.print.Book;
 import java.util.*;
 
 public class BookingServiceImpl implements BookingService {
@@ -17,14 +16,14 @@ public class BookingServiceImpl implements BookingService {
     static Map<Facility, Integer> facilityIntegerMap = new LinkedHashMap<>();
 
     static {
-        customerList.add(new Customer(1, "Hao", 20, "Ben xe Da Nang", 10, "13/10/1999", "Male",
-                123321123, 123123123, "hao@gmail.com", "Diamond"));
-        customerList.add(new Customer(2, "Hoang", 24, "Ben xe Da Nang", 11, "20/09/1995", "Male",
-                123321123, 123123123, "hoang@gmail.com", "Platinum"));
-        facilityIntegerMap.put(new Villa("1", "Villa 1", 200, 2000000, 10, "week", "VIP",
-                25, 2), 0);
-        facilityIntegerMap.put(new Villa("2", "Villa 2", 100, 1000000, 50, "day", "NORMAL",
-                25, 2), 0);
+        customerList.add(new Customer(11231256, "Hao", 20, "Ben xe Da Nang", 10, "Male", 123123123, "hao@gmail.com", "Diamond"));
+        customerList.add(new Customer(21232133, "Hoang", 24, "Son Tra", 11, "Male", 297496635, "hoang@gmail.com", "Platinum"));
+        facilityIntegerMap.put(new Villa("1", "Villa 1", 200, 2000000, 10, "week", "VIP", 25, 2), 0);
+        facilityIntegerMap.put(new Villa("2", "Villa 2", 100, 1000000, 50, "day", "NORMAL", 25, 2), 0);
+    }
+
+    public Set<Booking> sentBooking(){
+        return bookingSet;
     }
 
     @Override

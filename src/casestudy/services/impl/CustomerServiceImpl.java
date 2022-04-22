@@ -34,8 +34,6 @@ public class CustomerServiceImpl implements CustomerService {
         String dayOfBirth = scanner.nextLine();
         System.out.println("Enter the gender: ");
         String gender = scanner.nextLine();
-        System.out.println("Enter the  identity number: ");
-        int idNumber = Integer.parseInt(scanner.nextLine());
         System.out.println("Enter the phone number: ");
         long phoneNumber = Integer.parseInt(scanner.nextLine());
         System.out.println("Enter the email: ");
@@ -76,8 +74,7 @@ public class CustomerServiceImpl implements CustomerService {
                     break;
             }
         }
-        Customer customer = new Customer(id, name, age, address, customerId, dayOfBirth, gender,
-                idNumber, phoneNumber, email, customerType.toString());
+        Customer customer = new Customer(id, name, age, address, customerId, gender, phoneNumber, email, customerType.toString());
         customerList.add(customer);
         System.out.println("Add complete");
     }
@@ -98,12 +95,8 @@ public class CustomerServiceImpl implements CustomerService {
                 String address = scanner.nextLine();
                 System.out.println("Enter the customer id: ");
                 int customerId = Integer.parseInt(scanner.nextLine());
-                System.out.println("Enter the day of birth: ");
-                String dayOfBirth = scanner.nextLine();
                 System.out.println("Enter the gender: ");
                 String gender = scanner.nextLine();
-                System.out.println("Enter the  identity number: ");
-                int idNumber = Integer.parseInt(scanner.nextLine());
                 System.out.println("Enter the phone number: ");
                 long phoneNumber = Integer.parseInt(scanner.nextLine());
                 System.out.println("Enter the email: ");
@@ -150,9 +143,7 @@ public class CustomerServiceImpl implements CustomerService {
                 customerList.get(i).setAge(age);
                 customerList.get(i).setAddress(address);
                 customerList.get(i).setCustomerId(customerId);
-                customerList.get(i).setDayOfBirth(dayOfBirth);
                 customerList.get(i).setGender(gender);
-                customerList.get(i).setId(idNumber);
                 customerList.get(i).setPhoneNumber(phoneNumber);
                 customerList.get(i).setEmail(email);
                 customerList.get(i).setCustomerType(customerType.toString());
