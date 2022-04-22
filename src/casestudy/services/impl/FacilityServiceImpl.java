@@ -4,6 +4,7 @@ import casestudy.models.facility.Facility;
 import casestudy.models.facility.House;
 import casestudy.models.facility.Room;
 import casestudy.models.facility.Villa;
+import casestudy.models.person.Customer;
 import casestudy.services.FacilityService;
 
 import java.util.LinkedHashMap;
@@ -14,6 +15,11 @@ public class FacilityServiceImpl implements FacilityService {
     private static final Map<Facility, Integer> facilityIntegerMap = new LinkedHashMap<>();
     private static final Scanner scanner = new Scanner(System.in);
 
+    static {
+        facilityIntegerMap.put(new Villa("1", "Villa 1", 200, 2000000, 10, "week", "VIP", 25, 2), 0);
+        facilityIntegerMap.put(new Villa("2", "Villa 2", 100, 1000000, 50, "day", "NORMAL", 25, 2), 0);
+    }
+
     @Override
     public void display() {
         for (Map.Entry<Facility, Integer> element : facilityIntegerMap.entrySet()) {
@@ -22,16 +28,8 @@ public class FacilityServiceImpl implements FacilityService {
 
     }
 
-    @Override
-    public void addNew() {
-    }
-
-    @Override
-    public void edit() {
-    }
-
-    @Override
-    public void delete() {
+    public static Map<Facility, Integer> getFacilityIntegerMap() {
+        return facilityIntegerMap;
     }
 
     @Override
@@ -102,5 +100,17 @@ public class FacilityServiceImpl implements FacilityService {
         String rentType = scanner.nextLine();
         Room room = new Room(facilityId, serviceName, useArea, rentPrice, maximumPeople, rentType);
         facilityIntegerMap.put(room, 0);
+    }
+
+    @Override
+    public void addNew() {
+    }
+
+    @Override
+    public void edit() {
+    }
+
+    @Override
+    public void delete() {
     }
 }

@@ -10,36 +10,40 @@ import java.util.*;
 public class ContactServiceImpl implements ContactService {
     static List<Contract> contractList = new ArrayList<>();
     static Scanner scanner = new Scanner(System.in);
+    static Set<Booking> bookingSet = BookingServiceImpl.getBookingSet();
+    Queue<Booking> bookingQueue = new LinkedList<>();
 
     public void createNewContract() {
-        Queue<Booking> bookingQueue = new LinkedList<>();
-        Set<Booking> bookingSet = new BookingServiceImpl().sentBooking();
-        for (Booking booking : bookingSet){
-            bookingQueue.add(booking);
+        for (Booking elements: bookingSet) {
+            if (!elements.isBookingStatus()){
+                bookingQueue.add(elements);
+                elements.setBookingStatus(true);
+            }
         }
-        while (!bookingQueue.isEmpty()){
-            Booking booking = bookingQueue.poll();
-            Customer customer = booking.getCustomer();
-            System.out.println("Detail of booking information for contact: "+ booking.toString());
-            System.out.println("Detail of customer for contract: "+ customer.toString());
-            System.out.println("Enter the id for contract");
-            String id = scanner.nextLine();
-            System.out.println("Enter the deposit price: ");
-            String deposit = scanner.nextLine();
-            System.out.println("Enter the deposit price: ");
-            String allPrice = scanner.nextLine();
-
-            Contract contract = new Contract(id,booking,deposit,allPrice,customer);
-            contractList.add(contract);
-            System.out.println("Create contract complete" + contract.toString());
+        if (bookingQueue.isEmpty()) {
+            System.out.println("All contract is created");
+        } else {
+            while (!bookingQueue.isEmpty()) {
+                Booking booking = bookingQueue.poll();
+                Customer customer = booking.getCustomer();
+                System.out.println("Detail of booking information for contact: " + booking.toString());
+                System.out.println("Detail of customer for contract: " + customer.toString());
+                System.out.println("Enter the id for contract");
+                String id = scanner.nextLine();
+                System.out.println("Enter the deposit price: ");
+                String deposit = scanner.nextLine();
+                System.out.println("Enter the deposit price: ");
+                String allPrice = scanner.nextLine();
+                Contract contract = new Contract(id, booking, deposit, allPrice, customer);
+                contractList.add(contract);
+                System.out.println("Create contract complete" + contract.toString());
+            }
         }
-
-
     }
 
-    
+
     public void displayListContract() {
-        for (Contract contract: contractList) {
+        for (Contract contract : contractList) {
             System.out.println(contract.toString());
         }
     }

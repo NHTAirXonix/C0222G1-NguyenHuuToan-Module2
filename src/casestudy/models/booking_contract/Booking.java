@@ -12,6 +12,8 @@ public class Booking {
     private int customerNumber;
     private String serviceName;
     private String serviceType;
+    private boolean bookingStatus = false;
+
 
     public Booking(int bookingNumber,
                    String dayStart,
@@ -23,6 +25,15 @@ public class Booking {
         this.dayEnd = dayEnd;
         this.customer = customer;
         this.facility = facility;
+
+    }
+
+    public boolean isBookingStatus() {
+        return bookingStatus;
+    }
+
+    public void setBookingStatus(boolean bookingStatus) {
+        this.bookingStatus = bookingStatus;
     }
 
     public Customer getCustomer() {

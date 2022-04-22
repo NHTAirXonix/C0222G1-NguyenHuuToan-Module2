@@ -6,14 +6,17 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
+    public static Scanner scanner = new Scanner(System.in);
+
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+
         List<Product> productList = new ArrayList<>();
         productList.add(new Product(1, "BMW i8", "BMW", 90000000));
         productList.add(new Product(2, "MAZDA 3", "MAZDA", 10000000));
         productList.add(new Product(3, "HONDA CRV", "HONDA", 13000000));
         System.out.println("Enter the url of file: ");
         String path = scanner.nextLine();
+        System.out.println(!productList.isEmpty());
         writeToFile(path, productList);
 
         boolean check = true;
@@ -30,10 +33,11 @@ public class Main {
                     displayProductList(readDataFromFile(path));
                     break;
                 case "2":
-
+                    addNewProduct(productList);
+                    writeToFile(path, productList);
                     break;
                 case "3":
-
+                    findProduct(path);
                     break;
                 case "4":
                     check = false;
@@ -58,6 +62,7 @@ public class Main {
             e.printStackTrace();
         }
     }
+
     public static List<Product> readDataFromFile(String path) {
         List<Product> productList = new ArrayList<>();
         try {
@@ -73,10 +78,58 @@ public class Main {
     }
 
     public static void displayProductList(List<Product> products) {
-        for (Product product : products) {
-            System.out.println(product);
+        for (Product elements : products) {
+            System.out.println(elements);
         }
     }
 
+    public static void addNewProduct(List<Product> productList) {
+        int id = 0;
+        boolean check = true;
+        while (check) {
+            System.out.println("Enter the id of product");
+            id = Integer.parseInt(scanner.nextLine());
+            for (int i = 0; i < productList.size(); i++) {
+                if (id == productList.get(i).getProductId()) {
+                    check = true;
+                    System.out.println("Wrong id");
+                    break;
+                }
+                if (i == productList.size() - 1) {
+                    check = false;
+                    break;
+                }
 
+            }
+            if (productList.isEmpty()) {
+                check = false;
+            }
+        }
+        System.out.println("Enter the name of product");
+        String name = scanner.nextLine();
+        System.out.println("Enter the brand of product");
+        String brand = scanner.nextLine();
+        System.out.println("Enter the price of product");
+        int price = Integer.parseInt(scanner.nextLine());
+        Product product = new Product(id, name, brand, price);
+        productList.add(product);
+        System.out.println("Add new product complete");
+    }
+
+    public static void findProduct(String path) {
+        List<Product> productList = readDataFromFile(path);
+        System.out.println("Enter the name of product you want to find");
+        String name = scanner.nextLine();
+        boolean check = false;
+        for (int i = 0; i < productList.size(); i++) {
+            if (name.equals(productList.get(i).getProductName())) {
+                check = true;
+            }
+        }
+        if (check) {
+            System.out.println("Product " + name + " appear in product list");
+        } else {
+            System.out.println("Product " + name + " does't appear in product list");
+        }
+    }
 }

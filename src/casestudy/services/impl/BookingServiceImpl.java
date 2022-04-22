@@ -12,14 +12,17 @@ import java.util.*;
 public class BookingServiceImpl implements BookingService {
     private static final Scanner scanner = new Scanner(System.in);
     static Set<Booking> bookingSet = new TreeSet<>(new BookingComparator());
-    static List<Customer> customerList = new ArrayList<>();
-    static Map<Facility, Integer> facilityIntegerMap = new LinkedHashMap<>();
+    static List<Customer> customerList = CustomerServiceImpl.getCustomerList();
+    static Map<Facility, Integer> facilityIntegerMap = FacilityServiceImpl.getFacilityIntegerMap();
 
-    static {
-        customerList.add(new Customer(11231256, "Hao", 20, "Ben xe Da Nang", 10, "Male", 123123123, "hao@gmail.com", "Diamond"));
-        customerList.add(new Customer(21232133, "Hoang", 24, "Son Tra", 11, "Male", 297496635, "hoang@gmail.com", "Platinum"));
-        facilityIntegerMap.put(new Villa("1", "Villa 1", 200, 2000000, 10, "week", "VIP", 25, 2), 0);
-        facilityIntegerMap.put(new Villa("2", "Villa 2", 100, 1000000, 50, "day", "NORMAL", 25, 2), 0);
+
+
+    public static Set<Booking> getBookingSet() {
+        return bookingSet;
+    }
+
+    public static void setBookingSet(Set<Booking> bookingSet) {
+        BookingServiceImpl.bookingSet = bookingSet;
     }
 
     public Set<Booking> sentBooking(){
@@ -71,10 +74,9 @@ public class BookingServiceImpl implements BookingService {
     }
 
     public static Customer chooseCustomer() {
+        CustomerServiceImpl customerService = new CustomerServiceImpl();
         System.out.println("Customer list: ");
-        for (Customer customer : customerList) {
-            System.out.println(customer.toString());
-        }
+        customerService.display();
         System.out.println("Enter the id of customer");
         boolean check = true;
         int id = Integer.parseInt(scanner.nextLine());
@@ -82,7 +84,6 @@ public class BookingServiceImpl implements BookingService {
             System.out.println("Enter the id of customer");
             for (Customer customer : customerList) {
                 if (id == customer.getCustomerId()) {
-                    check = false;
                     return customer;
                 }
             }
@@ -96,26 +97,21 @@ public class BookingServiceImpl implements BookingService {
 
     public static Facility chooseFacility() {
         System.out.println("Facility list: ");
-        for (Map.Entry<Facility, Integer> entry : facilityIntegerMap.entrySet()) {
-            System.out.println(entry.getKey().toString());
-        }
-
+        FacilityServiceImpl facilityService = new FacilityServiceImpl();
+        facilityService.display();
         System.out.println("Enter the id of facility");
-        boolean check = true;
         String id = scanner.nextLine();
-
-        while (check) {
+        while (true) {
             for (Map.Entry<Facility, Integer> entry : facilityIntegerMap.entrySet()) {
                 if (id.equals(entry.getKey().getFacilityId())) {
-                    check = false;
+                    entry.setValue(entry.getValue()+1);
                     return entry.getKey();
                 }
             }
-            if (check) {
+            if (true) {
                 System.out.println("Invalid id, please input the id again:");
                 id = scanner.nextLine();
             }
         }
-        return null;
     }
 }

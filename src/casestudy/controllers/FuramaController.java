@@ -21,24 +21,27 @@ public class FuramaController {
             System.out.println("5. Promotion Management");
             System.out.println("6. Exit");
             System.out.println("Enter your choice: ");
-            int choice = Integer.parseInt(input.nextLine());
+            String choice = input.nextLine();
             switch (choice) {
-                case 1:
+                case "1":
                     displayEmployeeMenu();
                     break;
-                case 2:
+                case "2":
                     displayCustomerMenu();
                     break;
-                case 3:
+                case "3":
                     displayFacilityMenu();
                     break;
-                case 4:
+                case "4":
                     displayBookingMenu();
                     break;
-                case 5:
+                case "5":
                     displayPromotionManager();
-                case 6:
+                case "6":
                     check = false;
+                    break;
+                default:
+                    System.out.println("Wrong input");
                     break;
             }
         }
@@ -57,23 +60,26 @@ public class FuramaController {
             System.out.println("4. Delete employee");
             System.out.println("5. Return main menu");
             System.out.println("Enter your choice: ");
-            int choice = Integer.parseInt(input.nextLine());
+            String choice = input.nextLine();
             switch (choice) {
-                case 1:
+                case "1":
                     employeeService.display();
                     break;
-                case 2:
+                case "2":
                     employeeService.addNew();
                     break;
-                case 3:
+                case "3":
                     employeeService.edit();
                     break;
-                case 4:
+                case "4":
                     employeeService.delete();
                     break;
-                case 5:
+                case "5":
                     check = false;
                     displayMainMenu();
+                    break;
+                default:
+                    System.out.println("Wrong id");
                     break;
             }
         }
@@ -93,24 +99,26 @@ public class FuramaController {
             System.out.println("4. Delete customer");
             System.out.println("5. Return mainMenu");
             System.out.println("Enter your choice: ");
-            int choice = Integer.parseInt(input.nextLine());
+            String choice = input.nextLine();
             switch (choice) {
-                case 1:
+                case "1":
                     customerService.display();
                     break;
-                case 2:
+                case "2":
                     customerService.addNew();
                     break;
-                case 3:
+                case "3":
                     customerService.edit();
-
                     break;
-                case 4:
+                case "4":
                     customerService.delete();
                     break;
-                case 5:
+                case "5":
                     check = false;
                     displayMainMenu();
+                    break;
+                default:
+                    System.out.println("Wrong input");
                     break;
             }
         }
@@ -129,23 +137,26 @@ public class FuramaController {
             System.out.println("3. Display list facility maintenance");
             System.out.println("4. Return main Menu");
             System.out.println("Enter your choice:");
-            int choice = Integer.parseInt(input.nextLine());
+            String choice = input.nextLine();
             switch (choice) {
-                case 1:
+                case "1":
                     facilityService.display();
                     check = false;
                     break;
-                case 2:
+                case "2":
                     displayAddNewFacilityMenu(facilityService);
                     check = false;
                     break;
-                case 3:
-
+                case "3":
+                    facilityService.displayMaintain();
                     check = false;
                     break;
-                case 4:
+                case "4":
                     displayMainMenu();
                     check = false;
+                    break;
+                default:
+                    System.out.println("Wrong input");
                     break;
             }
         }
@@ -160,25 +171,25 @@ public class FuramaController {
             System.out.println("2. Add new House");
             System.out.println("3. Add new Room");
             System.out.println("Enter your choice:");
-            int choice = Integer.parseInt(input.nextLine());
+            String choice = input.nextLine();
             switch (choice) {
-                case 1:
+                case "1":
                     facilityService.addNewVilla();
                     displayFacilityMenu();
                     check = false;
                     break;
-                case 2:
+                case "2":
                     facilityService.addNewHouse();
                     displayFacilityMenu();
                     check = false;
                     break;
-                case 3:
+                case "3":
                     facilityService.addNewRoom();
                     displayFacilityMenu();
                     check = false;
                     break;
                 default:
-                    check = true;
+                    System.out.println("Wrong id");
                     break;
             }
         }
@@ -200,29 +211,32 @@ public class FuramaController {
             System.out.println("5. Edit contracts");
             System.out.println("6. Return main menu");
             System.out.println("Enter your choice: ");
-            int choice = Integer.parseInt(input.nextLine());
+            String choice = input.nextLine();
             switch (choice) {
-                case 1:
+                case "1":
                     bookingService.addBooking();
                     displayBookingMenu();
                     break;
-                case 2:
+                case "2":
                     bookingService.displayListBooking();
                     displayBookingMenu();
                     break;
-                case 3:
+                case "3":
                     contactService.createNewContract();
                     displayBookingMenu();
                     break;
-                case 4:
+                case "4":
                     contactService.displayListContract();
                     displayBookingMenu();
                     break;
-                case 5:
+                case "5":
 
                     break;
-                case 6:
+                case "6":
                     displayMainMenu();
+                    break;
+                default:
+                    System.out.println("Wrong input");
                     break;
             }
         }
@@ -239,16 +253,19 @@ public class FuramaController {
         System.out.println("3. Create new contracts");
         System.out.println("4. Return main menu");
         System.out.println("Enter your choice: ");
-        int choice = Integer.parseInt(input.nextLine());
+        String choice = input.nextLine();
         switch (choice) {
-            case 1:
+            case "1":
                 break;
-            case 2:
+            case "2":
                 break;
-            case 3:
+            case "3":
                 break;
-            case 4:
+            case "4":
                 displayMainMenu();
+                break;
+            default:
+                System.out.println("Wrong input");
                 break;
         }
     }

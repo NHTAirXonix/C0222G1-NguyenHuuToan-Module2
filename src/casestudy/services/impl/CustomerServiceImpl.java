@@ -11,6 +11,15 @@ public class CustomerServiceImpl implements CustomerService {
     private static final List<Customer> customerList = new LinkedList<>();
     private static final Scanner scanner = new Scanner(System.in);
 
+    static {
+        customerList.add(new Customer(11231256, "Hao", 20, "Ben xe Da Nang", 1, "Male", 123123123, "hao@gmail.com", "Diamond"));
+        customerList.add(new Customer(21232133, "Hoang", 24, "Son Tra", 2, "Male", 297496635, "hoang@gmail.com", "Platinum"));
+    }
+
+    public static List<Customer> getCustomerList() {
+        return customerList;
+    }
+
     @Override
     public void display() {
         for (Customer elements : customerList) {
