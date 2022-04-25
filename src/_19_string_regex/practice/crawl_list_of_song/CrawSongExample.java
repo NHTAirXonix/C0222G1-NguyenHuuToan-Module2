@@ -9,7 +9,7 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-class CrawlSongExample {
+class CrawSongExample {
 
     public static void main(String[] args) {
         try {
