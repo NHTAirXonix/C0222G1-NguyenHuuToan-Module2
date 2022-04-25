@@ -26,8 +26,9 @@ public class ContactServiceImpl implements ContactService {
             while (!bookingQueue.isEmpty()) {
                 Booking booking = bookingQueue.poll();
                 Customer customer = booking.getCustomer();
-                System.out.println("Detail of booking information for contact: " + booking.toString());
-                System.out.println("Detail of customer for contract: " + customer.toString());
+                System.out.println("----------Contract-information-loading----------");
+                System.out.println("Booking information: " + booking.toString());
+                System.out.println("Customer information: " + customer.toString());
                 System.out.println("Enter the id for contract");
                 String id = scanner.nextLine();
                 System.out.println("Enter the deposit price: ");
@@ -47,6 +48,15 @@ public class ContactServiceImpl implements ContactService {
             System.out.println(contract.toString());
         }
     }
+
+    public static List<Contract> getContractList() {
+        return contractList;
+    }
+
+    public static void setContractList(List<Contract> contractList) {
+        ContactServiceImpl.contractList = contractList;
+    }
+
 
     @Override
     public void display() {

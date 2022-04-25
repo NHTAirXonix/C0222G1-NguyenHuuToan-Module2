@@ -33,6 +33,7 @@ public class Main {
                     displayProductList(readDataFromFile(path));
                     break;
                 case "2":
+                    productList = readDataFromFile(path);
                     addNewProduct(productList);
                     writeToFile(path, productList);
                     break;
@@ -122,7 +123,7 @@ public class Main {
         String name = scanner.nextLine();
         boolean check = false;
         for (int i = 0; i < productList.size(); i++) {
-            if (name.equals(productList.get(i).getProductName())) {
+            if (name.contains(productList.get(i).getProductName())) {
                 check = true;
             }
         }

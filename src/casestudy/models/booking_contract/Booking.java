@@ -32,6 +32,10 @@ public class Booking {
         return bookingStatus;
     }
 
+    public Facility getFacility() {
+        return facility;
+    }
+
     public void setBookingStatus(boolean bookingStatus) {
         this.bookingStatus = bookingStatus;
     }
@@ -77,7 +81,7 @@ public class Booking {
     }
 
     public String getServiceName() {
-        return serviceName;
+        return facility.getServiceName();
     }
 
     public void setServiceName(String serviceName) {

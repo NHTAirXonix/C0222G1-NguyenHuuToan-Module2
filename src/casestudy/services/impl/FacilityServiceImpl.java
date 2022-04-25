@@ -34,8 +34,33 @@ public class FacilityServiceImpl implements FacilityService {
 
     @Override
     public void displayMaintain() {
-
-
+        boolean check = true;
+        while (check) {
+            System.out.println("----------Maintenance-Facility----------");
+            for (Map.Entry<Facility, Integer> element : facilityIntegerMap.entrySet()) {
+                if (element.getValue() >= 5) {
+                    System.out.println("Service " + element.getKey() + " number of rent " + element.getValue());
+                }
+            }
+            System.out.println("1. Repair all facility");
+            System.out.println("2. Exit");
+            System.out.println("Enter your choice");
+            String choice = scanner.nextLine();
+            switch (choice) {
+                case "1":
+                    for (Map.Entry<Facility, Integer> element : facilityIntegerMap.entrySet()) {
+                        if (element.getValue() >= 5) {
+                            element.setValue(0);
+                        }
+                    }
+                    break;
+                case "2":
+                    check = false;
+                    break;
+                default:
+                    System.out.println("Wrong input");
+            }
+        }
     }
 
     @Override

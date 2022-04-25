@@ -101,16 +101,22 @@ public class BookingServiceImpl implements BookingService {
         facilityService.display();
         System.out.println("Enter the id of facility");
         String id = scanner.nextLine();
+        int output =0;
         while (true) {
             for (Map.Entry<Facility, Integer> entry : facilityIntegerMap.entrySet()) {
+                output = 1;
                 if (id.equals(entry.getKey().getFacilityId())) {
-                    entry.setValue(entry.getValue()+1);
-                    return entry.getKey();
+                    output =2;
+                    if (entry.getValue()<5){
+                        entry.setValue(entry.getValue()+1);
+                        return entry.getKey();
+                    }
                 }
             }
-            if (true) {
+            if (output == 1){
                 System.out.println("Invalid id, please input the id again:");
-                id = scanner.nextLine();
+            } else {
+                System.out.println("This facility is close for maintenance, please input the id again ");
             }
         }
     }

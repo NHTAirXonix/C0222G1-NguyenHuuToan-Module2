@@ -5,10 +5,9 @@ public class Customer extends Person{
     private String gender;
     private long phoneNumber;
     private String email;
-    private String customerType;// Diamond, Platinum, Gold, Silver, Member
+    private String customerType;
 
     public Customer() {
-
     }
 
     public Customer(int identityNumber,

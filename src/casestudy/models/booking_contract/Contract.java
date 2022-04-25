@@ -1,6 +1,7 @@
 package casestudy.models.booking_contract;
 
 import casestudy.models.person.Customer;
+import casestudy.models.person.Person;
 
 public class Contract {
     private final String id;
@@ -15,6 +16,14 @@ public class Contract {
         this.deposit = deposit;
         this.allPrice = allPrice;
         this.customer = customer;
+    }
+
+    public String getNameCustomer(){
+        return this.customer.getName();
+    }
+
+    public Booking getBooking() {
+        return booking;
     }
 
     @Override
