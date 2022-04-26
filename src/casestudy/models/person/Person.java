@@ -3,13 +3,13 @@ package casestudy.models.person;
 public abstract class Person {
     private int identityNumber;
     private String name;
-    private int age;
+    private String age;
     private String address;
 
     public Person() {
     }
 
-    public Person(int identityNumber, String name, int age, String address) {
+    public Person(int identityNumber, String name, String age, String address) {
         this.identityNumber = identityNumber;
         this.name = name;
         this.age = age;
@@ -32,11 +32,11 @@ public abstract class Person {
         this.name = name;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
 

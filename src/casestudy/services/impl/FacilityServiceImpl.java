@@ -5,8 +5,11 @@ import casestudy.models.facility.House;
 import casestudy.models.facility.Room;
 import casestudy.models.facility.Villa;
 import casestudy.models.person.Customer;
+import casestudy.regex_class.FacilityRegex;
 import casestudy.services.FacilityService;
+import casestudy.utils.RegexData;
 
+import java.util.regex.Pattern;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -65,64 +68,41 @@ public class FacilityServiceImpl implements FacilityService {
 
     @Override
     public void addNewVilla() {
-        System.out.println("Enter the facility id");
-        String facilityId = scanner.nextLine();
-        System.out.println("Enter the name of service");
-        String serviceName = scanner.nextLine();
-        System.out.println("Enter the use area");
-        int useArea = Integer.parseInt(scanner.nextLine());
-        System.out.println("Enter the rent price");
-        double rentPrice = Double.parseDouble(scanner.nextLine());
-        System.out.println("Enter the maximum people");
-        int maximumPeople = Integer.parseInt(scanner.nextLine());
-        System.out.println("Enter the rent type");
-        String rentType = scanner.nextLine();
-        System.out.println("Enter the room standard");
-        String roomStandard = scanner.nextLine();
-        System.out.println("Enter the pool area");
-        double poolArea = Double.parseDouble(scanner.nextLine());
-        System.out.println("Enter the floor");
-        int floor = Integer.parseInt(scanner.nextLine());
+        String facilityId = FacilityRegex.inputFacilityIdVilla();
+        String serviceName = FacilityRegex.inputFacilityName();
+        double useArea = FacilityRegex.inputUseArea();
+        double rentPrice = FacilityRegex.inputRentPrice();
+        int maximumPeople = FacilityRegex.inputAmountPeople();
+        String rentType = FacilityRegex.inputRentType();
+        String roomStandard = FacilityRegex.inputRoomStandard();
+        double poolArea = FacilityRegex.inputPoolArea();
+        int floor = FacilityRegex.inputFloor();
         Villa villa = new Villa(facilityId, serviceName, useArea, rentPrice, maximumPeople, rentType, roomStandard, poolArea, floor);
         facilityIntegerMap.put(villa, 0);
     }
 
     @Override
     public void addNewHouse() {
-        System.out.println("Enter the facility id");
-        String facilityId = scanner.nextLine();
-        System.out.println("Enter the name of service");
-        String serviceName = scanner.nextLine();
-        System.out.println("Enter the use area");
-        int useArea = Integer.parseInt(scanner.nextLine());
-        System.out.println("Enter the rent price");
-        double rentPrice = Double.parseDouble(scanner.nextLine());
-        System.out.println("Enter the maximum people");
-        int maximumPeople = Integer.parseInt(scanner.nextLine());
-        System.out.println("Enter the rent type");
-        String rentType = scanner.nextLine();
-        System.out.println("Enter the room standard");
-        String roomStandard = scanner.nextLine();
-        System.out.println("Enter the floor");
-        int floor = Integer.parseInt(scanner.nextLine());
+        String facilityId = FacilityRegex.inputFacilityIdHouse();
+        String serviceName = FacilityRegex.inputFacilityName();
+        double useArea = FacilityRegex.inputUseArea();
+        double rentPrice = FacilityRegex.inputRentPrice();
+        int maximumPeople = FacilityRegex.inputAmountPeople();
+        String rentType = FacilityRegex.inputRentType();
+        String roomStandard = FacilityRegex.inputRoomStandard();
+        int floor = FacilityRegex.inputFloor();
         House house = new House(facilityId, serviceName, useArea, rentPrice, maximumPeople, rentType, roomStandard, floor);
         facilityIntegerMap.put(house, 0);
     }
 
     @Override
     public void addNewRoom() {
-        System.out.println("Enter the facility id");
-        String facilityId = scanner.nextLine();
-        System.out.println("Enter the name of service");
-        String serviceName = scanner.nextLine();
-        System.out.println("Enter the use area");
-        int useArea = Integer.parseInt(scanner.nextLine());
-        System.out.println("Enter the rent price");
-        double rentPrice = Double.parseDouble(scanner.nextLine());
-        System.out.println("Enter the maximum people");
-        int maximumPeople = Integer.parseInt(scanner.nextLine());
-        System.out.println("Enter the rent type");
-        String rentType = scanner.nextLine();
+        String facilityId = FacilityRegex.inputFacilityIdRoom();
+        String serviceName = FacilityRegex.inputFacilityName();
+        double useArea = FacilityRegex.inputUseArea();
+        double rentPrice = FacilityRegex.inputRentPrice();
+        int maximumPeople = FacilityRegex.inputAmountPeople();
+        String rentType = FacilityRegex.inputRentType();
         Room room = new Room(facilityId, serviceName, useArea, rentPrice, maximumPeople, rentType);
         facilityIntegerMap.put(room, 0);
     }

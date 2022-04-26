@@ -246,10 +246,10 @@ public class FuramaController {
             String choice = input.nextLine();
             switch (choice) {
                 case "1":
-                    promotionService.displayCustomerName();
+                    promotionService.displayCustomerUseService();
                     break;
                 case "2":
-
+                    promotionService.displayCustomerGetDiscount();
                     break;
                 case "3":
 
@@ -261,8 +261,6 @@ public class FuramaController {
                     System.out.println("Wrong input");
                     break;
             }
-
         }
-
     }
 }

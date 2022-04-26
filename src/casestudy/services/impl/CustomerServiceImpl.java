@@ -1,6 +1,7 @@
 package casestudy.services.impl;
 
 import casestudy.models.person.Customer;
+import casestudy.regex_class.CustomerRegex;
 import casestudy.services.CustomerService;
 
 import java.util.LinkedList;
@@ -12,8 +13,8 @@ public class CustomerServiceImpl implements CustomerService {
     private static final Scanner scanner = new Scanner(System.in);
 
     static {
-        customerList.add(new Customer(11231256, "Hao", 20, "Ben xe Da Nang", 1, "Male", 123123123, "hao@gmail.com", "Diamond"));
-        customerList.add(new Customer(21232133, "Hoang", 24, "Son Tra", 2, "Male", 297496635, "hoang@gmail.com", "Platinum"));
+        customerList.add(new Customer(11231256, "Hao", "20/02/1995", "Ben xe Da Nang", 1, "Male", 123123123, "hao@gmail.com", "Diamond"));
+        customerList.add(new Customer(21232133, "Hoang", "24/04/1999", "Son Tra", 2, "Male", 297496635, "hoang@gmail.com", "Platinum"));
     }
 
     public static List<Customer> getCustomerList() {
@@ -33,8 +34,7 @@ public class CustomerServiceImpl implements CustomerService {
         int id = Integer.parseInt(scanner.nextLine());
         System.out.println("Enter the name: ");
         String name = scanner.nextLine();
-        System.out.println("Enter the age: ");
-        int age = Integer.parseInt(scanner.nextLine());
+        String age = CustomerRegex.regexAge();
         System.out.println("Enter the address");
         String address = scanner.nextLine();
         System.out.println("Enter the customer id: ");
@@ -47,42 +47,7 @@ public class CustomerServiceImpl implements CustomerService {
         long phoneNumber = Integer.parseInt(scanner.nextLine());
         System.out.println("Enter the email: ");
         String email = scanner.nextLine();
-        boolean check = true;
-        StringBuilder customerType = new StringBuilder();
-        while (check) {
-            System.out.println("Choose the customer type: ");
-            System.out.println("1. Diamond");
-            System.out.println("2. Platinium");
-            System.out.println("3. Gold");
-            System.out.println("4. Silver");
-            System.out.println("5. Member");
-            int choose = Integer.parseInt(scanner.nextLine());
-            switch (choose) {
-                case 1:
-                    customerType.append("Diamond");
-                    check = false;
-                    break;
-                case 2:
-                    customerType.append("Platinium");
-                    check = false;
-                    break;
-                case 3:
-                    customerType.append("Gold");
-                    check = false;
-                    break;
-                case 4:
-                    customerType.append("Silver");
-                    check = false;
-                    break;
-                case 5:
-                    customerType.append("Member");
-                    check = false;
-                    break;
-                default:
-                    check = true;
-                    break;
-            }
-        }
+        StringBuilder customerType = CustomerRegex.customerType();
         Customer customer = new Customer(id, name, age, address, customerId, gender, phoneNumber, email, customerType.toString());
         customerList.add(customer);
         System.out.println("Add complete");
@@ -90,7 +55,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void edit() {
-        System.out.println("Enter the id of employee your want to edit: ");
+        System.out.println("Enter the id of customer your want to edit: ");
         int input = Integer.parseInt(scanner.nextLine());
         for (int i = 0; i < customerList.size(); i++) {
             if (customerList.get(i).getCustomerId() == input) {
@@ -98,8 +63,7 @@ public class CustomerServiceImpl implements CustomerService {
                 int id = Integer.parseInt(scanner.nextLine());
                 System.out.println("Enter the name: ");
                 String name = scanner.nextLine();
-                System.out.println("Enter the age: ");
-                int age = Integer.parseInt(scanner.nextLine());
+                String age = CustomerRegex.regexAge();
                 System.out.println("Enter the address");
                 String address = scanner.nextLine();
                 System.out.println("Enter the customer id: ");
@@ -110,42 +74,7 @@ public class CustomerServiceImpl implements CustomerService {
                 long phoneNumber = Integer.parseInt(scanner.nextLine());
                 System.out.println("Enter the email: ");
                 String email = scanner.nextLine();
-                boolean check = true;
-                StringBuilder customerType = new StringBuilder();
-                while (check) {
-                    System.out.println("Choose the customer type: ");
-                    System.out.println("1. Diamond");
-                    System.out.println("2. Platinum");
-                    System.out.println("3. Gold");
-                    System.out.println("4. Silver");
-                    System.out.println("5. Member");
-                    int choose = Integer.parseInt(scanner.nextLine());
-                    switch (choose) {
-                        case 1:
-                            customerType.append("Diamond");
-                            check = false;
-                            break;
-                        case 2:
-                            customerType.append("Platinium");
-                            check = false;
-                            break;
-                        case 3:
-                            customerType.append("Gold");
-                            check = false;
-                            break;
-                        case 4:
-                            customerType.append("Silver");
-                            check = false;
-                            break;
-                        case 5:
-                            customerType.append("Member");
-                            check = false;
-                            break;
-                        default:
-                            check = true;
-                            break;
-                    }
-                }
+                StringBuilder customerType = CustomerRegex.customerType();
 
                 customerList.get(i).setId(id);
                 customerList.get(i).setName(name);

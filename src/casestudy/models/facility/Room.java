@@ -8,7 +8,7 @@ public class Room extends Facility {
 
     public Room(String facilityId,
                 String serviceName,
-                int useArea,
+                double useArea,
                 double rentPrice,
                 int maximumPeople,
                 String rentType) {

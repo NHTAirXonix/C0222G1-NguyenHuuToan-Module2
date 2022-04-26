@@ -1,18 +1,23 @@
 package casestudy.models.person;
 
-public class Customer extends Person{
+import java.util.ArrayList;
+import java.util.List;
+
+public class Customer extends Person {
     private int customerId;
     private String gender;
     private long phoneNumber;
     private String email;
     private String customerType;
+    private static final List<Integer> discountList = new ArrayList<>();
+    private boolean discountStatus = false;
 
     public Customer() {
     }
 
     public Customer(int identityNumber,
                     String name,
-                    int age,
+                    String age,
                     String address,
                     int customerId,
                     String gender,
@@ -25,6 +30,22 @@ public class Customer extends Person{
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.customerType = customerType;
+    }
+
+    public void addDiscount(int percent) {
+        discountList.add(percent);
+    }
+
+    public static List<Integer> getDiscountList() {
+        return discountList;
+    }
+
+    public boolean isDiscountStatus() {
+        return discountStatus;
+    }
+
+    public void setDiscountStatus(boolean discountStatus) {
+        this.discountStatus = discountStatus;
     }
 
     public int getCustomerId() {

@@ -3,7 +3,7 @@ package casestudy.models.facility;
 public abstract class Facility {
     private String facilityId;
     private String serviceName;
-    private int useArea;
+    private double useArea;
     private double rentPrice;
     private int maximumPeople;
     private String rentType;
@@ -13,7 +13,7 @@ public abstract class Facility {
     }
 
 
-    public Facility(String facilityId, String serviceName, int useArea, double rentPrice, int maximumPeople, String rentType) {
+    public Facility(String facilityId, String serviceName, double useArea, double rentPrice, int maximumPeople, String rentType) {
         this.facilityId = facilityId;
         this.serviceName = serviceName;
         this.useArea = useArea;
@@ -40,11 +40,11 @@ public abstract class Facility {
         this.serviceName = serviceName;
     }
 
-    public int getUseArea() {
+    public double getUseArea() {
         return useArea;
     }
 
-    public void setUseArea(int useArea) {
+    public void setUseArea(double useArea) {
         this.useArea = useArea;
     }
 

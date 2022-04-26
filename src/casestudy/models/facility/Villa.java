@@ -10,7 +10,7 @@ public class Villa extends Facility {
 
     public Villa(String facilityId,
                  String serviceName,
-                 int useArea,
+                 double useArea,
                  double rentPrice,
                  int maximumPeople,
                  String rentType,

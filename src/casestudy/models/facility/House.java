@@ -8,7 +8,7 @@ public class  House extends Facility {
     }
     public House(String facilityId,
                  String serviceName,
-                 int useArea,
+                 double useArea,
                  double rentPrice,
                  int maximumPeople,
                  String rentType,
