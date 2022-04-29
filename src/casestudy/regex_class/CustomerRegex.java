@@ -1,44 +1,43 @@
 package casestudy.regex_class;
 
-import casestudy.utils.AgeException;
-
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
+import java.time.format.ResolverStyle;
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 public class CustomerRegex {
     static Scanner scanner = new Scanner(System.in);
-    public static final String REGEX_BIRTHDAY = "((0[13578]|1[02])[\\/.]31[\\/.](18|19|20)[0-9]{2})|((01|0[3-9]|1[1-2])[\\/.](29|30)[\\/.](18|19|20)[0-9]{2})|((0[1-9]|1[0-2])[\\/.](0[1-9]|1[0-9]|2[0-8])[\\/.](18|19|20)[0-9]{2})|((02)[\\/.]29[\\/.](((18|19|20)(04|08|[2468][048]|[13579][26]))|2000))";
 
-    public static String regexAge() {
-        String temp = scanner.nextLine();
-        boolean check = true;
-        while (check) {
-            try {
-                if (Pattern.matches(REGEX_BIRTHDAY, temp)) {
-                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                    LocalDate age = LocalDate.parse(temp, formatter);
-                    LocalDate now = LocalDate.now();
-                    int current = Period.between(age, now).getYears();
-                    if (current < 100 && current > 18) {
-                        check = false;
-                    } else {
-                        throw new AgeException("Age bigger than 18 and smaller than 100, please re-enter");
-                    }
-                } else {
-                    throw new AgeException("Wrong input format, please re-enter");
-                }
-            } catch (AgeException e) {
-                System.err.println(e.getMessage());
-                temp = scanner.nextLine();
-            }
+    public static void dateTimeCheck(String dateOfBirth) throws Exception {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu").withResolverStyle(ResolverStyle.STRICT);
+        LocalDate localDate1 = LocalDate.parse(dateOfBirth, formatter);
+        LocalDate localDate2 = LocalDate.now();
+        localDate2.format(formatter);
+
+        int year = Period.between(localDate1, localDate2).getYears();
+        if (year < 18 || year > 100) {
+            throw new Exception();
         }
-        return temp;
     }
 
-    public static StringBuilder customerType(){
+    public static String regexAge() {
+        String dateOfBirth;
+        while (true) {
+            try {
+                System.out.println("Enter your birth day (dd/MM/yyyy): ");
+                dateOfBirth = scanner.nextLine();
+                dateTimeCheck(dateOfBirth);
+                break;
+            } catch (Exception e) {
+                System.err.println("Age bigger than 18 and smaller than 100 and format is (dd/MM/yyyy), please re-enter");
+                ;
+            }
+        }
+        return dateOfBirth;
+    }
+
+    public static StringBuilder customerType() {
         boolean check = true;
         StringBuilder customerType = new StringBuilder();
         while (check) {

@@ -1,15 +1,13 @@
 package casestudy.models.booking_contract;
 
-import casestudy.models.facility.Facility;
-import casestudy.models.person.Customer;
-
 public class Booking {
     private int bookingNumber;
     private String dayStart;
     private String dayEnd;
-    private Customer customer;
-    private Facility facility;
     private int customerNumber;
+    private String customerInformation;
+    private String facilityInformation;
+    private String customerName;
     private String serviceName;
     private String serviceType;
     private boolean bookingStatus = false;
@@ -18,13 +16,20 @@ public class Booking {
     public Booking(int bookingNumber,
                    String dayStart,
                    String dayEnd,
-                   Customer customer,
-                   Facility facility) {
+                   String customerInformation,
+                   String facilityInformation,
+                   String customerName,
+                   String serviceName
+    ) {
+
+
         this.bookingNumber = bookingNumber;
         this.dayStart = dayStart;
         this.dayEnd = dayEnd;
-        this.customer = customer;
-        this.facility = facility;
+        this.customerInformation = customerInformation;
+        this.facilityInformation = facilityInformation;
+        this.customerName = customerName;
+        this.serviceName = serviceName;
 
     }
 
@@ -32,20 +37,24 @@ public class Booking {
         return bookingStatus;
     }
 
-    public Facility getFacility() {
-        return facility;
+    public String getCustomerInformation() {
+        return customerInformation;
+    }
+
+    public String getFacilityInformation() {
+        return facilityInformation;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public String getServiceName() {
+        return serviceName;
     }
 
     public void setBookingStatus(boolean bookingStatus) {
         this.bookingStatus = bookingStatus;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
     }
 
     public int getBookingNumber() {
@@ -80,9 +89,6 @@ public class Booking {
         this.customerNumber = customerNumber;
     }
 
-    public String getServiceName() {
-        return facility.getServiceName();
-    }
 
     public void setServiceName(String serviceName) {
         this.serviceName = serviceName;
@@ -98,12 +104,12 @@ public class Booking {
 
     @Override
     public String toString() {
-        return "Booking{" +
-                "bookingNumber=" + bookingNumber +
-                ", dayStart='" + dayStart + '\'' +
-                ", dayEnd='" + dayEnd + '\'' +
-                ", customer name=" + customer.getName() +
-                ", facility name=" + facility.getServiceName() +
+        return "Booking {" +
+                "bookingNumber= " + bookingNumber +
+                "| dayStart= " + dayStart +
+                "| dayEnd= " + dayEnd +
+                "| customer name= " + getCustomerName() +
+                "| facility name= " + getServiceName() +
                 '}';
     }
 }

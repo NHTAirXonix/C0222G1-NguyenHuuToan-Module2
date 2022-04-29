@@ -97,14 +97,14 @@ public class Customer extends Person {
     public String toString() {
         return "Customer{" +
                 "identityNumber=" + super.getId() +
-                ", customer id=" + customerId +
-                ", name='" + super.getName() + '\'' +
-                ", age=" + super.getAge() +
-                ", address='" + super.getAddress() + '\'' +
-                ", gender='" + gender + '\'' +
-                ", phoneNumber=" + phoneNumber +
-                ", email='" + email + '\'' +
-                ", customerType='" + customerType + '\'' +
+                "| customer id=" + customerId +
+                "| name='" + super.getName() + '\'' +
+                "| age=" + super.getAge() +
+                "| address='" + super.getAddress() + '\'' +
+                "| gender='" + gender + '\'' +
+                "| phoneNumber=" + phoneNumber +
+                "| email='" + email + '\'' +
+                "| customerType='" + customerType + '\'' +
                 '}';
     }
 }

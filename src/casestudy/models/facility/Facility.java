@@ -7,7 +7,6 @@ public abstract class Facility {
     private double rentPrice;
     private int maximumPeople;
     private String rentType;
-
     public Facility() {
 
     }
@@ -21,7 +20,6 @@ public abstract class Facility {
         this.maximumPeople = maximumPeople;
         this.rentType = rentType;
     }
-
 
 
     public String getFacilityId() {
@@ -76,11 +74,11 @@ public abstract class Facility {
     public String toString() {
         return "Facility{" +
                 "facilityId=" + facilityId +
-                ", serviceName='" + serviceName + '\'' +
-                ", useArea=" + useArea +
-                ", rentPrice=" + rentPrice +
-                ", maximumPeople=" + maximumPeople +
-                ", rentType='" + rentType + '\'' +
+                "| serviceName='" + serviceName +
+                "| useArea=" + useArea +
+                "| rentPrice=" + rentPrice +
+                "| maximumPeople=" + maximumPeople +
+                "| rentType='" + rentType + '\'' +
                 '}';
     }
 }

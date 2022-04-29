@@ -1,35 +1,35 @@
 package casestudy.services.impl;
 
+
+import casestudy.utils.ReadAndWrite;
 import casestudy.models.person.Customer;
 import casestudy.regex_class.CustomerRegex;
 import casestudy.services.CustomerService;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
 public class CustomerServiceImpl implements CustomerService {
-    private static final List<Customer> customerList = new LinkedList<>();
+    private static List<Customer> customerList = new LinkedList<>();
     private static final Scanner scanner = new Scanner(System.in);
-
-    static {
-        customerList.add(new Customer(11231256, "Hao", "20/02/1995", "Ben xe Da Nang", 1, "Male", 123123123, "hao@gmail.com", "Diamond"));
-        customerList.add(new Customer(21232133, "Hoang", "24/04/1999", "Son Tra", 2, "Male", 297496635, "hoang@gmail.com", "Platinum"));
-    }
 
     public static List<Customer> getCustomerList() {
         return customerList;
     }
 
     @Override
-    public void display() {
+    public void display() throws IOException {
+        customerList = ReadAndWrite.readFileCustomer();
         for (Customer elements : customerList) {
             System.out.println(elements.toString());
         }
     }
 
     @Override
-    public void addNew() {
+    public void addNew() throws IOException {
         System.out.println("Enter the id: ");
         int id = Integer.parseInt(scanner.nextLine());
         System.out.println("Enter the name: ");
@@ -39,8 +39,6 @@ public class CustomerServiceImpl implements CustomerService {
         String address = scanner.nextLine();
         System.out.println("Enter the customer id: ");
         int customerId = Integer.parseInt(scanner.nextLine());
-        System.out.println("Enter the service name: ");
-        String dayOfBirth = scanner.nextLine();
         System.out.println("Enter the gender: ");
         String gender = scanner.nextLine();
         System.out.println("Enter the phone number: ");
@@ -48,13 +46,14 @@ public class CustomerServiceImpl implements CustomerService {
         System.out.println("Enter the email: ");
         String email = scanner.nextLine();
         StringBuilder customerType = CustomerRegex.customerType();
-        Customer customer = new Customer(id, name, age, address, customerId, gender, phoneNumber, email, customerType.toString());
-        customerList.add(customer);
+        String line = id + "," + name + "," + age + "," + address + "," + customerId + "," + gender + "," + phoneNumber + "," + email + "," + customerType.toString();
+        ReadAndWrite.writeFileCustomer(line);
         System.out.println("Add complete");
     }
 
     @Override
-    public void edit() {
+    public void edit() throws IOException {
+        customerList = ReadAndWrite.readFileCustomer();
         System.out.println("Enter the id of customer your want to edit: ");
         int input = Integer.parseInt(scanner.nextLine());
         for (int i = 0; i < customerList.size(); i++) {
@@ -86,15 +85,32 @@ public class CustomerServiceImpl implements CustomerService {
                 customerList.get(i).setEmail(email);
                 customerList.get(i).setCustomerType(customerType.toString());
 
+                File file = new File("D:\\CODEGYM\\C0222G1_Nguyen_Huu_Toan_Module2\\src\\casestudy\\data\\customer.csv");
+                file.delete();
+                for (Customer elements : customerList) {
+                    String line = elements.getId() + "," +
+                            elements.getName() + "," +
+                            elements.getAge() + "," +
+                            elements.getAddress() + "," +
+                            elements.getCustomerId() + "," +
+                            elements.getGender() + "," +
+                            elements.getPhoneNumber() + "," +
+                            elements.getEmail() + "," +
+                            elements.getCustomerType();
+                    ReadAndWrite.writeFileCustomer(line);
+                }
                 System.out.println("Edit complete");
-            } else if (i == customerList.size()-1){
+                break;
+            } else if (i == customerList.size() - 1) {
                 System.out.println("Wrong id");
             }
         }
+
     }
 
     @Override
-    public void delete() {
+    public void delete() throws IOException {
+        customerList = ReadAndWrite.readFileCustomer();
         System.out.println("Enter the id of customer you want to delete: ");
         int input = scanner.nextInt();
         for (int i = 0; i < customerList.size(); i++) {
@@ -106,6 +122,20 @@ public class CustomerServiceImpl implements CustomerService {
             if (i == customerList.size() - 1) {
                 System.out.println("Wrong id");
             }
+        }
+        File file = new File("D:\\CODEGYM\\C0222G1_Nguyen_Huu_Toan_Module2\\src\\casestudy\\data\\customer.csv");
+        file.delete();
+        for (Customer elements : customerList) {
+            String line = elements.getId() + "," +
+                    elements.getName() + "," +
+                    elements.getAge() + "," +
+                    elements.getAddress() + "," +
+                    elements.getCustomerId() + "," +
+                    elements.getGender() + "," +
+                    elements.getPhoneNumber() + "," +
+                    elements.getEmail() + "," +
+                    elements.getCustomerType();
+            ReadAndWrite.writeFileCustomer(line);
         }
     }
 }

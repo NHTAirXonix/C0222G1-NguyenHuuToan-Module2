@@ -1,11 +1,13 @@
 package casestudy.models.facility;
 
-public class  House extends Facility {
+public class House extends Facility {
     private String roomStandard;
     private int floor;
+    public String type = "House";
 
     public House() {
     }
+
     public House(String facilityId,
                  String serviceName,
                  double useArea,
@@ -17,6 +19,10 @@ public class  House extends Facility {
         super(facilityId, serviceName, useArea, rentPrice, maximumPeople, rentType);
         this.roomStandard = roomStandard;
         this.floor = floor;
+    }
+
+    public String getType() {
+        return type;
     }
 
     public String getRoomStandard() {
@@ -35,4 +41,17 @@ public class  House extends Facility {
         this.floor = floor;
     }
 
+    @Override
+    public String toString() {
+        return "Villa{" +
+                "facilityId=" + super.getFacilityId() +
+                "| serviceName='" + super.getServiceName() + '\'' +
+                "| useArea=" + super.getUseArea() +
+                "| rentPrice=" + super.getRentPrice() +
+                "| maximumPeople=" + super.getMaximumPeople() +
+                "| rentType='" + super.getRentType() + '\'' +
+                "| roomStandardVilla='" + roomStandard + '\'' +
+                "| floor=" + floor +
+                '}';
+    }
 }

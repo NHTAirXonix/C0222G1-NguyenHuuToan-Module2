@@ -2,20 +2,30 @@ package casestudy.services.impl;
 
 import casestudy.models.booking_contract.Booking;
 import casestudy.models.booking_contract.Contract;
-import casestudy.models.person.Customer;
 import casestudy.services.ContactService;
+import casestudy.utils.ReadAndWrite;
 
+import java.io.IOException;
 import java.util.*;
 
 public class ContactServiceImpl implements ContactService {
     static List<Contract> contractList = new ArrayList<>();
     static Scanner scanner = new Scanner(System.in);
-    static Set<Booking> bookingSet = BookingServiceImpl.getBookingSet();
+    static Set<Booking> bookingSet;
+
+    static {
+        try {
+            bookingSet = BookingServiceImpl.getBookingSet();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     Queue<Booking> bookingQueue = new LinkedList<>();
 
-    public void createNewContract() {
-        for (Booking elements: bookingSet) {
-            if (!elements.isBookingStatus()){
+    public void createNewContract() throws IOException {
+        for (Booking elements : bookingSet) {
+            if (!elements.isBookingStatus()) {
                 bookingQueue.add(elements);
                 elements.setBookingStatus(true);
             }
@@ -25,18 +35,22 @@ public class ContactServiceImpl implements ContactService {
         } else {
             while (!bookingQueue.isEmpty()) {
                 Booking booking = bookingQueue.poll();
-                Customer customer = booking.getCustomer();
                 System.out.println("----------Contract-information-loading----------");
                 System.out.println("Booking information: " + booking.toString());
-                System.out.println("Customer information: " + customer.toString());
+                System.out.println("Customer information: " + booking.getCustomerInformation());
                 System.out.println("Enter the id for contract");
                 String id = scanner.nextLine();
                 System.out.println("Enter the deposit price: ");
                 String deposit = scanner.nextLine();
                 System.out.println("Enter the deposit price: ");
                 String allPrice = scanner.nextLine();
-                Contract contract = new Contract(id, booking, deposit, allPrice, customer);
+                String[] arrayDaySplit;
+                arrayDaySplit = booking.getDayStart().split("/");
+                Contract contract = new Contract(id, arrayDaySplit[1], arrayDaySplit[2], booking.getDayStart(), booking.getDayEnd(), booking.getServiceName(), deposit, allPrice, booking.getCustomerName());
+                String line = id+","+arrayDaySplit[1]+","+arrayDaySplit[2]+","+ booking.getDayStart()+","+ booking.getDayEnd()+","+ booking.getServiceName()+","+ deposit+","+ allPrice+","+ booking.getCustomerName();
+                System.out.println(line);
                 contractList.add(contract);
+                ReadAndWrite.writeFileContract(line);
                 System.out.println("Create contract complete" + contract.toString());
             }
         }

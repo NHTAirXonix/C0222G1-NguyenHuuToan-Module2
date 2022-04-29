@@ -89,8 +89,16 @@ public class FacilityRegex {
     }
 
     public static String inputRentType() {
-        System.out.println("Enter the rent type (uppercase first character):");
-        return RegexData.regexStr(scanner.nextLine(), REGEX_STRING, "Wrong format, please re-enter the rent type (uppercase first character):");
+        String rentType;
+        while (true){
+            System.out.println("Enter the rent type (Day / Month / Year):");
+            rentType = scanner.nextLine();
+            if (rentType.equals("Day") || rentType.equals("Month") || rentType.equals("Year")){
+                break;
+            }
+            System.err.println("Wrong input!");
+        }
+        return rentType;
     }
 
     public static int inputFloor() {
@@ -158,6 +166,4 @@ public class FacilityRegex {
         }
         return poolArea;
     }
-
-
 }

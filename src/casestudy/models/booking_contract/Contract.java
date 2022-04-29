@@ -5,34 +5,59 @@ import casestudy.models.person.Person;
 
 public class Contract {
     private final String id;
-    private final Booking booking;
     private final String deposit;
     private final String allPrice;
-    private final Customer customer;
+    private final String customerName;
+    private final String bookingDayStart;
+    private final String bookingDayEnd;
+    private final String bookingServiceName;
+    private final String bookingDay;
+    private final String bookingYear;
 
-    public Contract(String id, Booking booking, String deposit, String allPrice, Customer customer) {
+
+    public Contract(String id, String bookingDay, String bookingYear, String bookingDayStart, String bookingDayEnd, String bookingServiceName, String deposit, String allPrice, String customerName) {
         this.id = id;
-        this.booking = booking;
+        this.bookingDayEnd = bookingDayEnd;
+        this.bookingDayStart = bookingDayStart;
+        this.bookingServiceName = bookingServiceName;
         this.deposit = deposit;
         this.allPrice = allPrice;
-        this.customer = customer;
+        this.customerName = customerName;
+        this.bookingDay = bookingDay;
+        this.bookingYear = bookingYear;
     }
 
     public String getNameCustomer(){
-        return this.customer.getName();
+        return this.customerName;
     }
 
-    public Booking getBooking() {
-        return booking;
+    public String getBookingDayStart() {
+        return bookingDayStart;
+    }
+
+    public String getBookingDayEnd() {
+        return bookingDayEnd;
+    }
+
+    public String getBookingServiceName() {
+        return bookingServiceName;
+    }
+
+    public String getBookingDay() {
+        return bookingDay;
+    }
+
+    public String getBookingYear() {
+        return bookingYear;
     }
 
     @Override
     public String toString() {
         return "\n---------------Contract-"+id+"--------------" +
-                "\nidContract='" + id + '\'' +
-                ", deposit='" + deposit + '\'' +
-                ", allPrice='" + allPrice + '\'' +
-                "\n" + booking +
-                "\n" + customer;
+                "\nidContract= " + id + '\'' +
+                "| deposit= " + deposit + '\'' +
+                "| allPrice= " + allPrice + '\'' +
+                "\nCustomer name= " + customerName  +  "| Service name= " + bookingServiceName +
+                "\nDay Start= " + bookingDayStart +"| Day End= "+ bookingDayEnd;
     }
 }

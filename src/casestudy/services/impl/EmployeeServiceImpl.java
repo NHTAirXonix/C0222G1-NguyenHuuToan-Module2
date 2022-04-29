@@ -1,33 +1,35 @@
 package casestudy.services.impl;
 
 import casestudy.models.person.Employee;
+import casestudy.regex_class.EmployeeRegex;
 import casestudy.services.EmployeeService;
+import casestudy.utils.ReadAndWrite;
 
-import java.sql.SQLOutput;
-import java.util.ArrayList;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
 public class EmployeeServiceImpl implements EmployeeService {
-    private static final List<Employee> employeeList = new ArrayList<>();
+    private static List<Employee> employeeList;
     private static final Scanner scanner = new Scanner(System.in);
 
 
     @Override
-    public void display() {
-        for (Employee employee : employeeList) {
-            System.out.println(employee.toString());
+    public void display() throws IOException {
+        employeeList = ReadAndWrite.readFileEmployee();
+        for (Employee elements : employeeList) {
+            System.out.println(elements.toString());
         }
     }
 
     @Override
-    public void addNew() {
+    public void addNew() throws IOException {
         System.out.println("Enter the id: ");
         int id = Integer.parseInt(scanner.nextLine());
         System.out.println("Enter the name: ");
         String name = scanner.nextLine();
-        System.out.println("Enter the age: ");
-        int age = Integer.parseInt(scanner.nextLine());
+        String age = EmployeeRegex.regexAge();
         System.out.println("Enter the address");
         String address = scanner.nextLine();
         System.out.println("Enter the gender: ");
@@ -38,48 +40,18 @@ public class EmployeeServiceImpl implements EmployeeService {
         int employeeId = Integer.parseInt(scanner.nextLine());
         System.out.println("Enter the email: ");
         String email = scanner.nextLine();
-        boolean check = true;
-        String level = "";
-        while (check) {
-            System.out.println("Choose the level: ");
-            System.out.println("1. Intermediate");
-            System.out.println("2. Colleges");
-            System.out.println("3. University");
-            System.out.println("4. Postgraduate");
-            int choose = Integer.parseInt(scanner.nextLine());
-            switch (choose) {
-                case 1:
-                    level += "Intermediate";
-                    check = false;
-                    break;
-                case 2:
-                    level += "Colleges";
-                    check = false;
-                    break;
-                case 3:
-                    level += "University";
-                    check = false;
-                    break;
-                case 4:
-                    level += "Postgraduate";
-                    check = false;
-                    break;
-                default:
-                    check = true;
-                    break;
-            }
-        }
-        System.out.println("Enter the position: ");
-        String position = scanner.nextLine();
+        String level = EmployeeRegex.getLevel();
+        String position = EmployeeRegex.getPosition();
         System.out.println("Enter the  salary: ");
         long salary = Integer.parseInt(scanner.nextLine());
-        Employee employee = new Employee(id, name, age, address, employeeId, gender, phoneNumber, email, level, position, salary);
-        employeeList.add(employee);
+        String line = id + "," + name + "," + age + "," + address + "," + employeeId + "," + gender + "," + phoneNumber + "," + email + "," + level + "," + position + "," + salary;
+        ReadAndWrite.writeFileEmployee(line);
         System.out.println("Add complete");
     }
 
     @Override
-    public void edit() {
+    public void edit() throws IOException {
+        employeeList = ReadAndWrite.readFileEmployee();
         System.out.println("Enter the id of employee your want to edit: ");
         int input = Integer.parseInt(scanner.nextLine());
         for (int i = 0; i < employeeList.size(); i++) {
@@ -88,54 +60,17 @@ public class EmployeeServiceImpl implements EmployeeService {
                 int id = Integer.parseInt(scanner.nextLine());
                 System.out.println("Enter the name: ");
                 String name = scanner.nextLine();
-                System.out.println("Enter the age: ");
-                int age = Integer.parseInt(scanner.nextLine());
+                String age = EmployeeRegex.regexAge();
                 System.out.println("Enter the address");
                 String address = scanner.nextLine();
-                System.out.println("Enter the day of birth: ");
-                String dayOfBirth = scanner.nextLine();
                 System.out.println("Enter the gender: ");
                 String gender = scanner.nextLine();
-                System.out.println("Enter the  id number: ");
-                int idNumber = Integer.parseInt(scanner.nextLine());
                 System.out.println("Enter the phone number: ");
                 long phoneNumber = Integer.parseInt(scanner.nextLine());
                 System.out.println("Enter the email: ");
                 String email = scanner.nextLine();
-                boolean check = true;
-                String level = "";
-                while (check) {
-                    System.out.println("Choose the level: ");
-                    System.out.println("1. Intermediate");
-                    System.out.println("2. Colleges");
-                    System.out.println("3. University");
-                    System.out.println("4. Postgraduate");
-                    int choose = Integer.parseInt(scanner.nextLine());
-                    switch (choose) {
-                        case 1:
-                            level += "Intermediate";
-                            check = false;
-                            break;
-                        case 2:
-                            level += "Colleges";
-                            check = false;
-                            break;
-                        case 3:
-                            level += "University";
-                            check = false;
-                            break;
-                        case 4:
-                            level += "Postgraduate";
-                            check = false;
-                            break;
-                        default:
-                            check = true;
-                            break;
-                    }
-                }
-
-                System.out.println("Enter the position: ");
-                String position = scanner.nextLine();
+                String level = EmployeeRegex.getLevel();
+                String position = EmployeeRegex.getPosition();
                 System.out.println("Enter the  salary: ");
                 long salary = Integer.parseInt(scanner.nextLine());
 
@@ -150,6 +85,22 @@ public class EmployeeServiceImpl implements EmployeeService {
                 employeeList.get(i).setPosition(position);
                 employeeList.get(i).setSalary(salary);
 
+                File file = new File("D:\\CODEGYM\\C0222G1_Nguyen_Huu_Toan_Module2\\src\\casestudy\\data\\employee.csv");
+                file.delete();
+                for (Employee elements : employeeList) {
+                    String line = elements.getId() + "," +
+                            elements.getName() + "," +
+                            elements.getAge() + "," +
+                            elements.getAddress() + "," +
+                            elements.getEmployeeId() + "," +
+                            elements.isGender() + "," +
+                            elements.getPhoneNumber() + "," +
+                            elements.getEmail() + "," +
+                            elements.getLevel() + "," +
+                            elements.getPosition() + "," +
+                            elements.getSalary();
+                    ReadAndWrite.writeFileEmployee(line);
+                }
                 System.out.println("Edit complete");
             } else if (i == employeeList.size() - 1) {
                 System.out.println("Wrong id");
@@ -158,7 +109,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public void delete() {
+    public void delete() throws IOException {
+        employeeList = ReadAndWrite.readFileEmployee();
         System.out.println("Enter the id of employee you want to delete: ");
         int input = scanner.nextInt();
         for (int i = 0; i < employeeList.size(); i++) {
@@ -170,6 +122,22 @@ public class EmployeeServiceImpl implements EmployeeService {
             if (i == employeeList.size() - 1) {
                 System.out.println("Wrong id");
             }
+        }
+        File file = new File("D:\\CODEGYM\\C0222G1_Nguyen_Huu_Toan_Module2\\src\\casestudy\\data\\employee.csv");
+        file.delete();
+        for (Employee elements : employeeList) {
+            String line = elements.getId() + "," +
+                    elements.getName() + "," +
+                    elements.getAge() + "," +
+                    elements.getAddress() + "," +
+                    elements.getEmployeeId() + "," +
+                    elements.isGender() + "," +
+                    elements.getPhoneNumber() + "," +
+                    elements.getEmail() + "," +
+                    elements.getLevel() + "," +
+                    elements.getPosition() + "," +
+                    elements.getSalary();
+            ReadAndWrite.writeFileEmployee(line);
         }
     }
 }

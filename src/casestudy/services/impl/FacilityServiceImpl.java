@@ -4,31 +4,23 @@ import casestudy.models.facility.Facility;
 import casestudy.models.facility.House;
 import casestudy.models.facility.Room;
 import casestudy.models.facility.Villa;
-import casestudy.models.person.Customer;
 import casestudy.regex_class.FacilityRegex;
 import casestudy.services.FacilityService;
-import casestudy.utils.RegexData;
+import casestudy.utils.ReadAndWrite;
 
-import java.util.regex.Pattern;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.io.IOException;
+import java.util.*;
 
 public class FacilityServiceImpl implements FacilityService {
-    private static final Map<Facility, Integer> facilityIntegerMap = new LinkedHashMap<>();
+    private static Map<Facility, Integer> facilityIntegerMap = new LinkedHashMap<>();
     private static final Scanner scanner = new Scanner(System.in);
 
-    static {
-        facilityIntegerMap.put(new Villa("1", "Villa 1", 200, 2000000, 10, "week", "VIP", 25, 2), 0);
-        facilityIntegerMap.put(new Villa("2", "Villa 2", 100, 1000000, 50, "day", "NORMAL", 25, 2), 0);
-    }
-
     @Override
-    public void display() {
+    public void display() throws IOException {
+        facilityIntegerMap = ReadAndWrite.readFileFacility();
         for (Map.Entry<Facility, Integer> element : facilityIntegerMap.entrySet()) {
             System.out.println("Service " + element.getKey() + " number of rent " + element.getValue());
         }
-
     }
 
     public static Map<Facility, Integer> getFacilityIntegerMap() {
@@ -67,7 +59,7 @@ public class FacilityServiceImpl implements FacilityService {
     }
 
     @Override
-    public void addNewVilla() {
+    public void addNewVilla() throws IOException {
         String facilityId = FacilityRegex.inputFacilityIdVilla();
         String serviceName = FacilityRegex.inputFacilityName();
         double useArea = FacilityRegex.inputUseArea();
@@ -78,11 +70,15 @@ public class FacilityServiceImpl implements FacilityService {
         double poolArea = FacilityRegex.inputPoolArea();
         int floor = FacilityRegex.inputFloor();
         Villa villa = new Villa(facilityId, serviceName, useArea, rentPrice, maximumPeople, rentType, roomStandard, poolArea, floor);
+        String line = facilityId + "," + serviceName + "," + useArea + "," + rentPrice + "," + maximumPeople + "," + rentType + "," + roomStandard + "," + poolArea + "," + floor;
+        String line2 = facilityId + "," + serviceName + "," + useArea + "," + rentPrice + "," + maximumPeople + "," + rentType + "," + roomStandard + "," + poolArea + "," + floor + "," + 0;
+        ReadAndWrite.writeFileVilla(line);
         facilityIntegerMap.put(villa, 0);
+        ReadAndWrite.writeFileFacility(line2);
     }
 
     @Override
-    public void addNewHouse() {
+    public void addNewHouse() throws IOException {
         String facilityId = FacilityRegex.inputFacilityIdHouse();
         String serviceName = FacilityRegex.inputFacilityName();
         double useArea = FacilityRegex.inputUseArea();
@@ -92,11 +88,15 @@ public class FacilityServiceImpl implements FacilityService {
         String roomStandard = FacilityRegex.inputRoomStandard();
         int floor = FacilityRegex.inputFloor();
         House house = new House(facilityId, serviceName, useArea, rentPrice, maximumPeople, rentType, roomStandard, floor);
+        String line = facilityId + "," + serviceName + "," + useArea + "," + rentPrice + "," + maximumPeople + "," + rentType + "," + roomStandard + "," + floor;
+        String line2 = facilityId + "," + serviceName + "," + useArea + "," + rentPrice + "," + maximumPeople + "," + rentType + "," + roomStandard + "," + floor + "," + 0;
+        ReadAndWrite.writeFileHouse(line);
         facilityIntegerMap.put(house, 0);
+        ReadAndWrite.writeFileFacility(line2);
     }
 
     @Override
-    public void addNewRoom() {
+    public void addNewRoom() throws IOException {
         String facilityId = FacilityRegex.inputFacilityIdRoom();
         String serviceName = FacilityRegex.inputFacilityName();
         double useArea = FacilityRegex.inputUseArea();
@@ -104,7 +104,11 @@ public class FacilityServiceImpl implements FacilityService {
         int maximumPeople = FacilityRegex.inputAmountPeople();
         String rentType = FacilityRegex.inputRentType();
         Room room = new Room(facilityId, serviceName, useArea, rentPrice, maximumPeople, rentType);
+        String line = facilityId + "," + serviceName + "," + useArea + "," + rentPrice + "," + maximumPeople + "," + rentType;
+        String line2 = facilityId + "," + serviceName + "," + useArea + "," + rentPrice + "," + maximumPeople + "," + rentType + "," + 0;
+        ReadAndWrite.writeFileRoom(line);
         facilityIntegerMap.put(room, 0);
+        ReadAndWrite.writeFileFacility(line2);
     }
 
     @Override

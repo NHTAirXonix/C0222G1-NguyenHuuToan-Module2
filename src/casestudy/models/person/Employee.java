@@ -14,7 +14,7 @@ public class Employee extends Person {
 
     public Employee(int identityNumber,
                     String name,
-                    int age,
+                    String age,
                     String address,
                     int employeeId,
                     String gender,

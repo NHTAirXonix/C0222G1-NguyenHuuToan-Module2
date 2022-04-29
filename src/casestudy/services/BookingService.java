@@ -1,7 +1,9 @@
 package casestudy.services;
 
-public interface BookingService extends Services {
-    public void addBooking();
+import java.io.IOException;
 
-    public void displayListBooking();
+public interface BookingService extends Services {
+    public void addBooking() throws IOException;
+
+    public void displayListBooking() throws IOException;
 }

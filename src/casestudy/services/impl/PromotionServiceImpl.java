@@ -14,13 +14,11 @@ public class PromotionServiceImpl {
         System.out.println("Enter the year of customer using facility list: ");
         String year = scanner.nextLine();
         for (Contract elements : contractList) {
-            String[] arrayDaySplit;
-            arrayDaySplit = elements.getBooking().getDayStart().split("/");
-            if (year.contains(arrayDaySplit[2])) {
+            if (year.contains(elements.getBookingYear())) {
                 System.out.println("Customer name: '" + elements.getNameCustomer()
-                        + "' using '" + elements.getBooking().getServiceName()
-                        + "' from '" + elements.getBooking().getDayStart()
-                        + "' to '" + elements.getBooking().getDayEnd() + "'");
+                        + "' using '" + elements.getBookingServiceName()
+                        + "' from '" + elements.getBookingDayStart()
+                        + "' to '" + elements.getBookingDayEnd() + "'");
             }
         }
     }
@@ -31,9 +29,7 @@ public class PromotionServiceImpl {
         int month = localDate.getMonthValue();
         int year = localDate.getYear();
         for (Contract elements: contractList) {
-            String[] arrayDaySplit;
-            arrayDaySplit = elements.getBooking().getDayStart().split("/");
-            if (month == Integer.parseInt(arrayDaySplit[1]) && year == Integer.parseInt(arrayDaySplit[2])) {
+            if (month == Integer.parseInt(elements.getBookingDay()) && year == Integer.parseInt(elements.getBookingYear())) {
                 voucherList.add(elements);
             }
         }

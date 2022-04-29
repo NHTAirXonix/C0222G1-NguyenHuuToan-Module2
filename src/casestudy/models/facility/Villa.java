@@ -1,9 +1,10 @@
 package casestudy.models.facility;
 
 public class Villa extends Facility {
-    private String roomStandardVilla;
+    private String roomStandard;
     private double poolArea;
     private int floor;
+    public String type = "Villa";
 
     public Villa() {
     }
@@ -18,22 +19,25 @@ public class Villa extends Facility {
                  double poolArea,
                  int floor) {
         super(facilityId, serviceName, useArea, rentPrice, maximumPeople, rentType);
-        this.roomStandardVilla = roomStandard;
+        this.roomStandard = roomStandard;
         this.poolArea = poolArea;
         this.floor = floor;
     }
 
+    public String getType() {
+        return type;
+    }
 
     public String getRoomStandard() {
-        return roomStandardVilla;
+        return this.roomStandard;
     }
 
     public void setRoomStandard(String roomStandardVilla) {
-        this.roomStandardVilla = roomStandardVilla;
+        this.roomStandard = roomStandardVilla;
     }
 
     public double getPoolArea() {
-        return poolArea;
+        return this.poolArea;
     }
 
     public void setPoolArea(double poolArea) {
@@ -41,7 +45,7 @@ public class Villa extends Facility {
     }
 
     public int getFloor() {
-        return floor;
+        return this.floor;
     }
 
     public void setFloor(int floor) {
@@ -52,14 +56,14 @@ public class Villa extends Facility {
     public String toString() {
         return "Villa{" +
                 "facilityId=" + super.getFacilityId() +
-                ", serviceName='" + super.getServiceName() + '\'' +
-                ", useArea=" + super.getUseArea() +
-                ", rentPrice=" + super.getRentPrice() +
-                ", maximumPeople=" + super.getMaximumPeople() +
-                ", rentType='" + super.getRentType() + '\'' +
-                ", roomStandardVilla='" + roomStandardVilla + '\'' +
-                ", poolArea=" + poolArea +
-                ", floor=" + floor +
+                "| serviceName='" + super.getServiceName() + '\'' +
+                "| useArea=" + super.getUseArea() +
+                "| rentPrice=" + super.getRentPrice() +
+                "| maximumPeople=" + super.getMaximumPeople() +
+                "| rentType='" + super.getRentType() + '\'' +
+                "| roomStandardVilla='" + roomStandard + '\'' +
+                "| poolArea=" + poolArea +
+                "| floor=" + floor +
                 '}';
     }
 }

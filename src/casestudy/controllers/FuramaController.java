@@ -2,14 +2,15 @@ package casestudy.controllers;
 
 import casestudy.services.impl.*;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class FuramaController {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         displayMainMenu();
     }
 
-    public static void displayMainMenu() {
+    public static void displayMainMenu() throws IOException {
         Scanner input = new Scanner(System.in);
         boolean check = true;
         while (check) {
@@ -49,7 +50,7 @@ public class FuramaController {
     }
 
     //menu 1
-    public static void displayEmployeeMenu() {
+    public static void displayEmployeeMenu() throws IOException {
         EmployeeServiceImpl employeeService = new EmployeeServiceImpl();
         Scanner input = new Scanner(System.in);
         boolean check = true;
@@ -87,7 +88,7 @@ public class FuramaController {
     }
 
     // menu 2
-    public static void displayCustomerMenu() {
+    public static void displayCustomerMenu() throws IOException {
         CustomerServiceImpl customerService = new CustomerServiceImpl();
         Scanner input = new Scanner(System.in);
         boolean check = true;
@@ -125,7 +126,7 @@ public class FuramaController {
     }
 
     // menu 3
-    public static void displayFacilityMenu() {
+    public static void displayFacilityMenu() throws IOException {
         FacilityServiceImpl facilityService = new FacilityServiceImpl();
         Scanner input = new Scanner(System.in);
         boolean check = true;
@@ -157,7 +158,7 @@ public class FuramaController {
         }
     }
     // super menu 3
-    public static void displayAddNewFacilityMenu(FacilityServiceImpl facilityService) {
+    public static void displayAddNewFacilityMenu(FacilityServiceImpl facilityService) throws IOException {
         Scanner input = new Scanner(System.in);
         boolean check = true;
         while (check) {
@@ -190,7 +191,7 @@ public class FuramaController {
     }
 
     // menu con 4
-    public static void displayBookingMenu() {
+    public static void displayBookingMenu() throws IOException {
         BookingServiceImpl bookingService = new BookingServiceImpl();
         ContactServiceImpl contactService = new ContactServiceImpl();
         Scanner input = new Scanner(System.in);
