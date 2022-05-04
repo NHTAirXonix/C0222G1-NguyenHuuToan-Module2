@@ -47,17 +47,53 @@ public class ContactServiceImpl implements ContactService {
                 String[] arrayDaySplit;
                 arrayDaySplit = booking.getDayStart().split("/");
                 Contract contract = new Contract(id, arrayDaySplit[1], arrayDaySplit[2], booking.getDayStart(), booking.getDayEnd(), booking.getServiceName(), deposit, allPrice, booking.getCustomerName());
-                String line = id+","+arrayDaySplit[1]+","+arrayDaySplit[2]+","+ booking.getDayStart()+","+ booking.getDayEnd()+","+ booking.getServiceName()+","+ deposit+","+ allPrice+","+ booking.getCustomerName();
+                String line = id + "," + arrayDaySplit[1] + "," + arrayDaySplit[2] + "," + booking.getDayStart() + "," + booking.getDayEnd() + "," + booking.getServiceName() + "," + deposit + "," + allPrice + "," + booking.getCustomerName();
                 System.out.println(line);
                 contractList.add(contract);
-                ReadAndWrite.writeFileContract(line);
+                ReadAndWrite.writeAllFile("D:\\CODEGYM\\C0222G1_Nguyen_Huu_Toan_Module2\\src\\casestudy\\data\\contract.csv", line);
                 System.out.println("Create contract complete" + contract.toString());
+            }
+        }
+        rewriteContractFile();
+    }
+
+    public void editContract() throws IOException {
+        String idFind;
+        boolean check = true;
+        while (true) {
+            System.out.println("Enter the id of contract you want to edit");
+            idFind = scanner.nextLine();
+            for (Contract contracts : contractList) {
+                if (contracts.getId().equals(idFind)) {
+                    System.out.println("Enter the id for contract");
+                    String id = scanner.nextLine();
+                    System.out.println("Enter the deposit price: ");
+                    String deposit = scanner.nextLine();
+                    System.out.println("Enter the deposit price: ");
+                    String allPrice = scanner.nextLine();
+                    contracts.setId(id);
+                    contracts.setAllPrice(allPrice);
+                    contracts.setDeposit(deposit);
+                    check = false;
+                    rewriteContractFile();
+                    break;
+                }
+            }
+            if (check) {
+                System.out.println("Your input is not appear in contract list, please re-enter");
             }
         }
     }
 
+    public static void rewriteContractFile() throws IOException {
+        for (Contract contract : contractList) {
+            String line = contract.getId() + "," + contract.getBookingDay() + "," + contract.getBookingYear() + "," + contract.getBookingDayStart() + "," + contract.getBookingDayEnd() + "," + contract.getBookingServiceName() + "," + contract.getDeposit() + "," + contract.getAllPrice() + "," + contract.getCustomerName();
+            ReadAndWrite.writeAllFile("D:\\CODEGYM\\C0222G1_Nguyen_Huu_Toan_Module2\\src\\casestudy\\data\\contract.csv", line);
+        }
+    }
 
-    public void displayListContract() {
+    public void displayListContract() throws IOException {
+        contractList = ReadAndWrite.readFileContract();
         for (Contract contract : contractList) {
             System.out.println(contract.toString());
         }
@@ -69,26 +105,5 @@ public class ContactServiceImpl implements ContactService {
 
     public static void setContractList(List<Contract> contractList) {
         ContactServiceImpl.contractList = contractList;
-    }
-
-
-    @Override
-    public void display() {
-
-    }
-
-    @Override
-    public void addNew() {
-
-    }
-
-    @Override
-    public void edit() {
-
-    }
-
-    @Override
-    public void delete() {
-
     }
 }

@@ -33,18 +33,18 @@ public class PromotionServiceImpl {
                 voucherList.add(elements);
             }
         }
-        int discount1;
-        int discount2;
-        int discount3;
+        int discount50;
+        int discount20;
+        int discount10;
         while (true){
             System.out.println("We have " + voucherList.size() + " voucher ");
             System.out.println("Enter the amount of 50% voucher: ");
-            discount1 = Integer.parseInt(scanner.nextLine());
+            discount50 = Integer.parseInt(scanner.nextLine());
             System.out.println("Enter the amount of 20% voucher: ");
-            discount2 = Integer.parseInt(scanner.nextLine());
+            discount20 = Integer.parseInt(scanner.nextLine());
             System.out.println("Enter the amount of 10% voucher: ");
-            discount3 = Integer.parseInt(scanner.nextLine());
-            if (discount1+discount2+discount3==voucherList.size()){
+            discount10 = Integer.parseInt(scanner.nextLine());
+            if (discount50+discount20+discount10==voucherList.size()){
                 break;
             }
             System.err.println("Wrong input please enter again!");
@@ -52,7 +52,7 @@ public class PromotionServiceImpl {
         for (Contract contract : voucherList) {
             System.out.println(contract.toString());
         }
-        for (int i = 0; i < discount1+discount2+discount3; i++) {
+        for (int i = 0; i < discount50+discount20+discount10; i++) {
 
         }
     }

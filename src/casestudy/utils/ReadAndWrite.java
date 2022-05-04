@@ -1,6 +1,7 @@
 package casestudy.utils;
 
 import casestudy.models.booking_contract.Booking;
+import casestudy.models.booking_contract.Contract;
 import casestudy.models.facility.Facility;
 import casestudy.models.facility.House;
 import casestudy.models.facility.Room;
@@ -61,20 +62,6 @@ public class ReadAndWrite {
         return null;
     }
 
-    public static void writeFileCustomer(String line) throws IOException {
-        File file = new File(customerPath);
-        if (!file.exists()) {
-            file.createNewFile();
-        }
-        try (FileWriter fileWriter = new FileWriter(file, true);
-             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
-            bufferedWriter.write(line);
-            bufferedWriter.newLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     public static List<Employee> readFileEmployee() throws IOException {
         List<Employee> employeeList = new LinkedList<>();
         File file = new File(employeePath);
@@ -117,20 +104,6 @@ public class ReadAndWrite {
         return null;
     }
 
-    public static void writeFileEmployee(String line) throws IOException {
-        File file = new File(employeePath);
-        if (!file.exists()) {
-            file.createNewFile();
-        }
-        try (FileWriter fileWriter = new FileWriter(file, true);
-             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
-            bufferedWriter.write(line);
-            bufferedWriter.newLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     public static List<Villa> readFileVilla() throws IOException {
         List<Villa> villaList = new LinkedList<>();
         File file = new File(villaPath);
@@ -169,20 +142,6 @@ public class ReadAndWrite {
             fileReader.close();
         }
         return null;
-    }
-
-    public static void writeFileVilla(String line) throws IOException {
-        File file = new File(villaPath);
-        if (!file.exists()) {
-            file.createNewFile();
-        }
-        try (FileWriter fileWriter = new FileWriter(file, true);
-             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
-            bufferedWriter.write(line);
-            bufferedWriter.newLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     public static List<House> readFileHouse() throws IOException {
@@ -224,20 +183,6 @@ public class ReadAndWrite {
         return null;
     }
 
-    public static void writeFileHouse(String line) throws IOException {
-        File file = new File(housePath);
-        if (!file.exists()) {
-            file.createNewFile();
-        }
-        try (FileWriter fileWriter = new FileWriter(file, true);
-             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
-            bufferedWriter.write(line);
-            bufferedWriter.newLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     public static List<Room> readFileRoom() throws IOException {
         List<Room> roomList = new LinkedList<>();
         File file = new File(roomPath);
@@ -273,20 +218,6 @@ public class ReadAndWrite {
             fileReader.close();
         }
         return null;
-    }
-
-    public static void writeFileRoom(String line) throws IOException {
-        File file = new File(roomPath);
-        if (!file.exists()) {
-            file.createNewFile();
-        }
-        try (FileWriter fileWriter = new FileWriter(file, true);
-             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
-            bufferedWriter.write(line);
-            bufferedWriter.newLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     public static Map<Facility, Integer> readFileFacility() throws IOException {
@@ -356,21 +287,6 @@ public class ReadAndWrite {
         return null;
     }
 
-    public static void writeFileFacility(String line) throws IOException {
-        File file = new File(facilityPath);
-        if (!file.exists()) {
-            file.createNewFile();
-        }
-        try (FileWriter fileWriter = new FileWriter(file, true);
-             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
-            bufferedWriter.write(line);
-            bufferedWriter.newLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
     public static Set<Booking> readFileBooking() throws IOException {
         Set<Booking> bookingSet = new TreeSet<>(new BookingComparator());
         File file = new File(bookingPath);
@@ -409,8 +325,8 @@ public class ReadAndWrite {
         return null;
     }
 
-    public static void writeFileBooking(String line) throws IOException {
-        File file = new File(bookingPath);
+    public static void writeAllFile(String path, String line) throws IOException {
+        File file = new File(path);
         if (!file.exists()) {
             file.createNewFile();
         }
@@ -423,17 +339,45 @@ public class ReadAndWrite {
         }
     }
 
-    public static void writeFileContract(String line) throws IOException {
+    public static List<Contract> readFileContract() throws  IOException{
+        List<Contract> contractList = new ArrayList<>();;
         File file = new File(contractPath);
-        if (!file.exists()) {
-            file.createNewFile();
-        }
-        try (FileWriter fileWriter = new FileWriter(file, true);
-             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
-            bufferedWriter.write(line);
-            bufferedWriter.newLine();
+        FileReader fileReader = null;
+        BufferedReader bufferedReader = null;
+        List<String[]> listStr = new ArrayList<>();
+        try {
+            fileReader = new FileReader(file);
+            bufferedReader = new BufferedReader(fileReader);
+            String line = "";
+            while ((line = bufferedReader.readLine()) != null && !line.equals("")) {
+                String[] arrStr = line.split(",");
+                listStr.add(arrStr);
+            }
+            for (String[] item : listStr) {
+                Contract contract = new Contract(
+                        item[0],
+                        item[1],
+                        item[2],
+                        item[3],
+                        item[4],
+                        item[5],
+                        item[6],
+                        item[7],
+                        item[8]
+                );
+                contractList.add(contract);
+            }
+            return contractList;
+        } catch (ArrayIndexOutOfBoundsException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            bufferedReader.close();
+            fileReader.close();
         }
+        return null;
     }
 }

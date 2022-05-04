@@ -10,7 +10,7 @@ public class CustomerRegex {
     static Scanner scanner = new Scanner(System.in);
 
     public static void dateTimeCheck(String dateOfBirth) throws Exception {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu").withResolverStyle(ResolverStyle.STRICT);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy").withResolverStyle(ResolverStyle.STRICT);
         LocalDate localDate1 = LocalDate.parse(dateOfBirth, formatter);
         LocalDate localDate2 = LocalDate.now();
         localDate2.format(formatter);

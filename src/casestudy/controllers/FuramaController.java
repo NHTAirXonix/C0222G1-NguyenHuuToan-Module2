@@ -171,13 +171,13 @@ public class FuramaController {
             String choice = input.nextLine();
             switch (choice) {
                 case "1":
-                    facilityService.addNewVilla();
+                    facilityService.addFacility("villa");
                     break;
                 case "2":
-                    facilityService.addNewHouse();
+                    facilityService.addFacility("house");
                     break;
                 case "3":
-                    facilityService.addNewRoom();
+                    facilityService.addFacility("room");
                     break;
                 case "4":
                     check =false;
@@ -220,7 +220,7 @@ public class FuramaController {
                     contactService.displayListContract();
                     break;
                 case "5":
-
+                    contactService.editContract();
                     break;
                 case "6":
                     check =false;

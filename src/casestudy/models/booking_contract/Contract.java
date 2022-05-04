@@ -1,12 +1,9 @@
 package casestudy.models.booking_contract;
 
-import casestudy.models.person.Customer;
-import casestudy.models.person.Person;
-
 public class Contract {
-    private final String id;
-    private final String deposit;
-    private final String allPrice;
+    private String id;
+    private String deposit;
+    private String allPrice;
     private final String customerName;
     private final String bookingDayStart;
     private final String bookingDayEnd;
@@ -15,7 +12,15 @@ public class Contract {
     private final String bookingYear;
 
 
-    public Contract(String id, String bookingDay, String bookingYear, String bookingDayStart, String bookingDayEnd, String bookingServiceName, String deposit, String allPrice, String customerName) {
+    public Contract(String id,
+                    String bookingDay,
+                    String bookingYear,
+                    String bookingDayStart,
+                    String bookingDayEnd,
+                    String bookingServiceName,
+                    String deposit,
+                    String allPrice,
+                    String customerName) {
         this.id = id;
         this.bookingDayEnd = bookingDayEnd;
         this.bookingDayStart = bookingDayStart;
@@ -27,7 +32,35 @@ public class Contract {
         this.bookingYear = bookingYear;
     }
 
-    public String getNameCustomer(){
+    public String getId() {
+        return id;
+    }
+
+    public String getDeposit() {
+        return deposit;
+    }
+
+    public String getAllPrice() {
+        return allPrice;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setDeposit(String deposit) {
+        this.deposit = deposit;
+    }
+
+    public void setAllPrice(String allPrice) {
+        this.allPrice = allPrice;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getNameCustomer() {
         return this.customerName;
     }
 
@@ -53,11 +86,11 @@ public class Contract {
 
     @Override
     public String toString() {
-        return "\n---------------Contract-"+id+"--------------" +
+        return "\n---------------Contract-" + id + "--------------" +
                 "\nidContract= " + id + '\'' +
                 "| deposit= " + deposit + '\'' +
                 "| allPrice= " + allPrice + '\'' +
-                "\nCustomer name= " + customerName  +  "| Service name= " + bookingServiceName +
-                "\nDay Start= " + bookingDayStart +"| Day End= "+ bookingDayEnd;
+                "\nCustomer name= " + customerName + "| Service name= " + bookingServiceName +
+                "\nDay Start= " + bookingDayStart + "| Day End= " + bookingDayEnd;
     }
 }

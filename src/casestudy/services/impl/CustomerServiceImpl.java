@@ -47,7 +47,7 @@ public class CustomerServiceImpl implements CustomerService {
         String email = scanner.nextLine();
         StringBuilder customerType = CustomerRegex.customerType();
         String line = id + "," + name + "," + age + "," + address + "," + customerId + "," + gender + "," + phoneNumber + "," + email + "," + customerType.toString();
-        ReadAndWrite.writeFileCustomer(line);
+        ReadAndWrite.writeAllFile("D:\\CODEGYM\\C0222G1_Nguyen_Huu_Toan_Module2\\src\\casestudy\\data\\customer.csv",line);
         System.out.println("Add complete");
     }
 
@@ -85,20 +85,7 @@ public class CustomerServiceImpl implements CustomerService {
                 customerList.get(i).setEmail(email);
                 customerList.get(i).setCustomerType(customerType.toString());
 
-                File file = new File("D:\\CODEGYM\\C0222G1_Nguyen_Huu_Toan_Module2\\src\\casestudy\\data\\customer.csv");
-                file.delete();
-                for (Customer elements : customerList) {
-                    String line = elements.getId() + "," +
-                            elements.getName() + "," +
-                            elements.getAge() + "," +
-                            elements.getAddress() + "," +
-                            elements.getCustomerId() + "," +
-                            elements.getGender() + "," +
-                            elements.getPhoneNumber() + "," +
-                            elements.getEmail() + "," +
-                            elements.getCustomerType();
-                    ReadAndWrite.writeFileCustomer(line);
-                }
+                rewriteCustomerFile();
                 System.out.println("Edit complete");
                 break;
             } else if (i == customerList.size() - 1) {
@@ -123,6 +110,10 @@ public class CustomerServiceImpl implements CustomerService {
                 System.out.println("Wrong id");
             }
         }
+        rewriteCustomerFile();
+    }
+
+    public static void rewriteCustomerFile() throws IOException {
         File file = new File("D:\\CODEGYM\\C0222G1_Nguyen_Huu_Toan_Module2\\src\\casestudy\\data\\customer.csv");
         file.delete();
         for (Customer elements : customerList) {
@@ -135,7 +126,7 @@ public class CustomerServiceImpl implements CustomerService {
                     elements.getPhoneNumber() + "," +
                     elements.getEmail() + "," +
                     elements.getCustomerType();
-            ReadAndWrite.writeFileCustomer(line);
+            ReadAndWrite.writeAllFile("D:\\CODEGYM\\C0222G1_Nguyen_Huu_Toan_Module2\\src\\casestudy\\data\\customer.csv",line);
         }
     }
 }

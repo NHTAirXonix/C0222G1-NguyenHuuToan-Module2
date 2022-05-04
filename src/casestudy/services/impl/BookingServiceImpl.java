@@ -2,14 +2,11 @@ package casestudy.services.impl;
 
 import casestudy.models.booking_contract.Booking;
 import casestudy.models.facility.Facility;
-import casestudy.models.facility.House;
-import casestudy.models.facility.Villa;
 import casestudy.models.person.Customer;
 import casestudy.services.BookingService;
 import casestudy.utils.BookingComparator;
 import casestudy.utils.ReadAndWrite;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
@@ -61,10 +58,8 @@ public class BookingServiceImpl implements BookingService {
         System.out.println("Enter end day:");
         String endDay = scanner.nextLine();
         Booking booking = new Booking(id, startDay, endDay, customer.toString(), facility.toString(), customer.getName(), facility.getServiceName());
-        String line = id + "," + startDay + "," + endDay + "," + customer.toString() + "," + facility.toString() + "," + customer.getName() + "," + facility.getServiceName();
-        System.out.println(line);
-        ReadAndWrite.writeFileBooking(line);
         bookingSet.add(booking);
+        rewriteBookingFile();
         System.out.println("Add booking complete!");
     }
 
@@ -114,47 +109,7 @@ public class BookingServiceImpl implements BookingService {
                     output = 2;
                     if (entry.getValue() < 5) {
                         entry.setValue(entry.getValue() + 1);
-                        File file = new File("D:\\CODEGYM\\C0222G1_Nguyen_Huu_Toan_Module2\\src\\casestudy\\data\\facility.csv");
-                        file.delete();
-                        for (Map.Entry<Facility, Integer> elements : facilityIntegerMap.entrySet()) {
-                            String[] check = elements.getKey().getFacilityId().split("-");
-                            if (check[0].equals("SVVL")) {
-                                String line = elements.getKey().getFacilityId() + "," +
-                                        elements.getKey().getServiceName() + "," +
-                                        elements.getKey().getUseArea() + "," +
-                                        elements.getKey().getRentPrice() + "," +
-                                        elements.getKey().getMaximumPeople() + "," +
-                                        elements.getKey().getRentType() + "," +
-                                        ((Villa) elements.getKey()).getRoomStandard() + "," +
-                                        ((Villa) elements.getKey()).getPoolArea() + "," +
-                                        ((Villa) elements.getKey()).getFloor() + "," +
-                                        elements.getValue();
-                                System.out.println(line);
-                                ReadAndWrite.writeFileFacility(line);
-                            } else if (check[0].equals("SVHO")) {
-                                String line = elements.getKey().getFacilityId() + "," +
-                                        elements.getKey().getServiceName() + "," +
-                                        elements.getKey().getUseArea() + "," +
-                                        elements.getKey().getRentPrice() + "," +
-                                        elements.getKey().getMaximumPeople() + "," +
-                                        elements.getKey().getRentType() + "," +
-                                        ((House) elements.getKey()).getRoomStandard() + "," +
-                                        ((House) elements.getKey()).getFloor() + "," +
-                                        elements.getValue();
-                                System.out.println(line);
-                                ReadAndWrite.writeFileFacility(line);
-                            } else {
-                                String line = elements.getKey().getFacilityId() + "," +
-                                        elements.getKey().getServiceName() + "," +
-                                        elements.getKey().getUseArea() + "," +
-                                        elements.getKey().getRentPrice() + "," +
-                                        elements.getKey().getMaximumPeople() + "," +
-                                        elements.getKey().getRentType() + "," +
-                                        elements.getValue();
-                                System.out.println(line);
-                                ReadAndWrite.writeFileFacility(line);
-                            }
-                        }
+                        FacilityServiceImpl.reWriteFacilityFile();
                         return entry.getKey();
                     }
                 }
@@ -164,6 +119,13 @@ public class BookingServiceImpl implements BookingService {
             } else {
                 System.out.println("This facility is close for maintenance, please input the id again ");
             }
+        }
+    }
+
+    public static void rewriteBookingFile() throws IOException {
+        for (Booking booking : bookingSet) {
+            String line = booking.getBookingNumber() + "," + booking.getDayStart() + "," + booking.getDayEnd() + "," + booking.getCustomerInformation() + "," + booking.getFacilityInformation() + "," + booking.getCustomerName() + "," + booking.getServiceName();
+            ReadAndWrite.writeAllFile("D:\\CODEGYM\\C0222G1_Nguyen_Huu_Toan_Module2\\src\\casestudy\\data\\booking.csv", line);
         }
     }
 }

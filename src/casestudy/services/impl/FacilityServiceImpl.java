@@ -8,6 +8,7 @@ import casestudy.regex_class.FacilityRegex;
 import casestudy.services.FacilityService;
 import casestudy.utils.ReadAndWrite;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
@@ -56,70 +57,94 @@ public class FacilityServiceImpl implements FacilityService {
                     System.out.println("Wrong input");
             }
         }
+
     }
 
     @Override
-    public void addNewVilla() throws IOException {
-        String facilityId = FacilityRegex.inputFacilityIdVilla();
+    public void addFacility(String input) throws IOException {
+        String facilityId;
+        if (input.equals("villa")){
+            facilityId = FacilityRegex.inputFacilityIdVilla();
+        } else if (input.equals("house")){
+            facilityId = FacilityRegex.inputFacilityIdHouse();
+        } else {
+            facilityId = FacilityRegex.inputFacilityIdRoom();
+        }
         String serviceName = FacilityRegex.inputFacilityName();
         double useArea = FacilityRegex.inputUseArea();
         double rentPrice = FacilityRegex.inputRentPrice();
         int maximumPeople = FacilityRegex.inputAmountPeople();
         String rentType = FacilityRegex.inputRentType();
-        String roomStandard = FacilityRegex.inputRoomStandard();
-        double poolArea = FacilityRegex.inputPoolArea();
-        int floor = FacilityRegex.inputFloor();
-        Villa villa = new Villa(facilityId, serviceName, useArea, rentPrice, maximumPeople, rentType, roomStandard, poolArea, floor);
-        String line = facilityId + "," + serviceName + "," + useArea + "," + rentPrice + "," + maximumPeople + "," + rentType + "," + roomStandard + "," + poolArea + "," + floor;
-        String line2 = facilityId + "," + serviceName + "," + useArea + "," + rentPrice + "," + maximumPeople + "," + rentType + "," + roomStandard + "," + poolArea + "," + floor + "," + 0;
-        ReadAndWrite.writeFileVilla(line);
-        facilityIntegerMap.put(villa, 0);
-        ReadAndWrite.writeFileFacility(line2);
+        if (input.equals("villa")){
+            String roomStandard = FacilityRegex.inputRoomStandard();
+            double poolArea = FacilityRegex.inputPoolArea();
+            int floor = FacilityRegex.inputFloor();
+            Villa villa = new Villa(facilityId, serviceName, useArea, rentPrice, maximumPeople, rentType, roomStandard, poolArea, floor);
+            String line = facilityId + "," + serviceName + "," + useArea + "," + rentPrice + "," + maximumPeople + "," + rentType + "," + roomStandard + "," + poolArea + "," + floor;
+            String line2 = facilityId + "," + serviceName + "," + useArea + "," + rentPrice + "," + maximumPeople + "," + rentType + "," + roomStandard + "," + poolArea + "," + floor + "," + 0;
+            ReadAndWrite.writeAllFile("D:\\CODEGYM\\C0222G1_Nguyen_Huu_Toan_Module2\\src\\casestudy\\data\\villa.csv", line);
+            facilityIntegerMap.put(villa, 0);
+            ReadAndWrite.writeAllFile("D:\\CODEGYM\\C0222G1_Nguyen_Huu_Toan_Module2\\src\\casestudy\\data\\facility.csv", line2);
+        } else if (input.equals("house")){
+            String roomStandard = FacilityRegex.inputRoomStandard();
+            int floor = FacilityRegex.inputFloor();
+            House house = new House(facilityId, serviceName, useArea, rentPrice, maximumPeople, rentType, roomStandard, floor);
+            String line = facilityId + "," + serviceName + "," + useArea + "," + rentPrice + "," + maximumPeople + "," + rentType + "," + roomStandard + "," + floor;
+            String line2 = facilityId + "," + serviceName + "," + useArea + "," + rentPrice + "," + maximumPeople + "," + rentType + "," + roomStandard + "," + floor + "," + 0;
+            ReadAndWrite.writeAllFile("D:\\CODEGYM\\C0222G1_Nguyen_Huu_Toan_Module2\\src\\casestudy\\data\\house.csv", line);
+            facilityIntegerMap.put(house, 0);
+            ReadAndWrite.writeAllFile("D:\\CODEGYM\\C0222G1_Nguyen_Huu_Toan_Module2\\src\\casestudy\\data\\facility.csv", line2);
+        } else {
+            Room room = new Room(facilityId, serviceName, useArea, rentPrice, maximumPeople, rentType);
+            String line = facilityId + "," + serviceName + "," + useArea + "," + rentPrice + "," + maximumPeople + "," + rentType;
+            String line2 = facilityId + "," + serviceName + "," + useArea + "," + rentPrice + "," + maximumPeople + "," + rentType + "," + 0;
+            ReadAndWrite.writeAllFile("D:\\CODEGYM\\C0222G1_Nguyen_Huu_Toan_Module2\\src\\casestudy\\data\\room.csv", line);
+            facilityIntegerMap.put(room, 0);
+            ReadAndWrite.writeAllFile("D:\\CODEGYM\\C0222G1_Nguyen_Huu_Toan_Module2\\src\\casestudy\\data\\facility.csv", line2);
+        }
     }
 
-    @Override
-    public void addNewHouse() throws IOException {
-        String facilityId = FacilityRegex.inputFacilityIdHouse();
-        String serviceName = FacilityRegex.inputFacilityName();
-        double useArea = FacilityRegex.inputUseArea();
-        double rentPrice = FacilityRegex.inputRentPrice();
-        int maximumPeople = FacilityRegex.inputAmountPeople();
-        String rentType = FacilityRegex.inputRentType();
-        String roomStandard = FacilityRegex.inputRoomStandard();
-        int floor = FacilityRegex.inputFloor();
-        House house = new House(facilityId, serviceName, useArea, rentPrice, maximumPeople, rentType, roomStandard, floor);
-        String line = facilityId + "," + serviceName + "," + useArea + "," + rentPrice + "," + maximumPeople + "," + rentType + "," + roomStandard + "," + floor;
-        String line2 = facilityId + "," + serviceName + "," + useArea + "," + rentPrice + "," + maximumPeople + "," + rentType + "," + roomStandard + "," + floor + "," + 0;
-        ReadAndWrite.writeFileHouse(line);
-        facilityIntegerMap.put(house, 0);
-        ReadAndWrite.writeFileFacility(line2);
-    }
-
-    @Override
-    public void addNewRoom() throws IOException {
-        String facilityId = FacilityRegex.inputFacilityIdRoom();
-        String serviceName = FacilityRegex.inputFacilityName();
-        double useArea = FacilityRegex.inputUseArea();
-        double rentPrice = FacilityRegex.inputRentPrice();
-        int maximumPeople = FacilityRegex.inputAmountPeople();
-        String rentType = FacilityRegex.inputRentType();
-        Room room = new Room(facilityId, serviceName, useArea, rentPrice, maximumPeople, rentType);
-        String line = facilityId + "," + serviceName + "," + useArea + "," + rentPrice + "," + maximumPeople + "," + rentType;
-        String line2 = facilityId + "," + serviceName + "," + useArea + "," + rentPrice + "," + maximumPeople + "," + rentType + "," + 0;
-        ReadAndWrite.writeFileRoom(line);
-        facilityIntegerMap.put(room, 0);
-        ReadAndWrite.writeFileFacility(line2);
-    }
-
-    @Override
-    public void addNew() {
-    }
-
-    @Override
-    public void edit() {
-    }
-
-    @Override
-    public void delete() {
+    public static void reWriteFacilityFile() throws IOException {
+        File file = new File("D:\\CODEGYM\\C0222G1_Nguyen_Huu_Toan_Module2\\src\\casestudy\\data\\facility.csv");
+        file.delete();
+        for (Map.Entry<Facility, Integer> elements : facilityIntegerMap.entrySet()) {
+            String[] check = elements.getKey().getFacilityId().split("-");
+            if (check[0].equals("SVVL")) {
+                String line = elements.getKey().getFacilityId() + "," +
+                        elements.getKey().getServiceName() + "," +
+                        elements.getKey().getUseArea() + "," +
+                        elements.getKey().getRentPrice() + "," +
+                        elements.getKey().getMaximumPeople() + "," +
+                        elements.getKey().getRentType() + "," +
+                        ((Villa) elements.getKey()).getRoomStandard() + "," +
+                        ((Villa) elements.getKey()).getPoolArea() + "," +
+                        ((Villa) elements.getKey()).getFloor() + "," +
+                        elements.getValue();
+                System.out.println(line);
+                ReadAndWrite.writeAllFile("D:\\CODEGYM\\C0222G1_Nguyen_Huu_Toan_Module2\\src\\casestudy\\data\\facility.csv", line);
+            } else if (check[0].equals("SVHO")) {
+                String line = elements.getKey().getFacilityId() + "," +
+                        elements.getKey().getServiceName() + "," +
+                        elements.getKey().getUseArea() + "," +
+                        elements.getKey().getRentPrice() + "," +
+                        elements.getKey().getMaximumPeople() + "," +
+                        elements.getKey().getRentType() + "," +
+                        ((House) elements.getKey()).getRoomStandard() + "," +
+                        ((House) elements.getKey()).getFloor() + "," +
+                        elements.getValue();
+                System.out.println(line);
+                ReadAndWrite.writeAllFile("D:\\CODEGYM\\C0222G1_Nguyen_Huu_Toan_Module2\\src\\casestudy\\data\\facility.csv", line);
+            } else {
+                String line = elements.getKey().getFacilityId() + "," +
+                        elements.getKey().getServiceName() + "," +
+                        elements.getKey().getUseArea() + "," +
+                        elements.getKey().getRentPrice() + "," +
+                        elements.getKey().getMaximumPeople() + "," +
+                        elements.getKey().getRentType() + "," +
+                        elements.getValue();
+                System.out.println(line);
+                ReadAndWrite.writeAllFile("D:\\CODEGYM\\C0222G1_Nguyen_Huu_Toan_Module2\\src\\casestudy\\data\\facility.csv", line);
+            }
+        }
     }
 }

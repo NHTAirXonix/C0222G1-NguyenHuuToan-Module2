@@ -45,7 +45,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         System.out.println("Enter the  salary: ");
         long salary = Integer.parseInt(scanner.nextLine());
         String line = id + "," + name + "," + age + "," + address + "," + employeeId + "," + gender + "," + phoneNumber + "," + email + "," + level + "," + position + "," + salary;
-        ReadAndWrite.writeFileEmployee(line);
+        ReadAndWrite.writeAllFile("D:\\CODEGYM\\C0222G1_Nguyen_Huu_Toan_Module2\\src\\casestudy\\data\\employee.csv", line);
         System.out.println("Add complete");
     }
 
@@ -85,22 +85,7 @@ public class EmployeeServiceImpl implements EmployeeService {
                 employeeList.get(i).setPosition(position);
                 employeeList.get(i).setSalary(salary);
 
-                File file = new File("D:\\CODEGYM\\C0222G1_Nguyen_Huu_Toan_Module2\\src\\casestudy\\data\\employee.csv");
-                file.delete();
-                for (Employee elements : employeeList) {
-                    String line = elements.getId() + "," +
-                            elements.getName() + "," +
-                            elements.getAge() + "," +
-                            elements.getAddress() + "," +
-                            elements.getEmployeeId() + "," +
-                            elements.isGender() + "," +
-                            elements.getPhoneNumber() + "," +
-                            elements.getEmail() + "," +
-                            elements.getLevel() + "," +
-                            elements.getPosition() + "," +
-                            elements.getSalary();
-                    ReadAndWrite.writeFileEmployee(line);
-                }
+                rewriteEmployeeFile();
                 System.out.println("Edit complete");
             } else if (i == employeeList.size() - 1) {
                 System.out.println("Wrong id");
@@ -123,6 +108,10 @@ public class EmployeeServiceImpl implements EmployeeService {
                 System.out.println("Wrong id");
             }
         }
+        rewriteEmployeeFile();
+    }
+
+    public static void rewriteEmployeeFile() throws IOException {
         File file = new File("D:\\CODEGYM\\C0222G1_Nguyen_Huu_Toan_Module2\\src\\casestudy\\data\\employee.csv");
         file.delete();
         for (Employee elements : employeeList) {
@@ -137,7 +126,7 @@ public class EmployeeServiceImpl implements EmployeeService {
                     elements.getLevel() + "," +
                     elements.getPosition() + "," +
                     elements.getSalary();
-            ReadAndWrite.writeFileEmployee(line);
+            ReadAndWrite.writeAllFile("D:\\CODEGYM\\C0222G1_Nguyen_Huu_Toan_Module2\\src\\casestudy\\data\\employee.csv", line);
         }
     }
 }
